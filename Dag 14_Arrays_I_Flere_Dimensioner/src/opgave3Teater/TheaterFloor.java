@@ -19,10 +19,15 @@ public class TheaterFloor {
 	 * @return
 	 */
 
-	public int buySeat(int row, int seat) {
+	public void buySeat(int row, int seat) {
 		// TODO
-
-		return -1;
+		if (seats[row - 1][seat - 1] == 0){
+			System.out.println("Beklare dette sæde er optaget");
+		}else{
+			System.out.println("Sædet er reserveret til dig \n Prisen er: " + seats[row - 1][seat - 1] + "Kr");
+			seats[row - 1][seat - 1] = 0;
+		}
+		printTheaterFloor();
 	}
 
 	/**
@@ -42,10 +47,10 @@ public class TheaterFloor {
 				if (seats[row][col] == price) {
 					seats[row][col] = 0;
 					tjekForPlads = false;
-
 				}
 			}
 		}
+		printTheaterFloor();
 	}
 
 
