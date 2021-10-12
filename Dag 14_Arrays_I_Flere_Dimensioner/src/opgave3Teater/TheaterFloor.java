@@ -1,5 +1,6 @@
 package opgave3Teater;
 
+import java.awt.*;
 import java.util.Arrays;
 
 public class TheaterFloor {
@@ -20,6 +21,7 @@ public class TheaterFloor {
 
 	public int buySeat(int row, int seat) {
 		// TODO
+
 		return -1;
 	}
 
@@ -32,11 +34,20 @@ public class TheaterFloor {
 	 * @param seat
 	 * @return
 	 */
-	public int buySeat(int price) {
+	public void buyticket(int price) {
 		// TODO
-		return -1;
+		boolean tjekForPlads = true;
+		for (int row = 0; row < seats.length && tjekForPlads == true ; row++) {
+			for (int col = 0; col < seats[row].length && tjekForPlads == true; col++) {
+				if (seats[row][col] == price) {
+					seats[row][col] = 0;
+					tjekForPlads = false;
 
+				}
+			}
+		}
 	}
+
 
 	public void printTheaterFloor() {
 		// TODO

@@ -8,5 +8,8 @@ public class TheaterFloorApp {
 		TheaterFloor theater = new TheaterFloor();
 		// TODO
 		theater.printTheaterFloor();
+		System.out.println();
+		theater.buyticket(20);
+		theater.printTheaterFloor();
 	}
 }
