@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Dag 14_Arrays_I_Flere_Dimensioner/Dag 14_Arrays_I_Flere_Dimensioner.iml" filepath="$PROJECT_DIR$/Dag 14_Arrays_I_Flere_Dimensioner/Dag 14_Arrays_I_Flere_Dimensioner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag02_simpleprogrammer/Dag02_simpleprogrammer.iml" filepath="$PROJECT_DIR$/Dag02_simpleprogrammer/Dag02_simpleprogrammer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag03_Figure_og_variabler/Dag03_Figure_og_variabler.iml" filepath="$PROJECT_DIR$/Dag03_Figure_og_variabler/Dag03_Figure_og_variabler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag05_strings_og_klasser/Dag05_strings_og_klasser.iml" filepath="$PROJECT_DIR$/Dag05_strings_og_klasser/Dag05_strings_og_klasser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag06_Scan_og_if_else/Dag06_Scan_og_if_else.iml" filepath="$PROJECT_DIR$/Dag06_Scan_og_if_else/Dag06_Scan_og_if_else.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag07_Opsamlings_opgaver/Dag07_Opsamlings_opgaver.iml" filepath="$PROJECT_DIR$/Dag07_Opsamlings_opgaver/Dag07_Opsamlings_opgaver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag08_While_loops_øvelser/Dag08_While_loops_øvelser.iml" filepath="$PROJECT_DIR$/Dag08_While_loops_øvelser/Dag08_While_loops_øvelser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag09_for_loops_øvelser/Dag09_for_loops_øvelser.iml" filepath="$PROJECT_DIR$/Dag09_for_loops_øvelser/Dag09_for_loops_øvelser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag10_Projekt_dicesGames/Dag10_Projekt_dicesGames.iml" filepath="$PROJECT_DIR$/Dag10_Projekt_dicesGames/Dag10_Projekt_dicesGames.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag11_Array_Opgaver/Dag11_Array_Opgaver.iml" filepath="$PROJECT_DIR$/Dag11_Array_Opgaver/Dag11_Array_Opgaver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dag12_Array_list/Dag12_Array_list.iml" filepath="$PROJECT_DIR$/Dag12_Array_list/Dag12_Array_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dag4/dag04_klasseerklaringer.iml" filepath="$PROJECT_DIR$/dag4/dag04_klasseerklaringer.iml" />
+    </modules>
+  </component>
+</project>
