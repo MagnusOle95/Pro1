@@ -1,5 +1,7 @@
 package opgave3Teater;
 
+import java.util.Arrays;
+
 public class TheaterFloor {
 	int[][] seats = { { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 }, { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
 			{ 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 }, { 10, 10, 20, 20, 20, 20, 20, 20, 10, 10 },
@@ -38,5 +40,20 @@ public class TheaterFloor {
 
 	public void printTheaterFloor() {
 		// TODO
+		System.out.print("  Sæde :");
+		for (int i = 1; i <= 10; i++){
+			System.out.print(" " + i + "  "); //Udskriver sæderækkerne//
+		}
+
+		System.out.println(); //Laver mellemrummet fra sæde til rækker//
+
+		//printer alle sædder og rækkerne//
+		for (int row = 0; row < seats.length; row++){
+			System.out.print("Række " + (row + 1) + ": ");
+			for (int col = 0; col < seats[row].length; col++){
+				System.out.print(seats[row][col] + ", ");
+			}
+			System.out.println();
+		}
 	}
 }
