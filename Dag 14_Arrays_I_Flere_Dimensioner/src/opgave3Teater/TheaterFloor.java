@@ -40,12 +40,20 @@ public class TheaterFloor {
 
 	public void printTheaterFloor() {
 		// TODO
+		//Printer rækken med sæde//
 		System.out.print("  Sæde :");
 		for (int i = 1; i <= 10; i++){
-			System.out.print(" " + i + "  "); //Udskriver sæderækkerne//
+			System.out.print(" " + i + "  ");
 		}
 
-		System.out.println(); //Laver mellemrummet fra sæde til rækker//
+		System.out.println(); // Mellemrum//
+
+		//Printer ------ mellem sæde og rækker//
+		for (int i = 0; i <= 46; i++){
+			System.out.print("-");
+		}
+
+		System.out.println(); //Mellemrum//
 
 		//printer alle sædder og rækkerne//
 		for (int row = 0; row < seats.length; row++){
