@@ -97,7 +97,7 @@ public class Opgave2DobbelArray {
                 }else if (col == 0 || col == values[row].length - 1){
                     values[row][col] = 5;
                 }else{
-                    values[row][col] = 4;
+                    values[row][col] = 2;
                 }
             }
         }
