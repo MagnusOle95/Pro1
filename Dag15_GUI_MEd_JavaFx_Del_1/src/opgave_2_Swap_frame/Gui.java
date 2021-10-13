@@ -1,10 +1,9 @@
-package opgave_1_sammel_navn;
+package opgave_2_Swap_frame;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -24,9 +23,8 @@ public class Gui extends Application {
 
     // -------------------------------------------------------------------------
 
-    private final TextField txfFirstName = new TextField();
-    private final TextField txfLastName = new TextField();
-    private final TextField txfFullName = new TextField();
+    private final TextField txfFirstFrame = new TextField();
+    private final TextField txfSecondFrame = new TextField();
 
     private void initContent(GridPane pane) {
         // show or hide grid lines
@@ -43,25 +41,26 @@ public class Gui extends Application {
         // add a text field to the pane (at col=1, row=0, extending 2 columns and 1 row)
         // Deleted here is:
         // TextField txfName = new TextField();
-        pane.add(txfFirstName, 1, 0, 1, 1);
-        pane.add(txfLastName, 2, 0, 1, 1);
-        pane.add(txfFullName,1 ,1,2,1);
+        pane.add(txfFirstFrame, 1, 0, 1, 1);
+        pane.add(txfSecondFrame, 1, 1, 1, 1);
 
 
         // add a button to the pane (at col=2, row=1)
-        Button kombiner = new Button("Kombiner");
-        pane.add(kombiner, 1, 3);
-        GridPane.setMargin(kombiner, new Insets(10, 10, 0, 10));
+        Button swampFrames = new Button("Swamp frames");
+        pane.add(swampFrames, 1, 3);
+        GridPane.setMargin(swampFrames, new Insets(10, 10, 0, 5));
 
         // connect a method to the button
-        kombiner.setOnAction(event -> this.kombineFirstAndLastName());
+        swampFrames.setOnAction(event -> this.swapFrames());
     }
 
     // -------------------------------------------------------------------------
 
-    private void kombineFirstAndLastName() {
-        String firstName = txfFirstName.getText().trim();
-        String lastName = txfLastName.getText().trim();
-        txfFullName.setText(firstName + " " + lastName);
+    private void swapFrames() {
+        String firstword = txfFirstFrame.getText().trim();
+        String secondword = txfSecondFrame.getText().trim();
+        txfFirstFrame.setText(secondword);
+        txfSecondFrame.setText(firstword);
+
     }
 }
