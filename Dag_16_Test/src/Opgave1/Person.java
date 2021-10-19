@@ -25,4 +25,5 @@ public class Person {
 	}
 
 	//Hej alle sammen//
+	//Test den anden vej//
 }
