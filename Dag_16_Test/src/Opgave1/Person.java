@@ -24,5 +24,5 @@ public class Person {
 		return title + " " + firstName;
 	}
 
-	//Finale test//
+	//Hej alle sammen//
 }
