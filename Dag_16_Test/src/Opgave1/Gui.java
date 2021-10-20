@@ -83,13 +83,19 @@ public class Gui extends Application {
         if (chkSenior.isSelected()){
             senior = "(Senior)";
         }
-        if (name.length() > 0) {
+        if (name.length() > 0 && title.length() > 0) {
             Person p = new Person(name,title,senior);
             persons.add(p);
             lvwPersons.getItems().setAll(persons);
             txfName.clear();
             txfTitle.clear();
             chkSenior.setSelected(false);
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Ad person");
+            alert.setHeaderText("Missing name or title");
+            alert.setContentText("Name and title fields, must not be empty ");
+            alert.show();
         }
     }
 
