@@ -55,6 +55,7 @@ public class MovieInputWindow extends Stage {
 
         pane.add(txfActor, 1, 1, 2, 1);
 
+
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 3);
         buttonBox.setPadding(new Insets(10, 10, 0, 10));
