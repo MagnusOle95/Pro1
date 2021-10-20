@@ -3,28 +3,17 @@ package Opgave1;
 public class Person {
 	private String firstName;
 	private String title;
+	private String senior;
 
 
-	public Person(String firstName, String title) {
+	public Person(String firstName, String title,String senior) {
 		this.firstName = firstName;
 		this.title = title;
-
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getTitle() {
-		return title;
+		this.senior = senior;
 	}
 
 	@Override
 	public String toString() {
-		return title + " " + firstName;
+		return title + " " + firstName + " " + senior;
 	}
-
-	//Hej alle sammen//
-	//Test den anden vej//
-	//Test igen//
 }
