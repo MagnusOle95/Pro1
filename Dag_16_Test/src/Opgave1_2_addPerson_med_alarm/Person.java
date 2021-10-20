@@ -1,4 +1,4 @@
-package Opgave1;
+package Opgave1_2_addPerson_med_alarm;
 
 public class Person {
 	private String firstName;

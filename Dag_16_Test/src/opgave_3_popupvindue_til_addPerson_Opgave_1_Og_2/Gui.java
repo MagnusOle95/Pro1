@@ -1,7 +1,6 @@
-package Opgave1;
+package opgave_3_popupvindue_til_addPerson_Opgave_1_Og_2;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
