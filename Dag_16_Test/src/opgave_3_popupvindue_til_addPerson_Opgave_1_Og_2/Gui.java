@@ -64,12 +64,15 @@ public class Gui extends Application {
 
     private void addAction() {
         addPerson.showAndWait();
+        if (addPerson.name != null || addPerson.title != null) {
             Person p = new Person(addPerson.name, addPerson.title, addPerson.senior);
             persons.add(p);
             lvwPersons.getItems().setAll(persons);
             addPerson.name = null;
             addPerson.title = null;
+            addPerson.senior = false;
         }
+    }
 
 
     private void initPersons() {
