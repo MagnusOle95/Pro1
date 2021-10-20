@@ -1,5 +1,6 @@
 package opgave_3_popupvindue_til_addPerson_Opgave_1_Og_2;
 
+import Model2.demoopenwindow.MovieInputWindow;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class Gui extends Application {
 
-  
+
     @Override
     public void start(Stage stage) {
         stage.setTitle("ListView Demo3");
@@ -21,15 +22,17 @@ public class Gui extends Application {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
+
+        addPerson = new InputAddPerson("Add a Person",stage);
+
     }
 
     // -------------------------------------------------------------------------
 
     private final ListView<Person> lvwPersons = new ListView<>();
     private final ArrayList<Person> persons = new ArrayList<>();
-    private final TextField txfName = new TextField();
-    private final TextField txfTitle = new TextField();
-    private final CheckBox chkSenior = new CheckBox();
+
+    private InputAddPerson addPerson;
 
     private void initContent(GridPane pane) {
         this.initPersons();
@@ -43,24 +46,8 @@ public class Gui extends Application {
         // set vertical gap between components
         pane.setVgap(10);
 
-        Label lblName = new Label("Name:");
-        pane.add(lblName, 0, 0);
-
-        Label lbltitle = new Label("Titel:");
-        pane.add(lbltitle,0 ,1 );
-
-        Label lblNames = new Label("Persons:");
-        pane.add(lblNames, 0, 3);
-
-        Label lblSenior = new Label("Senior");
-        pane.add(lblSenior,2,2 );
-
-        pane.add(txfName, 1, 0, 4, 1);
-        pane.add(txfTitle,1 ,1,4,1);
-        pane.add(chkSenior,1 ,2 );
-
         // add a listView to the pane(at col=1, row=0)
-        pane.add(lvwPersons, 1, 3, 4, 5);
+        pane.add(lvwPersons, 0, 0, 4, 5);
         lvwPersons.setPrefWidth(200);
         lvwPersons.setPrefHeight(200);
         lvwPersons.getItems().setAll(persons);
@@ -76,32 +63,19 @@ public class Gui extends Application {
     // Button actions
 
     private void addAction() {
-        String name = txfName.getText().trim();
-        String title = txfTitle.getText().trim();
-        String senior = "";
-        if (chkSenior.isSelected()){
-            senior = "(Senior)";
-        }
-        if (name.length() > 0 && title.length() > 0) {
-            Person p = new Person(name,title,senior);
+        addPerson.showAndWait();
+            Person p = new Person(addPerson.name, addPerson.title, addPerson.senior);
             persons.add(p);
             lvwPersons.getItems().setAll(persons);
-            txfName.clear();
-            txfTitle.clear();
-            chkSenior.setSelected(false);
-        }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ad person");
-            alert.setHeaderText("Missing name or title");
-            alert.setContentText("Name and title fields, must not be empty ");
-            alert.show();
+            addPerson.name = null;
+            addPerson.title = null;
         }
-    }
+
 
     private void initPersons() {
-        persons.add(new Person("Jens", "Doctor","(Senior)"));
-        persons.add(new Person("Hans", "Landmand",""));
-        persons.add(new Person("Pia", "Købmand",""));
+        persons.add(new Person("Jens", "Doctor",false));
+        persons.add(new Person("Hans", "Landmand",true));
+        persons.add(new Person("Pia", "Købmand",false));
     }
 
 }

@@ -41,6 +41,9 @@ public class Gui extends Application {
         pane.add(txfResult, 1, 0, 2, 1);
         txfResult.setEditable(false);
 
+        Label test = new Label();
+
+
         Button btnCreateMovie = new Button("Create movie");
         pane.add(btnCreateMovie, 1, 1);
         GridPane.setMargin(btnCreateMovie, new Insets(10, 10, 0, 10));
