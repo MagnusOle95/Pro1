@@ -3,10 +3,7 @@ package opgave_4_gemmerNavne_i_EnArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -57,8 +54,23 @@ public class Gui extends Application {
 
         Button btnAdd = new Button("Tilføj til liste");
         Primepane.add(btnAdd,4 ,6,1,1 );
+        btnAdd.setOnAction(event -> AddName());
 
 
+    }
+    public void AddName(){
+        if (txfName.getText().trim().length() > 0){
+            String name = txfName.getText().trim();
+            names.add(name);
+            lvwNames.getItems().setAll(names);
+            txfName.clear();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Tilføj Person");
+            alert.setHeaderText("Mangler navn");
+            alert.setContentText("Navnen skal mindst indeholde 1 bogstav");
+            alert.show();
+        }
     }
 
     public void initNames(){
@@ -66,6 +78,4 @@ public class Gui extends Application {
         names.add("Ken");
         names.add("Benny");
     }
-
-
 }
