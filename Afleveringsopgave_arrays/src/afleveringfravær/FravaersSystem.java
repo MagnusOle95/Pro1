@@ -1,6 +1,7 @@
 package afleveringfravær;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 
 public class FravaersSystem {
 	/**
@@ -69,7 +70,7 @@ public class FravaersSystem {
 	 */
 	public int antalUdenFravaer(int[][] fravaer) {
 		// TODO opgave 4
-		//Using the sum from method samletfravaerd and count alle the students with no absence//
+		//Using the sum from method samletfravaerd and count all the students with no absence//
 		int studentswithOutAbsence = 0;
 		for (int i = 1; i < fravaer.length + 1; i++){
 			if (this.samletFravaer(fravaer,i ) == 0){
@@ -89,7 +90,16 @@ public class FravaersSystem {
 	 */
 	public int mestFravaer(int[][] fravaer) {
 		// TODO opgave 5
-		return -1;
+		//Using sum from method samletfravaerd to find that student with most absence//
+		int sumAbcence = 0;
+		int studentNumber = 0;
+		for (int i = 1; i < fravaer.length + 1; i++){
+			if (this.samletFravaer(fravaer,i) > sumAbcence){
+				sumAbcence = this.samletFravaer(fravaer,i );
+				studentNumber = i;
+			}
+		}
+		return studentNumber;
 
 	}
 
@@ -102,5 +112,9 @@ public class FravaersSystem {
 	 */
 	public void nulstil(int[][] fravaer, int elevNr) {
 		// TODO opgave 6
+		//sets all mothly abences to Zero, for a specific student//
+		for (int col = 0; col < fravaer[elevNr - 1].length; col++){
+			fravaer[elevNr - 1][col] = 0;
+		}
 	}
 }
