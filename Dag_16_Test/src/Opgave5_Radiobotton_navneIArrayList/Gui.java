@@ -28,7 +28,6 @@ public class Gui extends Application {
     private final ListView<String> lvwNames = new ListView<>();
     private final ArrayList<String> boyNames = new ArrayList<>();
     private final ArrayList<String> girlNames = new ArrayList<>();
-    private final ArrayList<String> boysAndGirls = new ArrayList<>();
     private final TextField txfName = new TextField();
     private final RadioButton rbBoys = new RadioButton("Drenge");
     private final RadioButton rbGirls = new RadioButton("Piger");
@@ -83,6 +82,7 @@ public class Gui extends Application {
             lvwNames.getItems().setAll(girlNames);
             txfName.clear();
         }
+
         else if (!rbGirls.isSelected() && !rbBoys.isSelected() && name.length() <= 0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Tilføj Person");
