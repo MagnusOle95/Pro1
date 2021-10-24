@@ -30,7 +30,5 @@ public class AfproevFravaersSystem {
         //Testing method nulstil//
         fraværsSystem.nulstil(fravaer21S,4 );
         fraværsSystem.udskrivFravaer(fravaer21S);
-        //Test//
-
     }
 }
