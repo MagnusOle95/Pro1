@@ -11,7 +11,7 @@ public class FravaersSystem {
 	 */
 	public void udskrivFravaer(int[][] fravaer) {
 		// TODO opgave 1
-		//Print texst Elev/måned and month number//
+		//Print text Elev/måned and month number//
 		System.out.print("Elev/Måned\t");
 		for (int i = 1; i <= 12;i++){
 			System.out.print(i + ":\t\t");
