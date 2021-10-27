@@ -1,4 +1,4 @@
-package Flight.model;
+package Flight.model_Opgave3;
 
 /**
  * A Passenger for a Flight

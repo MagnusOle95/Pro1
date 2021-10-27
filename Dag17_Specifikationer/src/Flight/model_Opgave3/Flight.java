@@ -1,10 +1,10 @@
-package Flight.model;
+package Flight.model_Opgave3;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import javax.naming.Name;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A flight with an airline between airports. 
@@ -22,24 +22,37 @@ public class Flight {
      * @param destination the destination of the flight
      */
     // TODO: implement!
+    public Flight(String flightNumber, String destination){
+        this.flightNumber = flightNumber;
+        this.destination = destination;
+    }
 
     /**
      * Gets the destination.
      * @return the destination or null if not set
      */
     // TODO: implement!
+    public String getDestination(){
+        return this.destination;
+    }
     
     /**
      * Gets the flight number.
      * @return the flight number
      */
     // TODO: implement!
+    public String getFlightNumber(){
+        return this.flightNumber;
+    }
     
     /**
      * Gets the LocalDateTime when the flight will depart
      * @return departure date, can be null
      */
     // TODO: implement!
+    public LocalDateTime getDepartDate(){
+        return this.departDate;
+    }
 
     /**
      * Sets the LocalDateTime when the flight will depart.
@@ -64,7 +77,15 @@ public class Flight {
      * @param landDate arrival date
      */
     // TODO: implement!
-    
+    public void setArrivalDate (LocalDateTime landDate){
+        if (this.departDate.isBefore(landDate)){
+            this.arrivalDate = landDate;
+        }else{
+            System.out.println("Could set arrivaldate, because the arrival date has to be after departure date");
+        }
+
+    }
+
     /**
      * Creates a passenger with name and age
      * Precondition: name is not empty or null and age >= 0.
@@ -73,6 +94,14 @@ public class Flight {
      * @return the newly created passenger object
      */
     // TODO: implement!
+    public void createPassenger(String name, int age){
+        if (name != null || name.length() != 0 || age >= 0){
+            Passenger p = new Passenger(name,age );
+            passengers.add(p);
+        }else{
+            System.out.println("Passenger Could not be created, because the age were under 0 or name was null");
+        }
+    }
     
     /**
      * Removes the passenger.
@@ -80,12 +109,30 @@ public class Flight {
      * @param passenger
      */
     // TODO: implement!
-    
+     public void removePassenger(String passenger){
+         for (int i = 0; i < passengers.size(); i++){
+             if (passenger.equalsIgnoreCase(passengers.get(i).getName())){
+                 System.out.println("Personen " + passengers.get(i).getName() + " er fjernet fra flyet");
+                 passengers.remove(i);
+             }
+         }
+     }
+
     /**
      * Gets the current list of passengers on this flight
      * @return list of passengers
      */
     // TODO: implement!
+    public String printPassengers(){
+        String list = null;
+        if (passengers.size() > 0){
+            list = passengers.get(0).getName();
+            for (int i = 1; i < passengers.size(); i++){
+                list = list + " " + passengers.get(i).getName();
+            }
+        }
+        return list;
+    }
     
     /**
      * The duration of the flight measured in hours
