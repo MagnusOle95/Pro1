@@ -19,7 +19,7 @@ public class FlightTest {
         System.out.println("Fly1's destination: " + flight.getDestination());
 
         //Sætter afgang og ankomst tid//
-        flight.setDepartDate(LocalDateTime.of(2021, 10, 30, 13, 30));
+        flight.setDepartDate(LocalDateTime.of(2021, 10, 29, 13, 30));
         flight.setArrivalDate(LocalDateTime.of(2021, 10, 30, 18, 42));
 
         //Tester fejlbesked ved forkert ankomst//
@@ -39,6 +39,17 @@ public class FlightTest {
         //Tester remove passenger//
         flight.removePassenger("dOLph");
         System.out.println(flight.printPassengers());
+
+        //Tester hvor lang tid flyveturen tager//
+        System.out.println("Flyve tiden er " + flight.flightDurationInHours() + " timer");
+
+        //Tester metoden der udregner gennemsnitsmetoden på passagere på flyet//
+        System.out.println("Gennemsnitsalderen på passagere i flyet er " + flight.averageAgeOfPassenger() + " år");
+
+        //Tester om det er et midnatsfly//
+        System.out.println("Flyver flyet over midnat " + flight.midnightFlight());
+
+
     }
 }
 

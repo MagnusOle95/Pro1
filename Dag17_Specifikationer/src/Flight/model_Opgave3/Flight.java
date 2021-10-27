@@ -3,6 +3,7 @@ package Flight.model_Opgave3;
 import javax.naming.Name;
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,14 +141,9 @@ public class Flight {
      * @return how many hours
      */
     public double flightDurationInHours() {
-        
         // TODO: implement!
-        // Hint: 
-        // You can use the following to get hours between two LocalDates:
-        //        ChronoUnit.HOURS.between(startDate, endDate)
-        // ...and ChronoUnit.MINUTES for minutes...
-        
-        return 0.0;
+        double hours = ChronoUnit.MINUTES.between(departDate,arrivalDate) / 60.0; // what the fuck is wrong//
+        return hours;
     }
     
     /**
@@ -157,7 +153,11 @@ public class Flight {
      */
     public boolean midnightFlight() {
         // TODO: implement!
-        return false; // and don't just return false :)
+        boolean midnightFlight = false;
+        if (departDate.getHour() + flightDurationInHours() > 24){
+            midnightFlight = true;
+        }
+        return midnightFlight;
     }
     
     /**
@@ -165,6 +165,17 @@ public class Flight {
      * Precondition: there must exists passengers on this flight
      * @return average age of passengers
      */
-    // TODO: implement!
-    
+    // TODO: implement!for
+    public double averageAgeOfPassenger(){
+        double ageSum = 0;
+        for (int i = 0; i < passengers.size(); i++){
+            ageSum += passengers.get(i).getAge();
+        }
+        ageSum = ageSum / passengers.size();
+        return ageSum;
+    }
+
+
+
+
 }
