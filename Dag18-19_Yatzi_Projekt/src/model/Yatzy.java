@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Random;
 
 public class Yatzy {
@@ -14,6 +15,7 @@ public class Yatzy {
 	// Random number generator.
 	private Random random = new Random();
 
+
 	public Yatzy() {
 		//
 	}
@@ -23,7 +25,7 @@ public class Yatzy {
 	 */
 	public int[] getValues() {
 		// TODO
-		return null;
+		return values;
 	}
 
 	/**
@@ -33,6 +35,7 @@ public class Yatzy {
 	 */
 	void setValues(int[] values) {
 		// TODO
+		this.values = values;
 	}
 
 	/**
@@ -40,7 +43,7 @@ public class Yatzy {
 	 */
 	public int getThrowCount() {
 		// TODO
-		return 0;
+		return throwCount;
 	}
 
 	/**
@@ -48,6 +51,7 @@ public class Yatzy {
 	 */
 	public void resetThrowCount() {
 		// TODO
+		throwCount = 0;
 	}
 
 	/**
@@ -56,6 +60,12 @@ public class Yatzy {
 	 */
 	public void throwDice(boolean[] holds) {
 		// TODO
+		throwCount++;
+		for (int i = 0; i < values.length;i++){
+			if (!holds[i]){
+				values[i] = random.nextInt(5) + 1;
+			}
+		}
 	}
 
 	// -------------------------------------------------------------------------
@@ -91,7 +101,15 @@ public class Yatzy {
 	// Index 0 is not used.
 	private int[] calcCounts() {
 		// TODO
-		return null;
+		int[] list = new int[7];
+		for (int i = 0; i < values.length; i++){
+			for (int j = 1; j <= 6;j++){
+				if (values[i] == j){
+					list[j]++;
+				}
+			}
+		}
+		return list;
 	}
 
 	/**
@@ -100,7 +118,7 @@ public class Yatzy {
 	 */
 	public int sameValuePoints(int value) {
 		// TODO
-		return 0;
+		return calcCounts()[value] * value;
 	}
 
 	/**
@@ -109,7 +127,13 @@ public class Yatzy {
 	 */
 	public int onePairPoints() {
 		// TODO
-		return 0;
+		int points = 0;
+		for (int i = 1; i <= 6; i++){
+			if (calcCounts()[i] >= 2){
+				points = i * 2;
+			}
+		}
+		return points;
 	}
 
 	/**
@@ -119,7 +143,20 @@ public class Yatzy {
 	 */
 	public int twoPairPoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		int pairCount = 0;
+
+		for (int i = 1; i <= 6; i++){
+			if (count[i] >= 2){
+				points += i * 2;
+				pairCount++;
+			}
+		}
+		if (pairCount != 2){
+			points = 0;
+		}
+		return points;
 	}
 
 	/**
@@ -128,7 +165,15 @@ public class Yatzy {
 	 */
 	public int threeSamePoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+
+		for (int i = 1; i < count.length; i++){
+			if (count[i] >= 3){
+				points = i * 3;
+			}
+		}
+		return points;
 	}
 
 	/**
@@ -137,7 +182,15 @@ public class Yatzy {
 	 */
 	public int fourSamePoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+
+		for (int i = 1; i < count.length; i++){
+			if (count[i] >= 4){
+				points = i * 4;
+			}
+		}
+		return points;
 	}
 
 	/**
@@ -146,7 +199,22 @@ public class Yatzy {
 	 */
 	public int fullHousePoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		int threePair = 0;
+		int twoPair = 0;
+		for (int i = 1; i < count.length; i++){
+			if (count[i] == 3){
+				threePair = i * 3;
+			}
+			if (count[i] == 2){
+				twoPair = i * 2;
+			}
+		}
+		if (threePair > 0 && twoPair > 0){
+			points = threePair + twoPair;
+		}
+		return points;
 	}
 
 	/**
