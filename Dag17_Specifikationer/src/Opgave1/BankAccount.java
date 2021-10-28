@@ -1,5 +1,8 @@
 package Opgave1;
 
+/**
+ * klassen opretter en bankkonto
+ */
 public class BankAccount {
 
     private double balance;

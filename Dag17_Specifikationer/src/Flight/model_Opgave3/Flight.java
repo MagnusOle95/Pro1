@@ -142,7 +142,7 @@ public class Flight {
      */
     public double flightDurationInHours() {
         // TODO: implement!
-        double hours = ChronoUnit.MINUTES.between(departDate,arrivalDate) / 60.0; // what the fuck is wrong//
+        double hours = ChronoUnit.MINUTES.between(departDate,arrivalDate) / 60.0;
         return hours;
     }
     
