@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Random;
 
@@ -223,7 +224,17 @@ public class Yatzy {
 	 */
 	public int smallStraightPoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		for (int i = 1; i < count.length - 1; i++){
+			if (count[i] == 1){
+				points += i;
+			}
+		}
+		if (points != 15){
+			points = 0;
+		}
+		return points;
 	}
 
 	/**
@@ -232,7 +243,17 @@ public class Yatzy {
 	 */
 	public int largeStraightPoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		for (int i = 2; i < count.length; i++){
+			if (count[i] == 1){
+				points += i;
+			}
+		}
+		if (points != 20){
+			points = 0;
+		}
+		return points;
 	}
 
 	/**
@@ -240,7 +261,12 @@ public class Yatzy {
 	 */
 	public int chancePoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		for (int i = 1; i < count.length; i++){
+			points += count[i] * i;
+		}
+		return points;
 	}
 
 	/**
@@ -249,7 +275,13 @@ public class Yatzy {
 	 */
 	public int yatzyPoints() {
 		// TODO
-		return 0;
+		int[] count = calcCounts();
+		int points = 0;
+		for (int i = 1; i < count.length; i++){
+			if (count[i] == 5){
+				points = 50;
+			}
+		}
+		return points;
 	}
-
 }
