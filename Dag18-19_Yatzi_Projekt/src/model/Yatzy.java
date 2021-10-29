@@ -64,7 +64,7 @@ public class Yatzy {
 		throwCount++;
 		for (int i = 0; i < values.length;i++){
 			if (!holds[i]){
-				values[i] = random.nextInt(5) + 1;
+				values[i] = random.nextInt(6) + 1 ;
 			}
 		}
 	}
