@@ -1,5 +1,6 @@
 package gui;
 
+import com.sun.source.tree.NewArrayTree;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -61,6 +62,30 @@ public class YatzyGui extends Application {
 
 		// initialize txfValues, chbHolds, btnRoll and lblRolled
 		// TODO
+			txfValues = new TextField[5];
+		for (int i = 0; i < txfValues.length; i++){
+			txfValues[i] = new TextField();
+			dicePane.add(txfValues[i],i,0,1,1);
+			txfValues[i].setPrefWidth(80);
+			txfValues[i].setPrefHeight(80);
+		}
+
+		chbHolds = new CheckBox[5];
+		for (int i = 0; i < chbHolds.length; i++){
+			chbHolds[i] = new CheckBox("Hold");
+			dicePane.add(chbHolds[i],i,1,1,1 );
+			GridPane.setMargin(chbHolds[i],new Insets(0,20 ,20 ,20 ) );
+		}
+
+		Button btnRoll = new Button("Roll");
+		dicePane.add(btnRoll,3 ,2,1,1);
+		btnRoll.setPrefWidth(80);
+		btnRoll.setPrefHeight(40);
+
+		Label lblRolled = new Label("Rolled: ");
+		dicePane.add(lblRolled,4 ,2,1,1 );
+		GridPane.setMargin(lblRolled,new Insets(0,20 ,20 ,20 ));
+
 
 		// ---------------------------------------------------------------------
 
@@ -74,8 +99,46 @@ public class YatzyGui extends Application {
 		int w = 50; // width of the text fields
 
 		// Initialize labels for results, txfResults,
-		// labels and text fields for sums, bonus and total.
 		// TODO
+		txfResults = new TextField[15];
+		for (int i = 0; i < txfResults.length; i++){
+			txfResults[i] = new TextField();
+			scorePane.add(txfResults[i],1,i,1,1);
+			txfResults[i].setMaxWidth(50);
+		}
+
+		String[] labbelArray = {"1-s","2-s","3-s","4-s","5-s","6-s", "One Pair",
+				"Two Pairs","Three Same","Four Same", "Full House",
+				"Small Straight","Large Straight","Chance","Yatzy"};
+
+		for (int i = 0; i < labbelArray.length; i++){
+			Label lbl = new Label(labbelArray[i]);
+			scorePane.add(lbl,0,i);
+		}
+
+		// labels and text fields for sums, bonus and total.
+		Label lblSumS = new Label("Sum:");
+		scorePane.add(lblSumS, 2,5);
+		TextField txfSumS = new TextField();
+		scorePane.add(txfSumS,3,5,1,1 );
+		txfSumS.setPrefWidth(50);
+
+		Label lblBonusS = new Label("Bonus:");
+		scorePane.add(lblBonusS, 4,5);
+		TextField txfBonusS = new TextField();
+		scorePane.add(txfBonusS,5,5,1,1 );
+		txfBonusS.setPrefWidth(50);
+
+		Label lblSumO = new Label("Sum:");
+		scorePane.add(lblSumO, 2,14);
+		TextField txfSumO = new TextField();
+		scorePane.add(txfSumO,3,14,1,1 );
+		txfSumO.setPrefWidth(50);
+
+		Label lblTotal = new Label("Total:");
+		scorePane.add(lblTotal,4 ,14);
+		TextField txfTotal = new TextField();
+		scorePane.add(txfTotal,5 ,14,1,1);
 
 	}
 
