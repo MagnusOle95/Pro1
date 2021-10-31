@@ -4,13 +4,16 @@ import javafx.application.Application;
 import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Yatzy;
+
+import java.awt.*;
 
 public class YatzyGui extends Application {
 
@@ -44,6 +47,8 @@ public class YatzyGui extends Application {
 
     private Button btnRoll;
 
+    private boolean bonusUsed = false;
+
 
     private void initContent(GridPane pane) {
         pane.setGridLinesVisible(false);
@@ -69,6 +74,8 @@ public class YatzyGui extends Application {
             dicePane.add(txfValues[i], i, 0, 1, 1);
             txfValues[i].setPrefWidth(80);
             txfValues[i].setPrefHeight(80);
+            txfValues[i].setFont(Font.font("arial",50));
+            txfValues[i].setEditable(false);
         }
 
         chbHolds = new CheckBox[5];
@@ -84,7 +91,7 @@ public class YatzyGui extends Application {
         btnRoll.setPrefHeight(40);
         btnRoll.setOnAction(event -> rollDices());
 
-        Label lblRolled = new Label("Rolled: " + dice.getThrowCount());
+        lblRolled = new Label("Rolled: " + dice.getThrowCount());
         dicePane.add(lblRolled, 4, 2, 1, 1);
         GridPane.setMargin(lblRolled, new Insets(0, 20, 20, 20));
 
@@ -129,24 +136,28 @@ public class YatzyGui extends Application {
         txfSumSame = new TextField("0");
         scorePane.add(txfSumSame, 3, 5, 1, 1);
         txfSumSame.setPrefWidth(50);
+        txfSumSame.setEditable(false);
 
         Label lblBonusS = new Label("Bonus:");
         scorePane.add(lblBonusS, 4, 5);
         txfBonus = new TextField("0");
         scorePane.add(txfBonus, 5, 5, 1, 1);
         txfBonus.setPrefWidth(50);
+        txfBonus.setEditable(false);
 
         Label lblSumO = new Label("Sum:");
         scorePane.add(lblSumO, 2, 14);
         txfSumOther = new TextField("0");
         scorePane.add(txfSumOther, 3, 14, 1, 1);
         txfSumOther.setPrefWidth(50);
+        txfSumOther.setEditable(false);
 
         Label lblTotal = new Label("Total:");
         scorePane.add(lblTotal, 4, 14);
         txfTotal = new TextField("0");
         scorePane.add(txfTotal, 5, 14, 1, 1);
         txfTotal.setPrefWidth(50);
+        txfTotal.setEditable(false);
     }
 
     // -------------------------------------------------------------------------
@@ -186,6 +197,7 @@ public class YatzyGui extends Application {
                 }
             }
         }
+        lblRolled.setText("Rolled: " + dice.getThrowCount());
     }
 
     // -------------------------------------------------------------------------
@@ -200,24 +212,76 @@ public class YatzyGui extends Application {
         int sumS = Integer.parseInt(txfSumSame.getText().trim());
         txfSumSame.setText(value + sumS + "");
         sumTotal();
+        resetRound();
+        chechForEndGame();
         }
 
 
     public void chooseFieldActionSumO(Event event){
         TextField txt = (TextField) event.getSource();
         txt.setDisable(true);
-
         int value = Integer.parseInt(txt.getText().trim());
         int sumO = Integer.parseInt(txfSumOther.getText().trim());
         txfSumOther.setText(value + sumO + "");
         sumTotal();
+        resetRound();
+        chechForEndGame();
     }
 
     public void sumTotal(){
         int sumS = Integer.parseInt(txfSumSame.getText().trim());
         int sumO = Integer.parseInt(txfSumOther.getText().trim());
-        txfTotal.setText(sumS + sumO + "");
+        int total = sumS + sumO;
+
+        if (total >= 63 && !bonusUsed){
+            total += 50;
+            bonusUsed = false;
+            txfBonus.setText(50 + "");
+        }
+
+        txfTotal.setText(total + "");
     }
+
+    public void resetRound(){
+        btnRoll.setDisable(false);
+        dice.resetThrowCount();
+        lblRolled.setText("Rolled: " + dice.getThrowCount());
+        for (int i = 0; i < txfValues.length; i++){
+            txfValues[i].clear();
+            chbHolds[i].setDisable(false);
+            chbHolds[i].setSelected(false);
+        }
+        for (int i = 0; i < txfResults.length; i++){
+            if (!txfResults[i].isDisable()){
+                txfResults[i].setText("0");
+            }
+        }
+    }
+
+    public void chechForEndGame(){
+        int countDisabledFields = 0;
+        for (int i = 0; i < txfResults.length; i++){
+            if (txfResults[i].isDisable()){
+                countDisabledFields++;
+            }
+        }
+        if (countDisabledFields >= 15){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Spillet er færdigt");
+            alert.setContentText("Dine totale point er: " + txfTotal.getText().trim() + "\nTryk ok for at starte et nyt spil");
+            alert.show();
+
+            for (int i = 0; i < txfResults.length; i++){
+                txfResults[i].setDisable(false);
+            }
+            resetRound();
+            txfSumSame.setText("0");
+            txfSumOther.setText("0");
+            txfBonus.setText("0");
+            txfTotal.setText("0");
+        }
+    }
+
 }
 
 
