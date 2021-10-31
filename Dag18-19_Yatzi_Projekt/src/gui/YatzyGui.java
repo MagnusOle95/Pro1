@@ -44,6 +44,7 @@ public class YatzyGui extends Application {
 
     private Button btnRoll;
 
+
     private void initContent(GridPane pane) {
         pane.setGridLinesVisible(false);
         pane.setPadding(new Insets(10));
@@ -103,10 +104,14 @@ public class YatzyGui extends Application {
         // TODO
         txfResults = new TextField[15];
         for (int i = 0; i < txfResults.length; i++) {
-            txfResults[i] = new TextField();
+            txfResults[i] = new TextField("0");
             scorePane.add(txfResults[i], 1, i, 1, 1);
             txfResults[i].setMaxWidth(50);
-            txfResults[i].setOnMouseClicked(event -> this.chooseFieldAction(event));
+            if (i < 6) {
+                txfResults[i].setOnMouseClicked(event -> this.chooseFieldActionSumSame(event));
+            }else{
+                txfResults[i].setOnMouseClicked(event -> this.chooseFieldActionSumO(event));
+            }
         }
 
         String[] labbelArray = {"1-s", "2-s", "3-s", "4-s", "5-s", "6-s", "One Pair",
@@ -121,27 +126,27 @@ public class YatzyGui extends Application {
         // labels and text fields for sums, bonus and total.
         Label lblSumS = new Label("Sum:");
         scorePane.add(lblSumS, 2, 5);
-        TextField txfSumS = new TextField();
-        scorePane.add(txfSumS, 3, 5, 1, 1);
-        txfSumS.setPrefWidth(50);
+        txfSumSame = new TextField("0");
+        scorePane.add(txfSumSame, 3, 5, 1, 1);
+        txfSumSame.setPrefWidth(50);
 
         Label lblBonusS = new Label("Bonus:");
         scorePane.add(lblBonusS, 4, 5);
-        TextField txfBonusS = new TextField();
-        scorePane.add(txfBonusS, 5, 5, 1, 1);
-        txfBonusS.setPrefWidth(50);
+        txfBonus = new TextField("0");
+        scorePane.add(txfBonus, 5, 5, 1, 1);
+        txfBonus.setPrefWidth(50);
 
         Label lblSumO = new Label("Sum:");
         scorePane.add(lblSumO, 2, 14);
-        TextField txfSumO = new TextField();
-        scorePane.add(txfSumO, 3, 14, 1, 1);
-        txfSumO.setPrefWidth(50);
+        txfSumOther = new TextField("0");
+        scorePane.add(txfSumOther, 3, 14, 1, 1);
+        txfSumOther.setPrefWidth(50);
 
         Label lblTotal = new Label("Total:");
         scorePane.add(lblTotal, 4, 14);
-        TextField txfTotal = new TextField();
+        txfTotal = new TextField("0");
         scorePane.add(txfTotal, 5, 14, 1, 1);
-
+        txfTotal.setPrefWidth(50);
     }
 
     // -------------------------------------------------------------------------
@@ -169,7 +174,9 @@ public class YatzyGui extends Application {
             }
             int[] result = dice.getResults();
             for (int i = 0; i < 15; i++) {
-                txfResults[i].setText(result[i] + "");
+                if (!txfResults[i].isDisable()){
+                    txfResults[i].setText(result[i] + "");
+                }
             }
 
             if (dice.getThrowCount() >= 3) {
@@ -186,20 +193,38 @@ public class YatzyGui extends Application {
     // Create a method for mouse click on one of the text fields in txfResults.
     // Hint: Create small helper methods to be used in the mouse click method.
     // TODO
-    public void chooseFieldAction(Event event) {
+    public void chooseFieldActionSumSame(Event event) {
         TextField txt = (TextField) event.getSource();
         txt.setDisable(true);
-        updateSumS(txt);
-    }
-
-    public void updateSumS(TextField txt){
         int value = Integer.parseInt(txt.getText().trim());
-
+        int sumS = Integer.parseInt(txfSumSame.getText().trim());
+        txfSumSame.setText(value + sumS + "");
+        sumTotal();
         }
+
+
+    public void chooseFieldActionSumO(Event event){
+        TextField txt = (TextField) event.getSource();
+        txt.setDisable(true);
+
+        int value = Integer.parseInt(txt.getText().trim());
+        int sumO = Integer.parseInt(txfSumOther.getText().trim());
+        txfSumOther.setText(value + sumO + "");
+        sumTotal();
     }
 
-
-
-
+    public void sumTotal(){
+        int sumS = Integer.parseInt(txfSumSame.getText().trim());
+        int sumO = Integer.parseInt(txfSumOther.getText().trim());
+        txfTotal.setText(sumS + sumO + "");
+    }
 }
+
+
+
+
+
+
+
+
 
