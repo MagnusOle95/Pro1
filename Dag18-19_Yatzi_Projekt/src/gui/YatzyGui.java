@@ -251,6 +251,7 @@ public class YatzyGui extends Application {
             chbHolds[i].setDisable(false);
             chbHolds[i].setSelected(false);
         }
+
         for (int i = 0; i < txfResults.length; i++){
             if (!txfResults[i].isDisable()){
                 txfResults[i].setText("0");
@@ -265,6 +266,7 @@ public class YatzyGui extends Application {
                 countDisabledFields++;
             }
         }
+
         if (countDisabledFields >= 15){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Spillet er færdigt");
