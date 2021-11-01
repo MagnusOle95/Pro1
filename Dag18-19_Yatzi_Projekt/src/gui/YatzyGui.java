@@ -49,6 +49,8 @@ public class YatzyGui extends Application {
 
     private boolean bonusUsed = false;
 
+    private int countDisabledFields = 0;
+
 
     private void initContent(GridPane pane) {
         pane.setGridLinesVisible(false);
@@ -68,6 +70,7 @@ public class YatzyGui extends Application {
 
         // initialize txfValues, chbHolds, btnRoll and lblRolled
         // TODO
+        //Opretter texstfelterne til terningerne//
         txfValues = new TextField[5];
         for (int i = 0; i < txfValues.length; i++) {
             txfValues[i] = new TextField();
@@ -78,6 +81,7 @@ public class YatzyGui extends Application {
             txfValues[i].setEditable(false);
         }
 
+        //Opretter checkboxe, under terningefelter//
         chbHolds = new CheckBox[5];
         for (int i = 0; i < chbHolds.length; i++) {
             chbHolds[i] = new CheckBox("Hold");
@@ -85,12 +89,14 @@ public class YatzyGui extends Application {
             GridPane.setMargin(chbHolds[i], new Insets(0, 20, 20, 20));
         }
 
+        //laver knappen, roll//
         btnRoll = new Button("Roll");
         dicePane.add(btnRoll, 3, 2, 1, 1);
         btnRoll.setPrefWidth(80);
         btnRoll.setPrefHeight(40);
         btnRoll.setOnAction(event -> rollDices());
 
+        //label der viser rolled//
         lblRolled = new Label("Rolled: " + dice.getThrowCount());
         dicePane.add(lblRolled, 4, 2, 1, 1);
         GridPane.setMargin(lblRolled, new Insets(0, 20, 20, 20));
@@ -109,6 +115,7 @@ public class YatzyGui extends Application {
 
         // Initialize labels for results, txfResults,
         // TODO
+        //Laver alle resultats texstfelterne//
         txfResults = new TextField[15];
         for (int i = 0; i < txfResults.length; i++) {
             txfResults[i] = new TextField("0");
@@ -121,16 +128,19 @@ public class YatzyGui extends Application {
             }
         }
 
+        //laver array med alle pointforklaringerne//
         String[] labbelArray = {"1-s", "2-s", "3-s", "4-s", "5-s", "6-s", "One Pair",
                 "Two Pairs", "Three Same", "Four Same", "Full House",
                 "Small Straight", "Large Straight", "Chance", "Yatzy"};
 
+        //Forloop der udskriver arrayet labbelarray//
         for (int i = 0; i < labbelArray.length; i++) {
             Label lbl = new Label(labbelArray[i]);
             scorePane.add(lbl, 0, i);
         }
 
         // labels and text fields for sums, bonus and total.
+        //Laver label og texstfelt til SumS//
         Label lblSumS = new Label("Sum:");
         scorePane.add(lblSumS, 2, 5);
         txfSumSame = new TextField("0");
@@ -138,6 +148,7 @@ public class YatzyGui extends Application {
         txfSumSame.setPrefWidth(50);
         txfSumSame.setEditable(false);
 
+        //Laver label og texstfelt til Bonus//
         Label lblBonusS = new Label("Bonus:");
         scorePane.add(lblBonusS, 4, 5);
         txfBonus = new TextField("0");
@@ -145,6 +156,7 @@ public class YatzyGui extends Application {
         txfBonus.setPrefWidth(50);
         txfBonus.setEditable(false);
 
+        //Laver label og texstfelt til SumO//
         Label lblSumO = new Label("Sum:");
         scorePane.add(lblSumO, 2, 14);
         txfSumOther = new TextField("0");
@@ -152,6 +164,7 @@ public class YatzyGui extends Application {
         txfSumOther.setPrefWidth(50);
         txfSumOther.setEditable(false);
 
+        //Laver label og texstfelt til total//
         Label lblTotal = new Label("Total:");
         scorePane.add(lblTotal, 4, 14);
         txfTotal = new TextField("0");
@@ -168,6 +181,8 @@ public class YatzyGui extends Application {
     // Create a method for btnRoll's action.
     // Hint: Create small helper methods to be used in the action method.
     // TODO
+    //laver roll dice, som kaster terningen, der ikke er sat hold, og der ikke er udført 3 kast//
+    //Og sætter label lblrolled//
     public void rollDices() {
         if (dice.getThrowCount() < 3) {
             boolean[] holds = new boolean[5];
@@ -178,26 +193,31 @@ public class YatzyGui extends Application {
                     holds[i] = false;
                 }
             }
-
             dice.throwDice(holds);
-            for (int i = 0; i < 5; i++) {
-                txfValues[i].setText(dice.getValues()[i] + "");
-            }
-            int[] result = dice.getResults();
-            for (int i = 0; i < 15; i++) {
-                if (!txfResults[i].isDisable()){
-                    txfResults[i].setText(result[i] + "");
-                }
-            }
+            setvaluesAndResult();
+        }
 
-            if (dice.getThrowCount() >= 3) {
+        if (dice.getThrowCount() >= 3) {
                 btnRoll.setDisable(true);
                 for (int i = 0; i < chbHolds.length; i++) {
                     chbHolds[i].setDisable(true);
                 }
             }
-        }
         lblRolled.setText("Rolled: " + dice.getThrowCount());
+    }
+
+    //Sætter, terningers værdi, og resultatfelter//
+    public void setvaluesAndResult(){
+        for (int i = 0; i < 5; i++) {
+            txfValues[i].setText(dice.getValues()[i] + "");
+        }
+
+        int[] result = dice.getResults();
+        for (int i = 0; i < 15; i++) {
+            if (!txfResults[i].isDisable()){
+                txfResults[i].setText(result[i] + "");
+            }
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -205,29 +225,33 @@ public class YatzyGui extends Application {
     // Create a method for mouse click on one of the text fields in txfResults.
     // Hint: Create small helper methods to be used in the mouse click method.
     // TODO
+    //når man vælger resultatboks 1 til 6 så plusses det i sums og boksen låses//
     public void chooseFieldActionSumSame(Event event) {
         TextField txt = (TextField) event.getSource();
         txt.setDisable(true);
         int value = Integer.parseInt(txt.getText().trim());
         int sumS = Integer.parseInt(txfSumSame.getText().trim());
         txfSumSame.setText(value + sumS + "");
+        countDisabledFields++;
         sumTotal();
         resetRound();
         chechForEndGame();
         }
 
-
+    //når man vælger resultatboks 6 til 15 så plusses det i sumO og boksen låses//
     public void chooseFieldActionSumO(Event event){
         TextField txt = (TextField) event.getSource();
         txt.setDisable(true);
         int value = Integer.parseInt(txt.getText().trim());
         int sumO = Integer.parseInt(txfSumOther.getText().trim());
         txfSumOther.setText(value + sumO + "");
+        countDisabledFields++;
         sumTotal();
         resetRound();
         chechForEndGame();
     }
 
+    //Udregner om man har fået en bonus//
     public void sumTotal(){
         int sumS = Integer.parseInt(txfSumSame.getText().trim());
         int sumO = Integer.parseInt(txfSumOther.getText().trim());
@@ -242,6 +266,7 @@ public class YatzyGui extends Application {
         txfTotal.setText(total + "");
     }
 
+    //Rester runden efter valgt felt//
     public void resetRound(){
         btnRoll.setDisable(false);
         dice.resetThrowCount();
@@ -259,31 +284,25 @@ public class YatzyGui extends Application {
         }
     }
 
+    //Tjekker om spillet er slut og genstarter spillet, altså resetter alle felter og variabler//
     public void chechForEndGame(){
-        int countDisabledFields = 0;
-        for (int i = 0; i < txfResults.length; i++){
-            if (txfResults[i].isDisable()){
-                countDisabledFields++;
-            }
-        }
-
         if (countDisabledFields >= 15){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Spillet er færdigt");
             alert.setContentText("Dine totale point er: " + txfTotal.getText().trim() + "\nTryk ok for at starte et nyt spil");
-            alert.show();
+            alert.showAndWait();
 
             for (int i = 0; i < txfResults.length; i++){
                 txfResults[i].setDisable(false);
             }
             resetRound();
+            countDisabledFields = 0;
             txfSumSame.setText("0");
             txfSumOther.setText("0");
             txfBonus.setText("0");
             txfTotal.setText("0");
         }
     }
-
 }
 
 
