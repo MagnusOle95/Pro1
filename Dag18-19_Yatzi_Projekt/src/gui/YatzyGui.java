@@ -11,9 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import model.Yatzy;
-
-import java.awt.*;
+import Opgave1.Yatzy;
 
 public class YatzyGui extends Application {
 

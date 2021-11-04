@@ -19,8 +19,8 @@ public class FlightTest {
         System.out.println("Fly1's destination: " + flight.getDestination());
 
         //Sætter afgang og ankomst tid//
-        flight.setDepartDate(LocalDateTime.of(2021, 10, 29, 13, 30));
-        flight.setArrivalDate(LocalDateTime.of(2021, 10, 30, 18, 42));
+        flight.setDepartDate(LocalDateTime.of(2021, 10, 28, 13, 30));
+        flight.setArrivalDate(LocalDateTime.of(2021, 10, 29, 18, 42));
 
         //Tester fejlbesked ved forkert ankomst//
         flight.setArrivalDate(LocalDateTime.of(2021, 10, 29, 18, 42));

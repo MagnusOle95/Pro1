@@ -15,7 +15,7 @@ public class Flight {
     private String destination;
     private LocalDateTime departDate;
     private LocalDateTime arrivalDate;
-    private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+    private ArrayList<Passenger> passengers = new ArrayList<>();
     
     /**
      * Constructor that creates a flight for an airline.
@@ -154,7 +154,7 @@ public class Flight {
     public boolean midnightFlight() {
         // TODO: implement!
         boolean midnightFlight = false;
-        if (departDate.getHour() + flightDurationInHours() > 24){
+        if (departDate.getDayOfMonth() != arrivalDate.getDayOfMonth()){
             midnightFlight = true;
         }
         return midnightFlight;
