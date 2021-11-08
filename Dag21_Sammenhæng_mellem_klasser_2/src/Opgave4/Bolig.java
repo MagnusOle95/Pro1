@@ -8,6 +8,7 @@ public class Bolig {
     private int prisPrMaaned;
 
     //Link arttributer
+    private Kollegie kollegie;
 
     //Constructor
     public Bolig(int kvm, String adresse, int prisPrMaaned){
