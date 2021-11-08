@@ -1,4 +1,4 @@
-package Opgave3;
+package Opgave1;
 
 import java.util.ArrayList;
 
@@ -23,12 +23,14 @@ public class Rental {
     public void addCarToRental(Car car){
         if (!cars.contains(car)){
             cars.add(car);
+            car.addRentalToCar(this);
         }
     }
 
     public void removeCarFromRental(Car car){
         if (cars.contains(car)){
             cars.remove(car);
+            car.removeRentalFromCar(this);
         }
     }
 

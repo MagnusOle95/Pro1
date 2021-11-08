@@ -1,4 +1,4 @@
-package Opgave3;
+package Opgave1;
 
 public class CarRentalApp {
     public static void main(String[] args) {
@@ -34,5 +34,12 @@ public class CarRentalApp {
 
         ren1.removeCarFromRental(car3);
         System.out.println("samlet pris for rental 1, med bil 1 til 4 (Uden bil 3) i 5 dage: " + ren1.getprice() + "Kr");
+
+        System.out.println("Størst antal dage bil 3 er udlejet: " + car3.mostDaysCarRent());
+        System.out.println("Størst antal dage bil 4 er udlejet: " + car4.mostDaysCarRent());
+        System.out.println("Størst antal dage bil 2 er udlejet: " + car2.mostDaysCarRent());
+
+
+
     }
 }
