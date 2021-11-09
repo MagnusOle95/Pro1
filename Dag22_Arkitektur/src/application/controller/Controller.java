@@ -80,9 +80,10 @@ public class Controller {
      * Updates the employee.<br />
      * Requires: wage >= 0.
      */
-    public static void updateEmployee(Employee employee, String name, int wage) {
+    public static void updateEmployee(Employee employee, String name, int wage,int employmentYear) {
         employee.setName(name);
         employee.setWage(wage);
+        employee.setEmploymentYear(employmentYear);
 
     }
     

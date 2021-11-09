@@ -156,7 +156,7 @@ public class EmployeeWindow extends Stage {
 
 				// Call application.controller methods
 				if (employee != null) {
-					Controller.updateEmployee(employee, name, wage);
+					Controller.updateEmployee(employee, name, wage, employmentYear);
 					if (companyIsSelected) {
 						Controller.addEmployeeToCompany(employee, newCompany);
 					} else {
