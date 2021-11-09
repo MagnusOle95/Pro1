@@ -92,7 +92,6 @@ public class Swimmer {
             this.træningsplan.removeSwimmer(this);
         }
         this.træningsplan = null;
-
     }
 
     /**
@@ -106,9 +105,6 @@ public class Swimmer {
     public String toString(){
         return name;
     }
-
-
-
 
 
 }
