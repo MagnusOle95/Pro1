@@ -39,6 +39,6 @@ private static ArrayList<Reservation> reservationer = new ArrayList<>();
 
     public static void removeReservation(Reservation reservation){reservationer.remove(reservation);}
 
-    //Hej
+
 
 }
