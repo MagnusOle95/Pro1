@@ -6,6 +6,7 @@ public class Plads {
 
     //Attributer
     private int nr;
+    private static int standartTimePris;
 
     //Link attributter
     private Område område;
@@ -17,6 +18,7 @@ public class Plads {
         this.nr = nr;
         this.område = område;
         reservationer = new ArrayList<>();
+        this.standartTimePris = 50;
     }
 
     //Get og set metoder
@@ -54,6 +56,31 @@ public class Plads {
             reservation.removePlads(this);
         }
     }
+
+    //Get og set metoder til standart timepris
+    public int getStandardTimePris(){
+        return this.standartTimePris;
+    }
+
+    public void setStandartTimePris(int standartTimePris){
+        this.standartTimePris = standartTimePris;
+    }
+
+    public double pris(int timer){
+        double samletPris = standartTimePris * timer;
+
+        if (område == Område.VIP){
+            samletPris = samletPris * 1.25;
+        }
+        if (område == Område.BØRNE){
+            samletPris = samletPris * 0.80;
+        }
+        if (område == Område.BØRNE){
+            samletPris = samletPris * 1.10;
+        }
+        return samletPris;
+    }
+
 
 
 

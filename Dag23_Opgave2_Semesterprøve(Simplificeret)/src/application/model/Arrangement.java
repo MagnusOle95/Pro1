@@ -52,6 +52,19 @@ public class Arrangement {
         }
     }
 
+    //Metode der udregner antal pladser der er reserveret til arrangementet Opgave2
+    public int antalReserveretPladser(){
+        int antalPladser = 0;
+        for (Reservation res : reservationer){
+            antalPladser += res.getPladser().size();
+        }
+        return antalPladser;
+    }
+
+    //
+
+
+
 
 
 }
