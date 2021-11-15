@@ -41,12 +41,20 @@ public class Interface extends Application {
 		tabKonferencePane.setContent(konferencePane);
 		//tabCompanies.setOnSelectionChanged(event -> companyPane.updateControls());
 
+
 		Tab tabDeltagerPane = new Tab("Deltager");
 		tabPane.getTabs().add(tabDeltagerPane);
 
 		DeltagerPane deltagerPane = new DeltagerPane();
 		tabDeltagerPane.setContent(deltagerPane);
 		//tabCompanies.setOnSelectionChanged(event -> companyPane.updateControls());
+
+
+		Tab tabHotellerPane = new Tab("Hoteller");
+		tabPane.getTabs().add(tabHotellerPane);
+
+		HotelPane hotelpane = new HotelPane();
+		tabHotellerPane.setContent(hotelpane);
 
 	}
 

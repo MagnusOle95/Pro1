@@ -16,6 +16,7 @@ public class DeltagerPane extends GridPane {
 	private DatePicker dpAnkomstDato,dpAfrejseDato;
 	private CheckBox chkForeDragsHolder;
 	private ToggleGroup group = new ToggleGroup();
+	private RadioButton rbAlene,rbLedsager;
 
 	public DeltagerPane() {
 		this.setPadding(new Insets(20));
@@ -31,6 +32,11 @@ public class DeltagerPane extends GridPane {
 		konFerrencer.setPrefWidth(200);
 		konFerrencer.setPrefHeight(200);
 
+		udFlugter = new ListView<>();
+		this.add(udFlugter,3 ,11,1,2);
+		udFlugter.setPrefWidth(100);
+		udFlugter.setPrefHeight(100);
+
 
 		Label lblValgtForedrag = new Label("Konference du har valgt at du vil deltage i");
 		this.add(lblValgtForedrag,3 ,7);
@@ -39,12 +45,24 @@ public class DeltagerPane extends GridPane {
 		txfValgtKonfererence.setEditable(false);
 
 
-		RadioButton rbAlene = new RadioButton("Ankommer alene");
+		rbAlene = new RadioButton("Ankommer alene");
 		this.add(rbAlene,3 , 9);
 		rbAlene.setToggleGroup(group);
-		RadioButton rbLedsager = new RadioButton("Medbringer ledsager");
+		rbLedsager = new RadioButton("Medbringer ledsager");
 		this.add(rbLedsager,3 ,10 );
 		rbLedsager.setToggleGroup(group);
+
+
+		Label lblLedsagerNavn = new Label("Ledsager's navn");
+		this.add(lblLedsagerNavn,0 ,10 );
+		txfLedsagerNavn = new TextField();
+		this.add(txfLedsagerNavn,1 , 10);
+
+
+		Label lblLedsagersAlder = new Label("Ledsager's alder");
+		this.add(lblLedsagersAlder,0 ,11 );
+		txfLedsagderAlder = new TextField();
+		this.add(txfLedsagderAlder,1 ,11 );
 
 
 		Label lblForedragsHolder = new Label("Foredragsholder");
@@ -105,6 +123,7 @@ public class DeltagerPane extends GridPane {
 		this.add(lblFirmaTlfNr,0 ,9);
 		txfFirmaTlfNr = new TextField();
 		this.add(txfFirmaTlfNr,1 ,9);
+
 
 		}
 	}
