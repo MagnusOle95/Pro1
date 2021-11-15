@@ -38,7 +38,18 @@ public class Hotel {
     public ArrayList<Tilvalg> getTilValg() {
         return new ArrayList<>(tilValg);
     }
-    public void addTilvalg (Tilvalg tilValg) {
-        this.tilValg.add(tilValg);
+
+    public Tilvalg createTilvalg (String navn, String beskrivelse, double pris) {
+        Tilvalg tilvalg = new Tilvalg(navn,beskrivelse,pris);
+        tilValg.add(tilvalg);
+        return tilvalg;
     }
+
+    public void removeTilvalg(Tilvalg tilvalg){
+        if (this.tilValg.contains(tilvalg)){
+            this.tilValg.remove(tilvalg);
+        }
+    }
+
+
 }

@@ -2,6 +2,8 @@ package application.model;
 
 import javafx.scene.control.DatePicker;
 
+import java.util.ArrayList;
+
 public class Tilmelding {
 
     //Attributer
@@ -9,11 +11,19 @@ public class Tilmelding {
     private DatePicker afrejseDato;
     private Konferrence konferrence;
 
+    //Linkattributter
+    private ArrayList<Tilvalg> hotelTilvalg;
+    private Deltager deltager;
+    private Ledsager ledsager;
+
+
     //Construktor
-    public Tilmelding(DatePicker ankomstDato, DatePicker afrejseDato, Konferrence konferrence) {
+    public Tilmelding(DatePicker ankomstDato, DatePicker afrejseDato, Konferrence konferrence,Deltager deltager) {
         this.ankomstDato = ankomstDato;
         this.afrejseDato = afrejseDato;
         this.konferrence = konferrence;
+        this.hotelTilvalg = new ArrayList<>();
+        this.deltager = deltager;
     }
 
     //set og get metoder
@@ -37,4 +47,35 @@ public class Tilmelding {
     public void setKonferrence(Konferrence konferrence) {
         this.konferrence = konferrence;
     }
+
+
+    public void addHotelTilvalg(Tilvalg tilvalg){
+        if (!this.hotelTilvalg.contains(tilvalg)){
+            this.hotelTilvalg.add(tilvalg);
+        }
+    }
+    public void removeHotelTilvalg(Tilvalg tilvalg){
+        if (this.hotelTilvalg.contains(tilvalg)){
+            this.hotelTilvalg.remove(tilvalg);
+        }
+    }
+    public ArrayList<Tilvalg> getHotelTilvalg(){
+        return new ArrayList<>(hotelTilvalg);
+    }
+
+
+    public Deltager getDeltager(){
+        return this.deltager;
+    }
+
+    public void setLedsager(Ledsager ledsager) {
+        if (this.ledsager != ledsager) {
+            this.ledsager = ledsager;
+            if (ledsager != null){
+                ledsager.addTilmelding(this);
+            }
+        }
+    }
+
+
 }

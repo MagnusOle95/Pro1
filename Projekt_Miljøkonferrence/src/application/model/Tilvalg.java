@@ -7,6 +7,7 @@ public class Tilvalg {
     private String beskrivelse;
     private double pris;
 
+
     //Construktor
     public Tilvalg(String navn, String beskrivelse, double pris) {
         this.navn = navn;

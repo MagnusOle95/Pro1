@@ -53,4 +53,22 @@ public class Udflugt {
     public void setDato(DatePicker dato) {
         this.dato = dato;
     }
+
+
+    public void addLedsager(Ledsager ledsager){
+        if (!ledsagere.contains(ledsager)){
+            ledsagere.add(ledsager);
+            ledsager.addUdflugt(this);
+        }
+    }
+
+    public void removeLedsager(Ledsager ledsager){
+        if (ledsagere.contains(ledsager)){
+            ledsagere.remove(ledsager);
+            ledsager.removeUdflugt(this);
+        }
+    }
+
+
+
 }
