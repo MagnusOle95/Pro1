@@ -10,12 +10,14 @@ public class Hotel {
 
     //Link attribut
     private ArrayList<Tilvalg> tilValg;
+    private ArrayList<Tilmelding> tilMeldinger;
 
     //Construktor
     public Hotel(String hotelNavn, String hotelBestyrre) {
         this.hotelNavn = hotelNavn;
         this.hotelBestyrre = hotelBestyrre;
         this.tilValg = new ArrayList<>();
+        this.tilMeldinger = new ArrayList<>();
     }
 
     //Get og set metoder
@@ -50,6 +52,22 @@ public class Hotel {
             this.tilValg.remove(tilvalg);
         }
     }
+
+    public void addTilmeldinger(Tilmelding tilmelding){
+        if (!this.tilMeldinger.contains(tilmelding)){
+            this.tilMeldinger.add(tilmelding);
+            tilmelding.setHotel(this);
+        }
+    }
+
+    public void removeTildmelding(Tilmelding tilmelding){
+        if (this.tilMeldinger.contains(tilmelding)){
+            this.tilMeldinger.remove(tilmelding);
+            tilmelding.setHotel(null);
+        }
+    }
+
+
 
 
 }

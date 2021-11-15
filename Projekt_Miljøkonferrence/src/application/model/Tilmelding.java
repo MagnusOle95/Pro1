@@ -15,6 +15,7 @@ public class Tilmelding {
     private ArrayList<Tilvalg> hotelTilvalg;
     private Deltager deltager;
     private Ledsager ledsager;
+    private Hotel hotel;
 
 
     //Construktor
@@ -70,12 +71,28 @@ public class Tilmelding {
 
     public void setLedsager(Ledsager ledsager) {
         if (this.ledsager != ledsager) {
+            if (this.ledsager != null){
+                this.ledsager.removeTilmelding(this);
+            }
             this.ledsager = ledsager;
             if (ledsager != null){
                 ledsager.addTilmelding(this);
             }
         }
     }
+
+    public void setHotel(Hotel hotel){
+        if (this.hotel != hotel){
+            if (this.hotel != null){
+                this.hotel.removeTildmelding(this);
+            }
+            this.hotel = hotel;
+            if (hotel != null){
+                hotel.addTilmeldinger(this);
+            }
+        }
+    }
+
 
 
 }

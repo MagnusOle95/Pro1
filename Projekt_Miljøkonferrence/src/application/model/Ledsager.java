@@ -40,6 +40,13 @@ public class Ledsager {
         }
     }
 
+    public void removeTilmelding (Tilmelding tilmelding){
+        if (tilmeldinger.contains(tilmelding)){
+            this.tilmeldinger.remove(tilmelding);
+            tilmelding.setLedsager(null);
+        }
+    }
+
 
     public void addUdflugt(Udflugt udflugt) {
         if (!udflugter.contains(udflugt)){
