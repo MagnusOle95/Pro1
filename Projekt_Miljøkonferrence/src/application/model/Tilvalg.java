@@ -9,7 +9,7 @@ public class Tilvalg {
 
 
     //Construktor
-    public Tilvalg(String navn, String beskrivelse, double pris) {
+    Tilvalg(String navn, String beskrivelse, double pris) {
         this.navn = navn;
         this.beskrivelse = beskrivelse;
         this.pris = pris;

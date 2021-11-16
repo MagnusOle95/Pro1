@@ -14,6 +14,7 @@ public class Udflugt {
 
     //Link attributer
     private ArrayList<Ledsager> ledsagere;
+    private Konferrence konferrence;
 
 
     public Udflugt(double pris, String placering, String type, DatePicker dato) {
@@ -68,6 +69,20 @@ public class Udflugt {
             ledsager.removeUdflugt(this);
         }
     }
+
+    public void setKonferrence(Konferrence konferrence){
+        if (this.konferrence != konferrence){
+            if (this.konferrence != null){
+                konferrence.removeUdflugt(this);
+            }
+            this.konferrence = konferrence;
+            if (konferrence != null){
+                konferrence.addUdflugt(this);
+            }
+        }
+    }
+
+
 
 
 

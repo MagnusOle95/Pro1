@@ -1,5 +1,7 @@
 package application.model;
 
+import java.util.ArrayList;
+
 public class Foredrag {
 
     //Attributter
@@ -8,6 +10,8 @@ public class Foredrag {
 
     //Link attribut
     private Deltager foredragsHolder;
+    private Konferrence konferrence;
+
 
     //Construktor
     public Foredrag(String foredragsNavn, String foredragsHoldersNavn) {
@@ -39,4 +43,21 @@ public class Foredrag {
     public void setForedragsHolder(Deltager foredragsHolder) {
         this.foredragsHolder = foredragsHolder;
     }
+
+
+    public void setKonferrence(Konferrence konferrence){
+        if (this.konferrence != konferrence){
+            if (this.konferrence != null){
+                this.konferrence.removeFordrag(this);
+            }
+            this.konferrence = konferrence;
+            if (konferrence != null){
+                konferrence.addForedrag(this);
+            }
+        }
+    }
+
+
+
 }
+

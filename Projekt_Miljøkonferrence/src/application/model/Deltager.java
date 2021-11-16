@@ -12,7 +12,7 @@ public class Deltager {
     private int tlfNr;
     private String firmanavn;
     private String firmaTlfNr;
-    private ArrayList<Ledsager> ledsagere;
+
 
 
     //Construktor
@@ -22,7 +22,6 @@ public class Deltager {
         this.by = by;
         this.land = land;
         this.tlfNr = tlfNr;
-        ledsagere = new ArrayList<>();
     }
 
 
@@ -77,12 +76,5 @@ public class Deltager {
     public void setFirmaTlfNr(String firmaTlfNr) {
         this.firmaTlfNr = firmaTlfNr;
     }
-
-
-    public ArrayList<Ledsager> getLedsagere() {
-        return new ArrayList<>(ledsagere);
-    }
-
-
 
 }
