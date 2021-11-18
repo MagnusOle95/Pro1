@@ -39,7 +39,7 @@ public class Tilvalg {
 
     @Override
     public String toString(){
-        return navn + " Beskrivelse: " + beskrivelse + " " + pris + " kr";
+        return navn + "\nBeskrivelse: " + beskrivelse + " \n" + pris + " kr";
     }
 
 }

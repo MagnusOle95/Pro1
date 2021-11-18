@@ -148,6 +148,7 @@ public class EmployeeWindow extends Stage {
 			} else {
 
 				boolean companyIsSelected = chbCompany.isSelected();
+
 				Company newCompany = cbbCompany.getSelectionModel().getSelectedItem();
 
 				// Call application.controller methods

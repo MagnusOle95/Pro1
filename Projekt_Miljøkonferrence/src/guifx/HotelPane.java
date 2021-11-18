@@ -29,7 +29,7 @@ public class HotelPane extends GridPane {
 
 		hoteller = new ListView<>();
 		this.add(hoteller,0 ,1,4,5);
-		hoteller.setPrefWidth(200);
+		hoteller.setPrefWidth(250);
 		hoteller.setPrefHeight(150);
 		hoteller.getItems().setAll(Controller.getHoteller());
 		ChangeListener<Hotel> listener = (ov, oldHotel, newHotel) -> this.updateLister();
@@ -38,20 +38,22 @@ public class HotelPane extends GridPane {
 
 		Button opretHotel = new Button("Opret hotel");
 		this.add(opretHotel,0 ,6);
-
+		opretHotel.setOnAction(event -> this.opretHotel());
 
 		//Opretter TilvalgsListe og knap
 		Label lblBesøgende = new Label("Tilvalg");
 		this.add(lblBesøgende,6 ,0);
 
+
+
 		tilvalg = new ListView<>();
 		this.add(tilvalg,6 ,1,4,5);
 		tilvalg.setPrefHeight(150);
-		tilvalg.setPrefWidth(200);
+		tilvalg.setPrefWidth(250);
 
 		Button opretTilvalg = new Button("Opret Tilvalg");
 		this.add(opretTilvalg,6 ,6 );
-
+		opretTilvalg.setOnAction(event -> opretTilvalg());
 
 		//opretter liste med deltagere til hotelejere.
 		Label lblHotelGæster = new Label("Gæster til hotellet");
@@ -77,6 +79,28 @@ public class HotelPane extends GridPane {
 			besøgende.setText(sb.toString());
 		}
 	}
+
+	private void opretHotel() {
+		HotelWindow dia = new HotelWindow("Opret Hotel");
+		dia.showAndWait();
+
+		// Wait for the modal dialog to close
+
+		hoteller.getItems().setAll(Controller.getHoteller());
+	}
+
+	private void opretTilvalg() {
+		TilvalgWindow dia = new TilvalgWindow("Opret tilvalg");
+		dia.showAndWait();
+
+		// Wait for the modal dialog to close
+
+		Hotel hotel = hoteller.getSelectionModel().getSelectedItem();
+		tilvalg.getItems().setAll(Controller.getTilvalg(hotel));
+
+	}
+
+
 
 
 

@@ -80,7 +80,6 @@ public class EmployeePane extends GridPane {
 		Button btnCreate = new Button("Create");
 		hbxButtons.getChildren().add(btnCreate);
 		btnCreate.setOnAction(event -> this.createAction());
-
 		Button btnUpdate = new Button("Update");
 		hbxButtons.getChildren().add(btnUpdate);
 		btnUpdate.setOnAction(event -> this.updateAction());

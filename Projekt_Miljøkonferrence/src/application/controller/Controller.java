@@ -34,10 +34,21 @@ public class Controller {
         hotel.addTilmeldinger(tilmelding);
     }
 
+    public static ArrayList<String> getHotellerNavn(){
+        ArrayList<String> hotelNavne = new ArrayList<>();
+        for (Hotel navne : getHoteller())
+            hotelNavne.add(navne.getHotelNavn());
+        return hotelNavne;
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static Tilvalg createTilvalg(String navn, String beskrivelse, double pris, Hotel hotel){
         Tilvalg tilvalg = hotel.createTilvalg(navn,beskrivelse ,pris);
         return  tilvalg;
+    }
+
+    public static ArrayList<Tilvalg> getTilvalg (Hotel hotel){
+        return new ArrayList<>(hotel.getTilValg());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -111,7 +111,7 @@ public class Hotel {
 
     @Override
     public String toString(){
-        return "Hotelnavn: " + this.hotelNavn + " Enkeltværlsespris: " + enkeltVærelsesPris + " Dobbeltværrelsespris: " + dobbeltVærelsesPris;
+        return "Hotel: " + this.hotelNavn + " \nEnkeltværls: " + enkeltVærelsesPris + " \nDobbeltværrelse: " + dobbeltVærelsesPris;
     }
 
 
