@@ -23,6 +23,7 @@ public class Hotel {
         this.dobbeltVærelsesPris = dobbeltVærelsesPris;
         this.tilValg = new ArrayList<>();
         this.tilMeldinger = new ArrayList<>();
+        this.konferrencer = new ArrayList<>();
 
     }
 
@@ -75,6 +76,11 @@ public class Hotel {
     }
 
     ////////////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Tilmelding> getTilMeldinger(){
+        return new ArrayList<>(tilMeldinger);
+    }
+
     public void addTilmeldinger(Tilmelding tilmelding){
         if (!this.tilMeldinger.contains(tilmelding)){
             this.tilMeldinger.add(tilmelding);
@@ -102,6 +108,14 @@ public class Hotel {
         }
     }
     ////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public String toString(){
+        return "Hotelnavn: " + this.hotelNavn + " Enkeltværlsespris: " + enkeltVærelsesPris + " Dobbeltværrelsespris: " + dobbeltVærelsesPris;
+    }
+
+
+
 
 
 

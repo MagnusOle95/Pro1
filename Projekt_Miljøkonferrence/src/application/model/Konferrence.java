@@ -93,47 +93,44 @@ public class Konferrence {
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    public void addTilmelding (Tilmelding tilmelding){
-        if (!tilmeldinger.contains(tilmelding)){
-            tilmeldinger.add(tilmelding);
-            tilmelding.setKonferrence(this);
+    public Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato,Deltager deltager, boolean foredragsholder) {
+        Tilmelding tilmelding = new Tilmelding(ankomstDato,afrejseDato ,this ,deltager ,foredragsholder);
+        tilmeldinger.add(tilmelding);
+        return tilmelding;
+    }
+
+    public void removePerson(Tilmelding tilmelding) {
+        if (this.tilmeldinger.contains(tilmelding)) {
+            this.tilmeldinger.remove(tilmelding);
         }
     }
-    public void removeTilmelding(Tilmelding tilmelding){
-        if (tilmeldinger.contains(tilmelding)){
-            tilmeldinger.remove(tilmelding);
-            tilmelding.setKonferrence(null);
-        }
-    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void addForedrag (Foredrag foredrag){
-        if (!foredrags.contains(foredrag)){
-            foredrags.add(foredrag);
-            foredrag.setKonferrence(this);
+    public Foredrag createFordrag(String foredragsholdersNavn) {
+        Foredrag fordrag = new Foredrag(foredragsholdersNavn, this);
+        foredrags.add(fordrag);
+        return fordrag;
+    }
+
+    public void removeFordrag(Foredrag fordrag) {
+        if (foredrags.contains(fordrag)) {
+            foredrags.remove(fordrag);
         }
     }
 
-    public void removeFordrag (Foredrag foredrag){
-        if (foredrags.contains(foredrag)){
-            foredrags.remove(foredrag);
-            foredrag.setKonferrence(null);
-        }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    public Udflugt createUdflugt(double pris, String placering, String type, LocalDate dato) {
+        Udflugt udflugt = new Udflugt(pris,placering ,type,dato,this);
+        udflugter.add(udflugt);
+        return udflugt;
     }
 
-    /////////////////7777////////////////////////////////////////////////////////////////////
-
-    public void addUdflugt (Udflugt udflugt){
-        if (!udflugter.contains(udflugt)){
-            udflugter.add(udflugt);
-            udflugt.setKonferrence(this);
-        }
-    }
-
-    public void removeUdflugt(Udflugt udflugt){
-        if (udflugter.contains(udflugt)){
+    public void removePerson(Udflugt udflugt) {
+        if (udflugter.contains(udflugt)) {
             udflugter.remove(udflugt);
-            udflugt.setKonferrence(null);
         }
     }
 

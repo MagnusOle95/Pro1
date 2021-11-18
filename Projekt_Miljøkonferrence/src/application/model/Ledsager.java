@@ -8,15 +8,15 @@ public class Ledsager {
     private String navn;
 
     //Link attributter
-    ArrayList<Tilmelding> tilmeldinger;
+    private Tilmelding tilmelding;
     private ArrayList<Udflugt> udflugter;
 
 
     //Construktor
-    public Ledsager(String navn) {
+    Ledsager(String navn,Tilmelding tilmelding) {
         this.navn = navn;
         udflugter = new ArrayList<>();
-        tilmeldinger = new ArrayList<>();
+        this.tilmelding = tilmelding;
     }
 
     //Get og set metoder
@@ -30,21 +30,6 @@ public class Ledsager {
 
     public void setNavn(String navn) {
         this.navn = navn;
-    }
-
-
-    public void addTilmelding (Tilmelding tilmelding){
-        if (!tilmeldinger.contains(tilmelding)){
-            this.tilmeldinger.add(tilmelding);
-            tilmelding.setLedsager(this);
-        }
-    }
-
-    public void removeTilmelding (Tilmelding tilmelding){
-        if (tilmeldinger.contains(tilmelding)){
-            this.tilmeldinger.remove(tilmelding);
-            tilmelding.setLedsager(null);
-        }
     }
 
 

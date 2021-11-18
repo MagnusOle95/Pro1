@@ -36,4 +36,10 @@ public class Tilvalg {
     public void setPris(double pris) {
         this.pris = pris;
     }
+
+    @Override
+    public String toString(){
+        return navn + " Beskrivelse: " + beskrivelse + " " + pris + " kr";
+    }
+
 }

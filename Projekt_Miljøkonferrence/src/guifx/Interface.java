@@ -1,5 +1,6 @@
 package guifx;
 
+import application.controller.Controller;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
@@ -10,6 +11,11 @@ import javafx.stage.Stage;
 
 public class Interface extends Application {
 
+
+	@Override
+	public void init(){
+		Controller.init();
+	}
 
 	@Override
 	public void start(Stage stage) {

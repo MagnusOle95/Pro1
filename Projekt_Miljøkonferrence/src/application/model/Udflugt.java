@@ -2,6 +2,7 @@ package application.model;
 
 import javafx.scene.control.DatePicker;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Udflugt {
@@ -10,18 +11,19 @@ public class Udflugt {
     private double pris;
     private String placering;
     private String type;
-    private DatePicker dato;
+    private LocalDate dato;
 
     //Link attributer
     private ArrayList<Ledsager> ledsagere;
     private Konferrence konferrence;
 
 
-    public Udflugt(double pris, String placering, String type, DatePicker dato) {
+    Udflugt(double pris, String placering, String type, LocalDate dato,Konferrence konferrence) {
         this.pris = pris;
         this.placering = placering;
         this.type = type;
         this.dato = dato;
+        this.konferrence = konferrence;
         ledsagere = new ArrayList<>();
     }
 
@@ -48,11 +50,15 @@ public class Udflugt {
         this.type = type;
     }
 
-    public DatePicker getDato() {
+    public LocalDate getDato() {
         return dato;
     }
-    public void setDato(DatePicker dato) {
+    public void setDato(LocalDate dato) {
         this.dato = dato;
+    }
+
+    public Konferrence getKonferrence(){
+        return this.konferrence;
     }
 
 
@@ -70,17 +76,9 @@ public class Udflugt {
         }
     }
 
-    public void setKonferrence(Konferrence konferrence){
-        if (this.konferrence != konferrence){
-            if (this.konferrence != null){
-                konferrence.removeUdflugt(this);
-            }
-            this.konferrence = konferrence;
-            if (konferrence != null){
-                konferrence.addUdflugt(this);
-            }
-        }
-    }
+
+
+
 
 
 

@@ -31,6 +31,7 @@ public class Tilmelding {
         this.konferrence = konferrence;
         this.hotelTilvalg = new ArrayList<>();
         this.deltager = deltager;
+        this.deltager.addTilmelding(this);
         this.foredragsHolder = foredragsholder;
         dagspris = 1500;
     }
@@ -65,17 +66,6 @@ public class Tilmelding {
         return konferrence;
     }
 
-    public void setKonferrence(Konferrence konferrence) {
-        if (this.konferrence != konferrence) {
-            if (this.konferrence != null) {
-                this.konferrence.removeTilmelding(this);
-            }
-            this.konferrence = konferrence;
-            if (konferrence != null) {
-                konferrence.addTilmelding(this);
-            }
-        }
-    }
 
     ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,16 +96,10 @@ public class Tilmelding {
 
     ////////////////////////////////////////////////////////////////////////////
     //Ledsager
-    public void setLedsager(Ledsager ledsager) {
-        if (this.ledsager != ledsager) {
-            if (this.ledsager != null) {
-                this.ledsager.removeTilmelding(this);
-            }
-            this.ledsager = ledsager;
-            if (ledsager != null) {
-                ledsager.addTilmelding(this);
-            }
-        }
+    public Ledsager createLedsager(String navn) {
+        Ledsager ledsager = new Ledsager(navn,this);
+        this.ledsager = ledsager;
+        return ledsager;
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -133,10 +117,16 @@ public class Tilmelding {
     }
     /////////////////////////////////////////////////////////////////////////
 
+    @Override
+    public String toString(){
+        return "Navn: " + deltager.getNavn();
+    }
+    ///////////////////////////////////////////////////////////////////////////
+
     //Udregn samlede pris for tilmelding af deltager, ledsager, hotel - hotel tilvalg og udflugter.
     public double getSamledePris() {
         double sum = 0;
-        double dage = ChronoUnit.DAYS.between(ankomstDato, afrejseDato);
+        double dage = ChronoUnit.DAYS.between(ankomstDato, afrejseDato) + 1;
 
         if (!foredragsHolder) {
             sum += dagspris * dage;
@@ -144,14 +134,14 @@ public class Tilmelding {
 
         if (hotel != null) {
             if (ledsager != null) {
-                    sum += hotel.getDobbeltVærelsesPris() * dage;
+                    sum += hotel.getDobbeltVærelsesPris() * (dage - 1);
                 } else {
-                    sum += hotel.getEnkeltVærelsesPrisPris() * dage;
+                    sum += hotel.getEnkeltVærelsesPrisPris() * (dage - 1);
                 }
 
                 if (hotelTilvalg != null) {
                     for (Tilvalg valg : hotelTilvalg) {
-                        sum += valg.getPris() * dage;
+                        sum += valg.getPris() * (dage - 1);
                     }
                 }
             }

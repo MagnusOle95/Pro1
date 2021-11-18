@@ -6,7 +6,6 @@ public class Foredrag {
 
     //Attributter
     private String foredragsNavn;
-    private String foredragsHoldersNavn;
 
     //Link attribut
     private Deltager foredragsHolder;
@@ -14,9 +13,9 @@ public class Foredrag {
 
 
     //Construktor
-    public Foredrag(String foredragsNavn, String foredragsHoldersNavn) {
+    Foredrag(String foredragsNavn,Konferrence konferrence) {
         this.foredragsNavn = foredragsNavn;
-        this.foredragsHoldersNavn = foredragsHoldersNavn;
+        this.konferrence = konferrence;
     }
 
     //Get og set metoder
@@ -28,14 +27,6 @@ public class Foredrag {
         this.foredragsNavn = foredragsNavn;
     }
 
-    public String getForedragsHoldersNavn() {
-        return foredragsHoldersNavn;
-    }
-
-    public void setForedragsHoldersNavn(String foredragsHoldersNavn) {
-        this.foredragsHoldersNavn = foredragsHoldersNavn;
-    }
-
     public Deltager getForedragsHolder() {
         return foredragsHolder;
     }
@@ -44,18 +35,6 @@ public class Foredrag {
         this.foredragsHolder = foredragsHolder;
     }
 
-
-    public void setKonferrence(Konferrence konferrence){
-        if (this.konferrence != konferrence){
-            if (this.konferrence != null){
-                this.konferrence.removeFordrag(this);
-            }
-            this.konferrence = konferrence;
-            if (konferrence != null){
-                konferrence.addForedrag(this);
-            }
-        }
-    }
 
 
 

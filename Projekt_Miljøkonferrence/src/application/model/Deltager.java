@@ -12,6 +12,7 @@ public class Deltager {
     private int tlfNr;
     private String firmanavn;
     private String firmaTlfNr;
+    private ArrayList<Tilmelding> tilmeldinger;
 
 
 
@@ -22,6 +23,7 @@ public class Deltager {
         this.by = by;
         this.land = land;
         this.tlfNr = tlfNr;
+        this.tilmeldinger = new ArrayList<>();
     }
 
 
@@ -77,4 +79,16 @@ public class Deltager {
         this.firmaTlfNr = firmaTlfNr;
     }
 
+
+    public void addTilmelding(Tilmelding tilmelding){
+        tilmeldinger.add(tilmelding);
+    }
+
+    public void removeTilmelding(Tilmelding tilmelding){
+        tilmeldinger.remove(tilmelding);
+    }
+
+    public String toString(){
+        return "Navn: " + navn + "Adresse: " + adresse + "TlfNr: " + tlfNr;
+    }
 }
