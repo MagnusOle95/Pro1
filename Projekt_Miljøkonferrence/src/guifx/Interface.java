@@ -43,7 +43,7 @@ public class Interface extends Application {
 		Tab tabKonferencePane = new Tab("konferencer");
 		tabPane.getTabs().add(tabKonferencePane);
 
-		konferencePane konferencePane = new konferencePane();
+		KonferencePane konferencePane = new KonferencePane();
 		tabKonferencePane.setContent(konferencePane);
 		//tabCompanies.setOnSelectionChanged(event -> companyPane.updateControls());
 

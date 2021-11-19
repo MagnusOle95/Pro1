@@ -1,22 +1,31 @@
 package guifx;
 
+import application.controller.Controller;
+import application.model.Deltager;
+import application.model.Tilmelding;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.awt.*;
 import java.security.PrivateKey;
 
 public class DeltagerPane extends GridPane {
-	private ListView<String> konFerrencer,udFlugter;
-	private TextField txfName,txfAlder,txfAdresse,txfBy,txfLand,txfValgtKonfererence,txfFirmaNavn,txfFirmaTlfNr,txfLedsagerNavn,txfLedsagderAlder;
-	private DatePicker dpAnkomstDato,dpAfrejseDato;
+	private ListView<Tilmelding> tilmeldingListView;
+	private ListView<Deltager> deltagere;
+	private TextField txfName, txfValgtKonfererence;
+	private DatePicker dpAnkomstDato, dpAfrejseDato;
 	private CheckBox chkForeDragsHolder;
 	private ToggleGroup group = new ToggleGroup();
-	private RadioButton rbAlene,rbLedsager;
+	private RadioButton rbDeltager, rbNyDeltager;
+	private Button opretDeltager, tilmeldDeltager;
+	private TextArea txaTilmeldinger;
 
 	public DeltagerPane() {
 		this.setPadding(new Insets(20));
@@ -24,109 +33,137 @@ public class DeltagerPane extends GridPane {
 		this.setVgap(10);
 		this.setGridLinesVisible(false);
 
-		Label lblComp = new Label("konference du kan tilmelde dig");
-		this.add(lblComp, 3, 0);
+		Label lblComp = new Label("Tidligere konferencer du har været med i:");
+		this.add(lblComp, 3, 1);
 
-		konFerrencer = new ListView<>();
-		this.add(konFerrencer,3 ,1,5,6);
-		konFerrencer.setPrefWidth(200);
-		konFerrencer.setPrefHeight(200);
+		txaTilmeldinger = new TextArea();
+		this.add(txaTilmeldinger, 3, 2, 5, 6);
+		txaTilmeldinger.setPrefWidth(200);
+		txaTilmeldinger.setPrefHeight(200);
+		txaTilmeldinger.setEditable(false);
 
-		udFlugter = new ListView<>();
-		this.add(udFlugter,3 ,11,1,2);
-		udFlugter.setPrefWidth(100);
-		udFlugter.setPrefHeight(100);
+		deltagere = new ListView<>();
+		this.add(deltagere, 0, 2, 2, 10);
+		deltagere.setPrefWidth(100);
+		deltagere.setPrefHeight(100);
 
 
-		Label lblValgtForedrag = new Label("Konference du har valgt at du vil deltage i");
-		this.add(lblValgtForedrag,3 ,7);
+		Label lblValgtForedrag = new Label("Pris for valgte konference:");
+		this.add(lblValgtForedrag, 3, 8);
 		txfValgtKonfererence = new TextField();
-		this.add(txfValgtKonfererence,3 ,8);
+		this.add(txfValgtKonfererence, 3, 9);
 		txfValgtKonfererence.setEditable(false);
 
-
-		rbAlene = new RadioButton("Ankommer alene");
-		this.add(rbAlene,3 , 9);
-		rbAlene.setToggleGroup(group);
-		rbLedsager = new RadioButton("Medbringer ledsager");
-		this.add(rbLedsager,3 ,10 );
-		rbLedsager.setToggleGroup(group);
+		ChangeListener<Deltager> listener = (ov, oldCompny, newCompany) -> this.selectedDeltagerChanged();
+		deltagere.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
-		Label lblLedsagerNavn = new Label("Ledsager's navn");
-		this.add(lblLedsagerNavn,0 ,10 );
-		txfLedsagerNavn = new TextField();
-		this.add(txfLedsagerNavn,1 , 10);
+
+		rbDeltager = new RadioButton("Tidligere deltager");
+		this.add(rbDeltager, 0, 0);
+		rbDeltager.setToggleGroup(group);
+		rbDeltager.setOnAction(event -> showDeltagereAction());
+
+		rbNyDeltager = new RadioButton("Ny deltager");
+		this.add(rbNyDeltager, 1, 0);
+		rbNyDeltager.setToggleGroup(group);
+		group.selectToggle(rbNyDeltager);
+		rbNyDeltager.setOnAction(event -> nyDeltagerAction());
+
+		Label lblDeltagere = new Label("Find dig selv i systemet:");
+		this.add(lblDeltagere, 0, 1);
+
+		HBox hbxButtons = new HBox(20);
+		this.add(hbxButtons, 3, 10, 2, 1);
+
+		opretDeltager = new Button("Opret Deltager");
+		hbxButtons.getChildren().add(opretDeltager);
+		opretDeltager.setOnAction(event -> createDeltagerAction());
+
+		tilmeldDeltager = new Button("Tilmeld Deltager");
+		hbxButtons.getChildren().add(tilmeldDeltager);
+		tilmeldDeltager.setOnAction(event -> createTilmeldAction());
+
+		Button btnBeregnPris = new Button("Udregn Pris");
+		this.add(btnBeregnPris,3,11);
+		btnBeregnPris.setOnAction(event -> udregnPris());
+
+		tilmeldDeltager.setDisable(true);
+		if (deltagere.getItems().size() > 0) {
+			deltagere.getSelectionModel().select(0);
+		}
 
 
-		Label lblLedsagersAlder = new Label("Ledsager's alder");
-		this.add(lblLedsagersAlder,0 ,11 );
-		txfLedsagderAlder = new TextField();
-		this.add(txfLedsagderAlder,1 ,11 );
+
+	}
 
 
-		Label lblForedragsHolder = new Label("Foredragsholder");
-		this.add(lblForedragsHolder,0 ,0 );
-		chkForeDragsHolder = new CheckBox();
-		this.add(chkForeDragsHolder,1 ,0 );
+	//-------------------------------------------------------------------------
 
+	private void selectedDeltagerChanged(){this.updateControls();}
 
-		Label lblOpretFordrag = new Label("Navn:");
-		this.add(lblOpretFordrag, 0, 1);
-		txfName = new TextField();
-		this.add(txfName,1 ,1);
+	private void showDeltagereAction() {
+		deltagere.getItems().setAll(Controller.getDeltagere());
+		opretDeltager.setDisable(true);
+		tilmeldDeltager.setDisable(false);
+	}
 
+	private void nyDeltagerAction() {
+		deltagere.getItems().clear();
+		opretDeltager.setDisable(false);
+		tilmeldDeltager.setDisable(true);
+	}
 
-		Label lblAlder = new Label("Alder");
-		this.add(lblAlder,0 ,2 );
-		txfAlder = new TextField();
-		this.add(txfAlder,1 ,2);
+	private void createDeltagerAction(){
+		DeltagerWindow dia = new DeltagerWindow("Opret Deltager");
+		dia.showAndWait();
 
+		showDeltagereAction();
+		rbDeltager.setSelected(true);
 
-		Label lblOpretUdflugt = new Label("Adresse");
-		this.add(lblOpretUdflugt, 0, 3);
-		txfAdresse = new TextField();
-		this.add(txfAdresse,1 ,3);
+	}
 
+	private void createTilmeldAction(){
+		TilmeldingWindow dia = new TilmeldingWindow("Tilmeld Deltager",deltagere.getSelectionModel().getSelectedItem());
+		dia.showAndWait();
+		updateControls();
+	}
 
-		Label LblBy= new Label("By");
-		this.add(LblBy,0 ,4 );
-		txfBy = new TextField();
-		this.add(txfBy,1 , 4);
-
-
-		Label lblLand = new Label("Land");
-		this.add(lblLand,0 ,5 );
-		txfLand = new TextField();
-		this.add(txfLand,1 ,5);
-
-
-		Label lblAnkomstDato = new Label("Ankomst");
-		this.add(lblAnkomstDato,0 ,6 );
-		dpAnkomstDato = new DatePicker();
-		this.add(dpAnkomstDato,1 ,6 );
-
-
-		Label lblAfrejseDato = new Label("Afrejse");
-		this.add(lblAfrejseDato,0 ,7 );
-		dpAfrejseDato = new DatePicker();
-		this.add(dpAfrejseDato,1 ,7 );
-
-
-		Label lblFirmaNavn = new Label("Firma navn");
-		this.add(lblFirmaNavn,0 ,8 );
-		txfFirmaNavn = new TextField();
-		this.add(txfFirmaNavn,1 ,8);
-
-
-		Label lblFirmaTlfNr = new Label("Firma Tlfnr");
-		this.add(lblFirmaTlfNr,0 ,9);
-		txfFirmaTlfNr = new TextField();
-		this.add(txfFirmaTlfNr,1 ,9);
-
-
+	public void updateControls(){
+		Deltager deltager = deltagere.getSelectionModel().getSelectedItem();
+		if(deltager!=null){
+			StringBuilder sb = new StringBuilder();
+			for(Tilmelding tilm:deltager.getTilmeldinger()){
+				sb.append(tilm + "\n");
+				sb.append("\n");
+			}
+			txaTilmeldinger.setText(sb.toString());
+		}else{
+			txaTilmeldinger.clear();
 		}
 	}
+
+	private void udregnPris(){
+		Deltager deltager = deltagere.getSelectionModel().getSelectedItem();
+		if(deltager != null){
+			StringBuilder sb = new StringBuilder();
+			for(Tilmelding tilm:deltager.getTilmeldinger()){
+				sb.append(tilm +"\n");
+				System.out.println();
+				sb.append(tilm.getSamledePris()+"\n");
+			}
+			txaTilmeldinger.setText(sb.toString());
+		}else{
+			txaTilmeldinger.clear();
+		}
+	}
+
+
+}
+
+
+
+
 
 
 

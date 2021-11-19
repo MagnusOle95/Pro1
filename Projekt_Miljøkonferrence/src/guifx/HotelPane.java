@@ -1,7 +1,6 @@
 package guifx;
 
 import application.controller.Controller;
-import application.model.Deltager;
 import application.model.Hotel;
 import application.model.Tilmelding;
 import application.model.Tilvalg;
@@ -9,8 +8,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-
-import java.util.ArrayList;
 
 public class HotelPane extends GridPane {
 	private ListView<Hotel> hoteller;
@@ -90,7 +87,7 @@ public class HotelPane extends GridPane {
 	}
 
 	private void opretTilvalg() {
-		TilvalgWindow dia = new TilvalgWindow("Opret tilvalg");
+		HotelTilvalgWindow dia = new HotelTilvalgWindow("Opret tilvalg");
 		dia.showAndWait();
 
 		// Wait for the modal dialog to close

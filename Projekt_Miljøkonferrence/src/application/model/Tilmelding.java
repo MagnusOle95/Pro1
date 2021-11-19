@@ -1,9 +1,6 @@
 package application.model;
 
-import javafx.scene.control.DatePicker;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -21,7 +18,6 @@ public class Tilmelding {
     private Ledsager ledsager;
     private Hotel hotel;
     private Konferrence konferrence;
-    private static double dagspris;
 
 
     //Construktor
@@ -33,7 +29,6 @@ public class Tilmelding {
         this.deltager = deltager;
         this.deltager.addTilmelding(this);
         this.foredragsHolder = foredragsholder;
-        dagspris = 1500;
     }
 
     //set og get metoder
@@ -57,9 +52,6 @@ public class Tilmelding {
 
     ///////////////////////////////////////////////////////////////////////////////////////
 
-    public double getPris() {
-        return dagspris;
-    }
 
     /////////////////////////////////////////////////////////////////////////////////////////
     public Konferrence getKonferrence() {
@@ -102,6 +94,15 @@ public class Tilmelding {
         return ledsager;
     }
 
+    public Ledsager getLedsager(){
+        return  this.ledsager;
+    }
+    //////////////////////////////////////////////////////////////////////////
+
+    public boolean getFordragsholder(){
+        return  this.foredragsHolder;
+    }
+
     //////////////////////////////////////////////////////////////////////////
     //Ledsager
     public void setHotel(Hotel hotel) {
@@ -127,6 +128,7 @@ public class Tilmelding {
     public double getSamledePris() {
         double sum = 0;
         double dage = ChronoUnit.DAYS.between(ankomstDato, afrejseDato) + 1;
+        double dagspris = konferrence.getDagsPris();
 
         if (!foredragsHolder) {
             sum += dagspris * dage;

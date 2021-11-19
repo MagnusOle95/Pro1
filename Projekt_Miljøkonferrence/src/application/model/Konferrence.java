@@ -13,6 +13,7 @@ public class Konferrence {
     private LocalDate slutDato;
     private String konferrenceNavn;
     private String location;
+    private double dagspris;
 
     //Link Attributter
     private ArrayList<Foredrag> foredrags;
@@ -21,7 +22,7 @@ public class Konferrence {
     private ArrayList<Udflugt> udflugter;
 
     //Construktor
-    public Konferrence(LocalDate startDato, LocalDate slutDato, String konferrenceNavn, String location) {
+    public Konferrence(LocalDate startDato, LocalDate slutDato, String konferrenceNavn, String location, double dagspris) {
         this.startDato = startDato;
         this.slutDato = slutDato;
         this.konferrenceNavn = konferrenceNavn;
@@ -30,12 +31,14 @@ public class Konferrence {
         this.tilmeldinger = new ArrayList<>();
         this.hoteller = new ArrayList<>();
         this.udflugter = new ArrayList<>();
+        this.dagspris = dagspris;
     }
 
     //Set og get metoder
     public LocalDate getStartDato() {
         return startDato;
     }
+
     public void setStartDato(LocalDate startDato) {
         this.startDato = startDato;
     }
@@ -43,6 +46,7 @@ public class Konferrence {
     public LocalDate getSlutDato() {
         return slutDato;
     }
+
     public void setSlutDato(LocalDate slutDato) {
         this.slutDato = slutDato;
     }
@@ -50,6 +54,7 @@ public class Konferrence {
     public String getKonferrenceNavn() {
         return konferrenceNavn;
     }
+
     public void setKonferrenceNavn(String konferrenceNavn) {
         this.konferrenceNavn = konferrenceNavn;
     }
@@ -57,6 +62,7 @@ public class Konferrence {
     public String getLocation() {
         return location;
     }
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -65,27 +71,38 @@ public class Konferrence {
         return new ArrayList<>(foredrags);
     }
 
-    public ArrayList<Tilmelding> getDeltagere() {
+    public ArrayList<Tilmelding> getTilmeldinger() {
         return new ArrayList<>(tilmeldinger);
     }
-    public void addDeltager(Tilmelding tilmelding) {
+
+    public void addTilmelding(Tilmelding tilmelding) {
         this.tilmeldinger.add(tilmelding);
     }
 
+    public void setDagspris(Double pris) {
+        this.dagspris = pris;
+    }
 
-/////////////////////////////////////////////////////////////////////////////////////////
+    public double getDagsPris() {
+        return this.dagspris;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
     public ArrayList<Hotel> getHoteller() {
         return new ArrayList<>(hoteller);
     }
 
+
     public void addHotel(Hotel hotel) {
-        if (!hoteller.contains(hotel)){
+        if (!hoteller.contains(hotel)) {
             hoteller.add(hotel);
             hotel.addKonference(this);
         }
     }
-    public void removeHotel(Hotel hotel){
-        if (!hoteller.contains(hotel)){
+
+    public void removeHotel(Hotel hotel) {
+        if (!hoteller.contains(hotel)) {
             hoteller.remove(hotel);
             hotel.removeKonferrence(this);
         }
@@ -93,8 +110,8 @@ public class Konferrence {
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    public Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato,Deltager deltager, boolean foredragsholder) {
-        Tilmelding tilmelding = new Tilmelding(ankomstDato,afrejseDato ,this ,deltager ,foredragsholder);
+    public Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato, Deltager deltager, boolean foredragsholder) {
+        Tilmelding tilmelding = new Tilmelding(ankomstDato, afrejseDato, this, deltager, foredragsholder);
         tilmeldinger.add(tilmelding);
         return tilmelding;
     }
@@ -123,7 +140,7 @@ public class Konferrence {
     /////////////////////////////////////////////////////////////////////////////////////
 
     public Udflugt createUdflugt(double pris, String placering, String type, LocalDate dato) {
-        Udflugt udflugt = new Udflugt(pris,placering ,type,dato,this);
+        Udflugt udflugt = new Udflugt(pris, placering, type, dato, this);
         udflugter.add(udflugt);
         return udflugt;
     }
@@ -133,8 +150,11 @@ public class Konferrence {
             udflugter.remove(udflugt);
         }
     }
+    ///////////////////////////////////////////////////////////////////////////////////
 
 
-
-
+    @Override
+    public String toString() {
+        return konferrenceNavn;
+    }
 }

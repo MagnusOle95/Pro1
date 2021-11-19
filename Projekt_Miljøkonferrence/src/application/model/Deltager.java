@@ -88,6 +88,11 @@ public class Deltager {
         tilmeldinger.remove(tilmelding);
     }
 
+    public ArrayList<Tilmelding> getTilmeldinger(){
+        return new ArrayList<>(tilmeldinger);
+    }
+
+
     public String toString(){
         return "Navn: " + navn + "Adresse: " + adresse + "TlfNr: " + tlfNr;
     }

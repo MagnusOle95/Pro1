@@ -3,7 +3,6 @@ package guifx;
 import application.controller.Controller;
 import application.model.Hotel;
 import application.model.Tilvalg;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -13,10 +12,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class TilvalgWindow extends Stage {
+public class HotelTilvalgWindow extends Stage {
 	private Tilvalg tilvalg;
 
-	public TilvalgWindow(String title, Tilvalg tilvalg) {
+	public HotelTilvalgWindow(String title, Tilvalg tilvalg) {
 		initStyle(StageStyle.UTILITY);
 		initModality(Modality.APPLICATION_MODAL);
 		setResizable(false);
@@ -31,7 +30,7 @@ public class TilvalgWindow extends Stage {
 		setScene(scene);
 	}
 
-	public TilvalgWindow(String title) {
+	public HotelTilvalgWindow(String title) {
 		this(title, null);
 	}
 

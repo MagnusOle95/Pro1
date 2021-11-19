@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Controller {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static Konferrence crateKonferrence(LocalDate startDato, LocalDate slutDato, String konferrenceNavn, String Location) {
-        Konferrence konferrence = new Konferrence(startDato, slutDato, konferrenceNavn, Location);
+    public static Konferrence crateKonferrence(LocalDate startDato, LocalDate slutDato, String konferrenceNavn, String Location,double pris) {
+        Konferrence konferrence = new Konferrence(startDato, slutDato, konferrenceNavn, Location,pris);
         Storage.addKonferrence(konferrence);
         return konferrence;
     }
@@ -93,7 +93,7 @@ public class Controller {
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void initstorage() {
-        Konferrence k1 = Controller.crateKonferrence(LocalDate.of(2021, 12,18 ),LocalDate.of(2021,12 ,18) ,"Hav og Himmel" ,"Odense Universitet");
+        Konferrence k1 = Controller.crateKonferrence(LocalDate.of(2021, 12,18 ),LocalDate.of(2021,12 ,18) ,"Hav og Himmel" ,"Odense Universitet",2000);
 
         Hotel h1 = Controller.createHotel("Den hvide Svane", "Gert Mogensen", 1050, 1250);
         Tilvalg h1t1 = Controller.createTilvalg("WIFI", "Trådløst internet", 50, h1);
