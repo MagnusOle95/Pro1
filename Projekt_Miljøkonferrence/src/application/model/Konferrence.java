@@ -87,6 +87,8 @@ public class Konferrence {
         return this.dagspris;
     }
 
+    public ArrayList<Udflugt> getudflugter(){return new ArrayList<>(udflugter);}
+
 
     /////////////////////////////////////////////////////////////////////////////////////////
     public ArrayList<Hotel> getHoteller() {

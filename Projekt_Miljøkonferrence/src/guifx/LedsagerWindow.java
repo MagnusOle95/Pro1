@@ -1,7 +1,7 @@
 package guifx;
 
 import application.controller.Controller;
-import application.model.Konference;
+import application.model.Konferrence;
 import application.model.Ledsager;
 import application.model.Tilmelding;
 import application.model.Udflugt;
@@ -20,9 +20,9 @@ import javafx.scene.control.Button;
 import java.awt.*;
 
 public class LedsagerWindow extends Stage {
-    private Konference konference;
+    private Konferrence konference;
     private Tilmelding tilmelding;
-    public LedsagerWindow(String title, Konference konference, Tilmelding tilmelding){
+    public LedsagerWindow(String title, Konferrence konference, Tilmelding tilmelding){
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
         this.setResizable(false);
@@ -65,7 +65,7 @@ public class LedsagerWindow extends Stage {
         konferenceUdflugter = new ListView<>();
         pane.add(konferenceUdflugter,0,2,1,2);
         konferenceUdflugter.setPrefHeight(100);
-        konferenceUdflugter.getItems().setAll(konference.getUdflugter());
+
 
         Label lblValgteUdflugter = new Label("Valgte Udflugter:");
         pane.add(lblValgteUdflugter,0,5);
@@ -106,10 +106,10 @@ public class LedsagerWindow extends Stage {
         if (navn.length() == 0) {
             lblError.setText("Skriv et navn");
         } else {
-            Ledsager l = Controller.createLedsager(navn);
-            Controller.addLedsagerToTilmelding(l,tilmelding);
+         //   Ledsager l = Controller.createLedsager(navn);
+          //  Controller.addLedsagerToTilmelding(l,tilmelding);
             for(Udflugt udflugt : valgteUdfluter.getItems()){
-                Controller.addUdflugtToLedsager(udflugt,l);
+            //    Controller.addUdflugtToLedsager(udflugt,l);
             }
             this.hide();
         }

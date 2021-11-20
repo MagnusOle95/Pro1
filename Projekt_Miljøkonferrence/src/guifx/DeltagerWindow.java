@@ -1,9 +1,12 @@
 package guifx;
 
 import application.controller.Controller;
+import application.model.Tilvalg;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,6 +35,7 @@ public class DeltagerWindow extends Stage {
 
     private TextField txfName,txfAdresse,txfLand,txfTlfNr;
     private Label lblError;
+    private ListView<Tilvalg> hotelTilvalg,valgteTilvalg;
 
     private void initContent(GridPane pane){
         pane.setPadding(new Insets(10));
@@ -76,9 +80,9 @@ public class DeltagerWindow extends Stage {
         pane.add(lblError, 0, 5,2,1);
         lblError.setStyle("-fx-text-fill: red");
 
+        //---------------------------------------------------------------------------------------------
     }
 
-    //-----------------------------------------------------------------------------------
 
     private void cancelAction(){this.hide();}
 
@@ -98,7 +102,7 @@ public class DeltagerWindow extends Stage {
             if(tlfNr<=0 || tlfNr>1000000000){
                 lblError.setText("Udfyld alle felter");
             }else {
-                Controller.createDeltager(name, adresse, land, tlfNr);
+                Controller.createDeltager(name,adresse ,land ,tlfNr);
                 this.hide();
             }
         }

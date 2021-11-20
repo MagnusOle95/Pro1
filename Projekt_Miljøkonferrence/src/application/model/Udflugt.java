@@ -76,6 +76,10 @@ public class Udflugt {
         }
     }
 
+    public String toString(){
+        return type + " " +  placering + " Pris: " + pris + " Dato: " + dato;
+    }
+
 
 
 

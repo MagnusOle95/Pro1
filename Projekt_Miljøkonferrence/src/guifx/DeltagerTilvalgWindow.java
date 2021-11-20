@@ -56,7 +56,7 @@ public class DeltagerTilvalgWindow extends Stage {
         hotelTilvalg= new ListView<>();
         pane.add(hotelTilvalg,0,2,1,2);
         hotelTilvalg.setPrefHeight(100);
-        hotelTilvalg.getItems().setAll(hotel.getTilvalgs());
+        hotelTilvalg.getItems().setAll(hotel.getTilValg());
 
         Label lblValgteTilvalg = new Label("Valgte Tilvalg:");
         pane.add(lblValgteTilvalg,0,5);
@@ -79,6 +79,10 @@ public class DeltagerTilvalgWindow extends Stage {
         hbButtons.getChildren().add(btnCancel);
         hbButtons.getChildren().add(btnOk);
         hbButtons.getChildren().add(btnAdd);
+        //------------------------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -87,13 +91,13 @@ public class DeltagerTilvalgWindow extends Stage {
 
     //--------------------------------------------------------------------------------------
     private void cancelAction(){
-        Controller.deleteTilmelding(tilmelding);
+        //Controller.deleteTilmelding(tilmelding);
         this.hide();
     }
 
     private void okAction(){
         for(Tilvalg tilvalg:valgteTilvalg.getItems()){
-            Controller.addTilvalgToTilmelding(tilmelding,tilvalg);
+        //    Controller.addTilvalgToTilmelding(tilmelding,tilvalg);
         }
         this.hide();
     }

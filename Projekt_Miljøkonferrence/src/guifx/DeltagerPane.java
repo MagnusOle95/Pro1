@@ -48,12 +48,6 @@ public class DeltagerPane extends GridPane {
 		deltagere.setPrefHeight(100);
 
 
-		Label lblValgtForedrag = new Label("Pris for valgte konference:");
-		this.add(lblValgtForedrag, 3, 8);
-		txfValgtKonfererence = new TextField();
-		this.add(txfValgtKonfererence, 3, 9);
-		txfValgtKonfererence.setEditable(false);
-
 		ChangeListener<Deltager> listener = (ov, oldCompny, newCompany) -> this.selectedDeltagerChanged();
 		deltagere.getSelectionModel().selectedItemProperty().addListener(listener);
 

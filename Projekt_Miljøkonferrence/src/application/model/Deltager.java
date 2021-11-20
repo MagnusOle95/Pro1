@@ -17,10 +17,9 @@ public class Deltager {
 
 
     //Construktor
-    public Deltager(String navn,String adresse, String by, String land, int tlfNr) {
+    public Deltager(String navn,String adresse, String land, int tlfNr) {
         this.navn = navn;
         this.adresse = adresse;
-        this.by = by;
         this.land = land;
         this.tlfNr = tlfNr;
         this.tilmeldinger = new ArrayList<>();
@@ -37,14 +36,6 @@ public class Deltager {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    public String getBy() {
-        return by;
-    }
-
-    public void setBy(String by) {
-        this.by = by;
     }
 
     public String getLand() {
@@ -94,6 +85,6 @@ public class Deltager {
 
 
     public String toString(){
-        return "Navn: " + navn + "Adresse: " + adresse + "TlfNr: " + tlfNr;
+        return "Navn: " + navn + " Adresse: " + adresse + " TlfNr: " + tlfNr;
     }
 }

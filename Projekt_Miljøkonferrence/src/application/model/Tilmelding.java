@@ -120,7 +120,7 @@ public class Tilmelding {
 
     @Override
     public String toString(){
-        return "Navn: " + deltager.getNavn();
+        return "Navn: " + deltager.getNavn() + " Konferrencer: " + konferrence;
     }
     ///////////////////////////////////////////////////////////////////////////
 

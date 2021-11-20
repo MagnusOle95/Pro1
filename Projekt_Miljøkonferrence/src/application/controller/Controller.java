@@ -64,8 +64,9 @@ public class Controller {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato,Deltager deltager, boolean foredragsholder,Konferrence konferrence){
+    public static Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato,Deltager deltager, boolean foredragsholder,Konferrence konferrence,Hotel hotel){
         Tilmelding tilmelding = konferrence.createTilmelding(ankomstDato,afrejseDato ,deltager ,foredragsholder);
+        tilmelding.setHotel(hotel);
         return tilmelding;
     }
 
@@ -73,9 +74,10 @@ public class Controller {
         tilmelding.setDeltager(deltager);
     }
 
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static Deltager createDeltager(String navn,String adresse, String by, String land, int tlfNr){
-        Deltager deltager = new Deltager(navn,adresse , by,land ,tlfNr);
+    public static Deltager createDeltager(String navn,String adresse, String land, int tlfNr){
+        Deltager deltager = new Deltager(navn,adresse,land ,tlfNr);
         Storage.addDeltager(deltager);
         return deltager;
     }
@@ -107,17 +109,17 @@ public class Controller {
         Tilvalg h3t1 = Controller.createTilvalg("Morgenmad", "Nyd dejlige ægg med 4 små pølser", 100, h3);
 
         //Opretter deltagere
-        Deltager d1 = Controller.createDeltager("Bent hansen", "Solvænget", "Vildstrup", "Danmark", 20202020);
-        Deltager d2 = Controller.createDeltager("Sidsel squrepants", "Pineapple street", "Bikinibutton", "Havet", 1122334455);
+        Deltager d1 = Controller.createDeltager("Bent hansen", "Solvænget","Danmark", 20202020);
+        Deltager d2 = Controller.createDeltager("Sidsel squrepants", "Pineapple street", "Havet", 1122334455);
 
         //Oprette tilmeldinger
-        Tilmelding t1 = Controller.createTilmelding(LocalDate.of(2021,12 ,18 ),LocalDate.of(2021,12 ,20),d1,false,k1);
-        Controller.addTilmeldingTilHotel(t1,h1);
-        Controller.setDeltagerTilTilmelding(d1,t1 );
+        Tilmelding t1 = Controller.createTilmelding(LocalDate.of(2021,12 ,18 ),LocalDate.of(2021,12 ,20),d1,false,k1,h1);
 
-        Tilmelding t2 = Controller.createTilmelding(LocalDate.of(2021,12 ,18 ),LocalDate.of(2021,12 ,20),d2,false,k1);
-        Controller.addTilmeldingTilHotel(t2,h1);
-        Controller.setDeltagerTilTilmelding(d2,t2);
+        Tilmelding t2 = Controller.createTilmelding(LocalDate.of(2021,12 ,18 ),LocalDate.of(2021,12 ,20),d2,false,k1,h2);
+
+
+        //Opretter udflugt
+        Controller.createUdflugt(200,"Randers" ,"Sjov" ,LocalDate.of(2021,12 ,2 ) ,k1 );
     }
 
     public static void init(){
