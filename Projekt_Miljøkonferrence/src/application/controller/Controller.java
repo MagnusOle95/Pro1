@@ -138,6 +138,6 @@ public class Controller {
         initstorage();
     }
 
-    //JE
+    //Hej nu burde det være done
 
 }
