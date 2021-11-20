@@ -13,7 +13,6 @@ public class Hotel {
     //Link attribut
     private ArrayList<Tilvalg> tilValg;
     private ArrayList<Tilmelding> tilMeldinger;
-    private ArrayList<Konferrence> konferrencer;
 
     //Construktor
     public Hotel(String hotelNavn, String hotelBestyrre,double enkeltVærelsesPris, double dobbeltVærelsesPris) {
@@ -23,8 +22,6 @@ public class Hotel {
         this.dobbeltVærelsesPris = dobbeltVærelsesPris;
         this.tilValg = new ArrayList<>();
         this.tilMeldinger = new ArrayList<>();
-        this.konferrencer = new ArrayList<>();
-
     }
 
     //Get og set metoder
@@ -94,19 +91,8 @@ public class Hotel {
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////
-    public void addKonference(Konferrence konferrence){
-        if (!this.konferrencer.add(konferrence)){
-            this.konferrencer.add(konferrence);
-            konferrence.addHotel(this);
-            }
-        }
-        public void removeKonferrence(Konferrence konference){
-        if (this.konferrencer.contains(konference)){
-            this.konferrencer.add(konference);
-            konference.removeHotel(this);
-        }
-    }
+
+
     ////////////////////////////////////////////////////////////////////////////////
 
     @Override

@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.*;
+import guifx.KonferencePane;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -41,20 +42,20 @@ public class Controller {
         return hotelNavne;
     }
 
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static Tilvalg createTilvalg(String navn, String beskrivelse, double pris, Hotel hotel){
         Tilvalg tilvalg = hotel.createTilvalg(navn,beskrivelse ,pris);
         return  tilvalg;
     }
 
-    public static ArrayList<Tilvalg> getTilvalg (Hotel hotel){
-        return new ArrayList<>(hotel.getTilValg());
+    public static void addTilvalgToTilmelding(Tilvalg tilvalg, Tilmelding tilmelding){
+        tilmelding.addHotelTilvalg(tilvalg);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static Foredrag createForedrag(String foredragsNavn,Konferrence konferrence){
-        Foredrag foredrag = konferrence.createFordrag(foredragsNavn);
-        return foredrag;
+    public static ArrayList<Tilvalg> getTilvalg (Hotel hotel){
+        return new ArrayList<>(hotel.getTilValg());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +66,7 @@ public class Controller {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     public static Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato,Deltager deltager, boolean foredragsholder,Konferrence konferrence,Hotel hotel){
-        Tilmelding tilmelding = konferrence.createTilmelding(ankomstDato,afrejseDato ,deltager ,foredragsholder);
+        Tilmelding tilmelding = new Tilmelding (ankomstDato,afrejseDato ,konferrence,deltager ,foredragsholder);
         tilmelding.setHotel(hotel);
         return tilmelding;
     }
@@ -92,7 +93,12 @@ public class Controller {
         return ledsager;
     }
 
+    public static void addLedsagerToUdflugt(Ledsager ledsager, Udflugt udflugt){
+        ledsager.addUdflugt(udflugt);
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public static void initstorage() {
         Konferrence k1 = Controller.crateKonferrence(LocalDate.of(2021, 12,18 ),LocalDate.of(2021,12 ,18) ,"Hav og Himmel" ,"Odense Universitet",2000);
@@ -117,9 +123,15 @@ public class Controller {
 
         Tilmelding t2 = Controller.createTilmelding(LocalDate.of(2021,12 ,18 ),LocalDate.of(2021,12 ,20),d2,false,k1,h2);
 
+        //Opretter ledsager
+        Ledsager l1 = Controller.createLedsager("Hans",t1);
+        Ledsager l2 = Controller.createLedsager("Jens",t2 );
+
 
         //Opretter udflugt
-        Controller.createUdflugt(200,"Randers" ,"Sjov" ,LocalDate.of(2021,12 ,2 ) ,k1 );
+        Udflugt u1 = Controller.createUdflugt(200,"Randers" ,"Sjov" ,LocalDate.of(2021,12 ,2 ) ,k1 );
+        Controller.addLedsagerToUdflugt(l1,u1);
+        Controller.addLedsagerToUdflugt(l2,u1 );
     }
 
     public static void init(){

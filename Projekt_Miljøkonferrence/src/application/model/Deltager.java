@@ -72,7 +72,10 @@ public class Deltager {
 
 
     public void addTilmelding(Tilmelding tilmelding){
-        tilmeldinger.add(tilmelding);
+        if (!tilmeldinger.contains(tilmelding)){
+            tilmeldinger.add(tilmelding);
+            tilmelding.setDeltager(this);
+        }
     }
 
     public void removeTilmelding(Tilmelding tilmelding){
@@ -85,6 +88,6 @@ public class Deltager {
 
 
     public String toString(){
-        return "Navn: " + navn + " Adresse: " + adresse + " TlfNr: " + tlfNr;
+        return "Navn: " + navn + "\nAdresse: " + adresse + "\nTlfNr: " + tlfNr;
     }
 }

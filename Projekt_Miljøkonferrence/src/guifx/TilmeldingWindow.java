@@ -4,7 +4,6 @@ import application.controller.Controller;
 import application.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -12,15 +11,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TilmeldingWindow extends Stage {
-    private Deltager deltager;
+    private final Deltager deltager;
 
     public TilmeldingWindow(String title, Deltager deltager) {
         this.initStyle(StageStyle.UTILITY);
@@ -39,14 +38,16 @@ public class TilmeldingWindow extends Stage {
 
     //-------------------------------------------------------------------------------------
 
-    private TextField txfYear, txfMonth, txfDay, txfYear2, txfMonth2, txfDay2, txfName, txfAdresse, txfLand, txfTlfNr;
+    private TextField txfLedsagerName;
     private CheckBox chbForedragsholder, chbHotel, chbLedsager;
     private ComboBox<Konferrence> cbbKonference;
     private ListView<Tilvalg> hotelTilvalg, valgteTilvalg;
     private ListView<Udflugt> konferenceUdflugter, valgteUdfluter;
     private ComboBox<Hotel> cbbHotel;
-    private Button btnOk, btnBookHotel, btnAddTilvalg, btnAddUdflugt;
+    private Button btnOk, btnAddTilvalg, btnAddUdflugt;
     private Label lblError;
+    private final DatePicker datePickerStart = new DatePicker();
+    private final DatePicker datePickerSlut = new DatePicker();
 
 
     private void initContent(GridPane pane) {
@@ -68,71 +69,42 @@ public class TilmeldingWindow extends Stage {
         lblNavne.getChildren().add(lblValgteNavn);
         lblNavne.getChildren().add(chbLedsager);
 
-
-        Label lblAnkomstDato = new Label("AnkomstDato:");
-        pane.add(lblAnkomstDato, 0, 1);
-
-        Label lblYear = new Label("År");
-
-        txfYear = new TextField();
-        txfYear.setMaxWidth(70);
-
-        Label lblMonth = new Label("Måned");
-
-        txfMonth = new TextField();
-        txfMonth.setMaxWidth(30);
-
-        Label lblDay = new Label("Dag");
-
-        txfDay = new TextField();
-        txfDay.setMaxWidth(30);
-
-        Label lblAfrejseDato = new Label("AfrejseDato:");
-        pane.add(lblAfrejseDato, 0, 5);
-
-
-        Label lblYear2 = new Label("År");
-        pane.add(lblYear2, 0, 6);
-
-        txfYear2 = new TextField();
-        pane.add(txfYear2, 0, 7);
-        txfYear2.setMaxWidth(70);
-
-        Label lblMonth2 = new Label("Måned");
-        pane.add(lblMonth2, 1, 6);
-
-        txfMonth2 = new TextField();
-        pane.add(txfMonth2, 1, 7);
-        txfMonth2.setMaxWidth(30);
-
-        Label lblDay2 = new Label("Dag");
-        pane.add(lblDay2, 2, 6);
-
-        txfDay2 = new TextField();
-        pane.add(txfDay2, 2, 7);
-        txfDay2.setMaxWidth(30);
+        VBox vpdate = new VBox(10);
+        pane.add(vpdate,0 ,1 );
+        vpdate.getChildren().add(datePickerStart);
+        vpdate.getChildren().add(datePickerSlut);
+        datePickerStart.setPromptText("Ankomstdato");
+        datePickerSlut.setPromptText("Afrejsedato");
 
         Label lblKonference = new Label("Konference:");
-        pane.add(lblKonference, 0, 8);
+        pane.add(lblKonference, 0, 2);
+
+        Label lblLedsagerNavn = new Label("Ledsager's navn");
+        pane.add(lblLedsagerNavn,6 ,8);
+
+        txfLedsagerName = new TextField();
+        pane.add(txfLedsagerName, 6, 9);
+        txfLedsagerName.setMaxWidth(120);
 
         cbbKonference = new ComboBox<>();
-        pane.add(cbbKonference, 0, 9);
+        pane.add(cbbKonference, 0, 3);
         cbbKonference.getItems().addAll(Controller.getKonferrencer());
         ChangeListener<Konferrence> listener4 = (ov, oldUdflugt, newUdflugt) -> this.updateUdflugterListe();
         cbbKonference.getSelectionModel().selectedItemProperty().addListener(listener4);
 
         cbbHotel = new ComboBox<>();
-        pane.add(cbbHotel, 0, 13, 1, 2);
+        cbbHotel.setPromptText("Hoteller");
+        pane.add(cbbHotel, 0, 6, 1, 2);
         cbbHotel.getItems().addAll(Controller.getHoteller());
         cbbHotel.setDisable(true);
         ChangeListener<Hotel> listener3 = (ov, oldHotel, newHotel) -> this.updateLister();
         cbbHotel.getSelectionModel().selectedItemProperty().addListener(listener3);
 
         chbForedragsholder = new CheckBox("Foredragsholder");
-        pane.add(chbForedragsholder, 0, 10);
+        pane.add(chbForedragsholder, 0, 4);
 
         chbHotel = new CheckBox("Book Hotel");
-        pane.add(chbHotel, 0, 12);
+        pane.add(chbHotel, 0, 5);
         ChangeListener<Boolean> listener = (ov, oldValue, newValue) -> selectedHotelChanged(newValue);
         chbHotel.selectedProperty().addListener(listener);
 
@@ -145,42 +117,13 @@ public class TilmeldingWindow extends Stage {
 
 
         HBox hbButtons = new HBox(20);
-        pane.add(hbButtons, 0, 15);
+        pane.add(hbButtons, 0, 10);
         hbButtons.getChildren().add(btnCancel);
         hbButtons.getChildren().add(btnOk);
 
 
-        HBox lblDato = new HBox(50);
-        pane.add(lblDato, 0, 2);
-        lblDato.setAlignment(Pos.CENTER);
-        lblDato.getChildren().add(lblYear);
-        lblDato.getChildren().add(lblMonth);
-        lblDato.getChildren().add(lblDay);
-
-        HBox txfDato = new HBox(40);
-        pane.add(txfDato, 0, 3);
-        txfDato.setAlignment(Pos.CENTER);
-        txfDato.getChildren().add(txfYear);
-        txfDato.getChildren().add(txfMonth);
-        txfDato.getChildren().add(txfDay);
-
-
-        HBox lblDato2 = new HBox(50);
-        pane.add(lblDato2, 0, 6);
-        lblDato2.setAlignment(Pos.CENTER);
-        lblDato2.getChildren().add(lblYear2);
-        lblDato2.getChildren().add(lblMonth2);
-        lblDato2.getChildren().add(lblDay2);
-
-        HBox txfDato2 = new HBox(40);
-        pane.add(txfDato2, 0, 7);
-        txfDato2.setAlignment(Pos.CENTER);
-        txfDato2.getChildren().add(txfYear2);
-        txfDato2.getChildren().add(txfMonth2);
-        txfDato2.getChildren().add(txfDay2);
-
         lblError = new Label();
-        pane.add(lblError, 1, 12);
+        pane.add(lblError, 1, 11);
         lblError.setStyle("-fx-text-fill: red");
 
         //---------------------------------------------------------------------------------------------------
@@ -204,9 +147,6 @@ public class TilmeldingWindow extends Stage {
         valgteTilvalg = new ListView<>();
         pane.add(valgteTilvalg, 3, 5, 1, 2);
         valgteTilvalg.setPrefHeight(100);
-
-        Button btnAdd = new Button("Add");
-        //btnAdd.setOnAction(event -> );
 
         hotelTilvalg.setDisable(true);
         btnAddTilvalg.setDisable(true);
@@ -236,9 +176,6 @@ public class TilmeldingWindow extends Stage {
         pane.add(valgteUdfluter, 6, 5, 1, 2);
         valgteUdfluter.setPrefHeight(100);
 
-        Button btnAddLedsager = new Button("Add ledsager");
-        // btnAdd.setOnAction(event -> addAction());
-
         Button btnOk = new Button("OK");
         btnOk.setOnAction(event -> okAction());
 
@@ -260,23 +197,11 @@ public class TilmeldingWindow extends Stage {
     }
 
     private void okAction() {
-        int year = -1;
-        int year2 = -1;
-        int month = -1;
-        int month2 = -1;
-        int day = -1;
-        int day2 = -1;
-        try {
-            year = Integer.parseInt(txfYear.getText().trim());
-            month = Integer.parseInt(txfMonth.getText().trim());
-            day = Integer.parseInt(txfDay.getText().trim());
-            year2 = Integer.parseInt(txfYear2.getText().trim());
-            month2 = Integer.parseInt(txfMonth2.getText().trim());
-            day2 = Integer.parseInt(txfDay2.getText().trim());
-        } catch (NumberFormatException ex) {
-            //do nothing
-        }
-        if (year < 0 && year2 < 0 && month < 0 && month2 < 0 && day < 0 && day2 < 0) {
+        LocalDate dStart = datePickerStart.getValue();
+        LocalDate dslut = datePickerSlut.getValue();
+
+
+        if (dStart == null || dslut == null) {
             lblError.setText("Skriv en dato");
         } else {
             Hotel hotel = null;
@@ -284,10 +209,19 @@ public class TilmeldingWindow extends Stage {
                 hotel=cbbHotel.getSelectionModel().getSelectedItem();
             }
 
-            Tilmelding tilmelding = Controller.createTilmelding(LocalDate.of(year,month ,day),
-                    LocalDate.of(year2 ,month2 ,day2 ) ,
-                    deltager,chbForedragsholder.isSelected(),
+            Tilmelding tilmelding = Controller.createTilmelding(dStart,dslut,deltager,chbForedragsholder.isSelected(),
                     cbbKonference.getSelectionModel().getSelectedItem(),hotel);
+            for (int i = 0; i<valgteTilvalg.getItems().size();i++){
+                Controller.addTilvalgToTilmelding(valgteTilvalg.getItems().get(i),tilmelding);
+            }
+
+            if (chbLedsager.isSelected()){
+                Ledsager ledsager = Controller.createLedsager(txfLedsagerName.getText().trim(),tilmelding);
+                for (int i = 0; i < valgteUdfluter.getItems().size();i++){
+                    Controller.addLedsagerToUdflugt(ledsager,valgteUdfluter.getItems().get(i));
+                }
+            }
+
 
             this.hide();
         }
@@ -307,9 +241,6 @@ public class TilmeldingWindow extends Stage {
         btnAddUdflugt.setDisable(!checked);
     }
 
-    public ArrayList<Tilvalg> showHotelTilvalg(Hotel Hotel) {
-        return Hotel.getTilValg();
-    }
 
     public void updateLister() {
         Hotel hotel = cbbHotel.getSelectionModel().getSelectedItem();
@@ -330,7 +261,7 @@ public class TilmeldingWindow extends Stage {
     public void updateUdflugterListe(){
         Konferrence kon = cbbKonference.getSelectionModel().getSelectedItem();
         if (kon != null){
-            konferenceUdflugter.getItems().setAll(kon.getudflugter());
+            konferenceUdflugter.getItems().setAll(kon.getUdflugter());
         }
 
     }
@@ -342,3 +273,4 @@ public class TilmeldingWindow extends Stage {
         }
     }
 }
+

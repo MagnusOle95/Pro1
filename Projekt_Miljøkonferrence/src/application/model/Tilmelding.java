@@ -1,5 +1,7 @@
 package application.model;
 
+import guifx.KonferencePane;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -50,14 +52,18 @@ public class Tilmelding {
         this.afrejseDato = afrejseDato;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
-
 
     /////////////////////////////////////////////////////////////////////////////////////////
     public Konferrence getKonferrence() {
         return konferrence;
     }
 
+    public void setKonferrence(Konferrence konferrence){
+        if (konferrence != null && this.konferrence != konferrence){
+            this.konferrence = konferrence;
+            konferrence.addTilmelding(this);
+        }
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -79,7 +85,10 @@ public class Tilmelding {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
     public void setDeltager(Deltager deltager) {
-        this.deltager = deltager;
+        if (this.deltager != deltager && deltager != null){
+            this.deltager = deltager;
+            deltager.addTilmelding(this);
+        }
     }
 
     public Deltager getDeltager() {
@@ -89,7 +98,7 @@ public class Tilmelding {
     ////////////////////////////////////////////////////////////////////////////
     //Ledsager
     public Ledsager createLedsager(String navn) {
-        Ledsager ledsager = new Ledsager(navn,this);
+        Ledsager ledsager = new Ledsager(navn);
         this.ledsager = ledsager;
         return ledsager;
     }
@@ -120,7 +129,7 @@ public class Tilmelding {
 
     @Override
     public String toString(){
-        return "Navn: " + deltager.getNavn() + " Konferrencer: " + konferrence;
+        return "Konferrencer: " + konferrence + "\nAnkomstdato: " + ankomstDato + "\nAfrejsedato: " + afrejseDato + "\n";
     }
     ///////////////////////////////////////////////////////////////////////////
 

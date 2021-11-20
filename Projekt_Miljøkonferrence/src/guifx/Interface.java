@@ -45,6 +45,7 @@ public class Interface extends Application {
 
 		KonferencePane konferencePane = new KonferencePane();
 		tabKonferencePane.setContent(konferencePane);
+
 		//tabCompanies.setOnSelectionChanged(event -> companyPane.updateControls());
 
 

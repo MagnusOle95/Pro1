@@ -18,7 +18,7 @@ public class Udflugt {
     private Konferrence konferrence;
 
 
-    Udflugt(double pris, String placering, String type, LocalDate dato,Konferrence konferrence) {
+    public Udflugt(double pris, String placering, String type, LocalDate dato,Konferrence konferrence) {
         this.pris = pris;
         this.placering = placering;
         this.type = type;
@@ -57,8 +57,16 @@ public class Udflugt {
         this.dato = dato;
     }
 
-    public Konferrence getKonferrence(){
-        return this.konferrence;
+    public void setKonferrence(Konferrence konferrence){
+        if (this.konferrence != konferrence && konferrence != null){
+            this.konferrence = konferrence;
+            konferrence.addUdflugt(this);
+        }
+
+    }
+
+    public ArrayList<Ledsager> getLedsagere(){
+        return new ArrayList<>(ledsagere);
     }
 
 

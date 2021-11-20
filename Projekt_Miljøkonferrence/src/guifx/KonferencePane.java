@@ -5,10 +5,7 @@ import application.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
 public class KonferencePane extends GridPane {
@@ -78,6 +75,19 @@ public class KonferencePane extends GridPane {
         this.add(txfPris, 3, 2);
         this.add(txfStartDato, 3, 3);
         this.add(txfSlutDato, 3, 4);
+
+        //Opret udflugt
+        Button opretUdflugt = new Button("Opret udflugt");
+        this.add(opretUdflugt,3, 12);
+        opretUdflugt.setOnAction(e-> this.opretUdflugt());
+
+        //update udflugt
+        Button btnUpdateUdflugt = new Button("Update");
+        this.add(btnUpdateUdflugt,4, 12);
+        btnUpdateUdflugt.setOnAction(e-> this.updateControls());
+
+        this.add(txaUdflugt, 3, 6,2,6);
+        txaUdflugt.setPrefWidth(100);
         
         
         // LISTENER TIL KONFERENCER
@@ -99,10 +109,19 @@ public class KonferencePane extends GridPane {
         lvwKonferrencer.getSelectionModel().select(index);
         
     }
+
+    private void opretUdflugt() {
+        OpretUdflugtWindow opretUdflugtWindow = new OpretUdflugtWindow("Opret udflugt");
+        opretUdflugtWindow.showAndWait();
+
+        updateControls();
+    }
     
     private void selectedKonerenceChanged() {
         this.updateControls();
     }
+
+
     
     public void updateControls() {
         Konferrence konference = lvwKonferrencer.getSelectionModel().getSelectedItem();
@@ -139,9 +158,23 @@ public class KonferencePane extends GridPane {
                             "\n\n-------------------------------------------" + "\n");
             }
             txaTilmelding.setText(sbTilmelding.toString());
+
             
         }
+        StringBuilder sb1 = new StringBuilder();
+
+        for (Udflugt udflugt : konference.getUdflugter()) {
+            sb1.append("Navn: " +udflugt.getType()+
+                    "\nPris: " +udflugt.getPris() +
+                    "\nDato: "+udflugt.getDato() +
+                    "\nLedsagere: " + udflugt.getLedsagere());
+
+
+        }
+        txaUdflugt.setText(sb1.toString());
     }
+
+
 }
 
 

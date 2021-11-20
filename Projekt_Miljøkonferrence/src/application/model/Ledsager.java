@@ -8,15 +8,13 @@ public class Ledsager {
     private String navn;
 
     //Link attributter
-    private Tilmelding tilmelding;
     private ArrayList<Udflugt> udflugter;
 
 
     //Construktor
-    Ledsager(String navn,Tilmelding tilmelding) {
+    Ledsager(String navn) {
         this.navn = navn;
         udflugter = new ArrayList<>();
-        this.tilmelding = tilmelding;
     }
 
     //Get og set metoder
@@ -45,6 +43,10 @@ public class Ledsager {
             this.udflugter.remove(udflugt);
             udflugt.removeLedsager(this);
         }
+    }
+
+    public String toString(){
+        return navn;
     }
 
 

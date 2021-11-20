@@ -16,8 +16,6 @@ public class Konferrence {
     private double dagspris;
 
     //Link Attributter
-    private ArrayList<Foredrag> foredrags;
-    private ArrayList<Hotel> hoteller;
     private ArrayList<Tilmelding> tilmeldinger;
     private ArrayList<Udflugt> udflugter;
 
@@ -27,9 +25,7 @@ public class Konferrence {
         this.slutDato = slutDato;
         this.konferrenceNavn = konferrenceNavn;
         this.location = location;
-        this.foredrags = new ArrayList<>();
         this.tilmeldinger = new ArrayList<>();
-        this.hoteller = new ArrayList<>();
         this.udflugter = new ArrayList<>();
         this.dagspris = dagspris;
     }
@@ -67,16 +63,16 @@ public class Konferrence {
         this.location = location;
     }
 
-    public ArrayList<Foredrag> getForedrag() {
-        return new ArrayList<>(foredrags);
-    }
 
     public ArrayList<Tilmelding> getTilmeldinger() {
         return new ArrayList<>(tilmeldinger);
     }
 
     public void addTilmelding(Tilmelding tilmelding) {
-        this.tilmeldinger.add(tilmelding);
+        if (!tilmeldinger.contains(tilmelding)){
+            this.tilmeldinger.add(tilmelding);
+            tilmelding.setKonferrence(this);
+        }
     }
 
     public void setDagspris(Double pris) {
@@ -87,54 +83,15 @@ public class Konferrence {
         return this.dagspris;
     }
 
-    public ArrayList<Udflugt> getudflugter(){return new ArrayList<>(udflugter);}
+    public ArrayList<Udflugt> getUdflugter(){return new ArrayList<>(udflugter);}
 
 
-    /////////////////////////////////////////////////////////////////////////////////////////
-    public ArrayList<Hotel> getHoteller() {
-        return new ArrayList<>(hoteller);
-    }
-
-
-    public void addHotel(Hotel hotel) {
-        if (!hoteller.contains(hotel)) {
-            hoteller.add(hotel);
-            hotel.addKonference(this);
-        }
-    }
-
-    public void removeHotel(Hotel hotel) {
-        if (!hoteller.contains(hotel)) {
-            hoteller.remove(hotel);
-            hotel.removeKonferrence(this);
-        }
-    }
 
     /////////////////////////////////////////////////////////////////////////////////////////
-
-    public Tilmelding createTilmelding(LocalDate ankomstDato, LocalDate afrejseDato, Deltager deltager, boolean foredragsholder) {
-        Tilmelding tilmelding = new Tilmelding(ankomstDato, afrejseDato, this, deltager, foredragsholder);
-        tilmeldinger.add(tilmelding);
-        return tilmelding;
-    }
 
     public void removePerson(Tilmelding tilmelding) {
         if (this.tilmeldinger.contains(tilmelding)) {
             this.tilmeldinger.remove(tilmelding);
-        }
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-    public Foredrag createFordrag(String foredragsholdersNavn) {
-        Foredrag fordrag = new Foredrag(foredragsholdersNavn, this);
-        foredrags.add(fordrag);
-        return fordrag;
-    }
-
-    public void removeFordrag(Foredrag fordrag) {
-        if (foredrags.contains(fordrag)) {
-            foredrags.remove(fordrag);
         }
     }
 
@@ -145,6 +102,13 @@ public class Konferrence {
         Udflugt udflugt = new Udflugt(pris, placering, type, dato, this);
         udflugter.add(udflugt);
         return udflugt;
+    }
+
+    public void addUdflugt(Udflugt udflugt){
+        if (!udflugter.contains(udflugt)){
+            udflugter.add(udflugt);
+            udflugt.setKonferrence(this);
+        }
     }
 
     public void removePerson(Udflugt udflugt) {
