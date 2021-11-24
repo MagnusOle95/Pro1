@@ -67,7 +67,7 @@ public class KonferencePane extends GridPane {
         txaTilmelding.setPrefHeight(200);
         txaTilmelding.setEditable(false);
         txaTilmelding.setFont(Font.font("Verdana", 13));
-        
+
         
         // TEXTFIELDS
         this.add(txfKonfnavn, 3, 0);
@@ -136,7 +136,7 @@ public class KonferencePane extends GridPane {
             StringBuilder sbTilmelding = new StringBuilder();
             for (Tilmelding tilmelding : konference.getTilmeldinger()) {
                 if (tilmelding.getLedsager() != null) {
-                    sbTilmelding.append("Navn:  " + tilmelding.getDeltager() +
+                    sbTilmelding.append("Navn:  " + tilmelding.getDeltager().getNavn() +
                             "\nAdresse:  " + tilmelding.getDeltager().getAdresse() +
                             "\n\nTlfnr:  " + tilmelding.getDeltager().getTlfNr() +
                             "\nFirma:  " + tilmelding.getDeltager().getFirmanavn() +

@@ -30,6 +30,7 @@ public class Tilmelding {
         this.hotelTilvalg = new ArrayList<>();
         this.deltager = deltager;
         this.deltager.addTilmelding(this);
+        this.konferrence.addTilmelding(this);
         this.foredragsHolder = foredragsholder;
     }
 

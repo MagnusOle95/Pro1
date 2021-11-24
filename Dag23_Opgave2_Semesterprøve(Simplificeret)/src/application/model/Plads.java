@@ -75,7 +75,7 @@ public class Plads {
         if (område == Område.BØRNE){
             samletPris = samletPris * 0.80;
         }
-        if (område == Område.BØRNE){
+        if (område == Område.TURNERING){
             samletPris = samletPris * 1.10;
         }
         return samletPris;
