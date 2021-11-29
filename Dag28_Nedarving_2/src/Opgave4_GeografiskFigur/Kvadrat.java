@@ -1,6 +1,6 @@
 package Opgave4_GeografiskFigur;
 
-public class Kvadrat extends Figure {
+public class Kvadrat extends Figure_Data {
 
     private int Side;
 

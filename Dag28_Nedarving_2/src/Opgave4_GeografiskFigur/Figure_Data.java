@@ -1,11 +1,11 @@
 package Opgave4_GeografiskFigur;
 
-public abstract class Figure {
+public abstract class Figure_Data {
 
     private int x;
     private int y;
 
-    public Figure(int x, int y) {
+    public Figure_Data(int x, int y) {
         this.x = x;
         this.y = y;
     }

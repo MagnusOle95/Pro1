@@ -1,6 +1,6 @@
 package Opgave4_GeografiskFigur;
 
-public class Cirkel extends Figure {
+public class Cirkel extends Figure_Data {
 
     private int radius;
 
