@@ -54,7 +54,7 @@ public class TestApp {
         PercentDiscount pd = new PercentDiscount(30);
         c1.setDiscount(pd);
 
-        System.out.println("Samlede pris for ordre for kunde 1 med discound: " + c1.totalBuy());
+        System.out.println("Samlede pris for ordre for kunde 1 med percentes discound: " + c1.totalBuy());
 
         //Tester discound for kunde 2 med fixed discound
 
@@ -63,7 +63,13 @@ public class TestApp {
         FixedDiscount fd = new FixedDiscount(50,300);
         c2.setDiscount(fd);
 
-        System.out.println("Samlede pris for ordre kunde 2 med discount: " + c2.totalBuy());
+        System.out.println("Samlede pris for ordre kunde 2 med fixed discount: " + c2.totalBuy());
+
+        // tester dicount med alders rabat.
+        AgeDiscount ad = new AgeDiscount(30);
+        c2.setDiscount(ad);
+
+        System.out.println("Samlede pris for odre kunde 2 med age discount: " + c2.totalBuy());
 
 
 
