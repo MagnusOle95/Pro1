@@ -22,6 +22,7 @@ public class App {
 
     }
 
+
     public static Measurable max(Measurable[] objekts){
         double sum = 0;
         int indeks = 0;
