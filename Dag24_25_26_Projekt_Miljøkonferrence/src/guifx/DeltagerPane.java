@@ -109,6 +109,7 @@ public class DeltagerPane extends GridPane {
 	}
 
 	private void createDeltagerAction(){
+
 		DeltagerWindow dia = new DeltagerWindow("Opret Deltager");
 		dia.showAndWait();
 
@@ -118,9 +119,11 @@ public class DeltagerPane extends GridPane {
 	}
 
 	private void createTilmeldAction(){
-		TilmeldingWindow dia = new TilmeldingWindow("Tilmeld Deltager",deltagere.getSelectionModel().getSelectedItem());
-		dia.showAndWait();
-		updateControls();
+		if (deltagere.getSelectionModel().getSelectedItem() != null){
+			TilmeldingWindow dia = new TilmeldingWindow("Tilmeld Deltager",deltagere.getSelectionModel().getSelectedItem());
+			dia.showAndWait();
+			updateControls();
+		}
 	}
 
 	public void updateControls(){
