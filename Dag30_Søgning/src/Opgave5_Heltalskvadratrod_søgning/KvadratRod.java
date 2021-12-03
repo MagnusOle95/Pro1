@@ -4,18 +4,18 @@ public class KvadratRod {
 
     //Opgave 5 del 1
     public static String kvadratrodLinær(int n){
-        boolean found = false;
+        int indeks = -1;
         int r = 0;
-        while (!found){
+        while (indeks == -1){
             int tal1 = r * r;
             int tal2 = (r+1) * (r+1);
             if (tal1 <= n && n < tal2){
-                found = true;
+                indeks = r;
             }else {
                 r++;
             }
         }
-        return "r:" + r;
+        return "r:" + indeks;
     }
 
     //Binær, opgave 5 del 2
