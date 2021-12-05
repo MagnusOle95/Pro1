@@ -1,10 +1,6 @@
-package Opgave1_BulleSort;
+package Opgave1_BubbleSort;
 
-import com.sun.tools.javac.Main;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class App_BubbleSort {
 
