@@ -8,7 +8,6 @@ public class App_Opgave3_strengsøgning {
 
         System.out.println(find("Jubiiii",5));
 
-
     }
 
     public static boolean find (String tekst, int antal){
