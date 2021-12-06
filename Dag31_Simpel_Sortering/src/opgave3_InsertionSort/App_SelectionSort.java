@@ -56,7 +56,7 @@ public class App_SelectionSort {
 
 
     public static void insertionSortArray(Customer[] list) {
-        for (int i = 0; i < list.length; i++) {
+        for (int i = 1; i < list.length; i++) {
             Customer next = list[i];
             int j = i;
             boolean found = false;
