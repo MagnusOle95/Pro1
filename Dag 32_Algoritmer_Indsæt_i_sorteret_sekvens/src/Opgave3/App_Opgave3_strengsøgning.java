@@ -6,7 +6,7 @@ public class App_Opgave3_strengsøgning {
 
     public static void main(String[] args) {
 
-        System.out.println(find("Jubiiii",5));
+        System.out.println(find("Jubiiii",4));
 
     }
 

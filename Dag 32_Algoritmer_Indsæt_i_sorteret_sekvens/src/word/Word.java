@@ -1,4 +1,7 @@
 package word;
+
+import javax.crypto.spec.ChaCha20ParameterSpec;
+
 /**
  * This class describes words in a document. There are a couple of bugs in this
  * class.
@@ -52,19 +55,18 @@ public class Word {
 			end--;
 		}
 
-		boolean insideVowelGroup = false;
+
 		for (int i = 0; i <= end; i++) {
 			ch = text.charAt(i);
 			String vowels = "aeiouyAEIOUY";
-			if (vowels.indexOf(ch) >= 0) {
-				// ch is a vowel
-				if (!insideVowelGroup) {
-					// Start of new vowel group
+				if (vowels.indexOf(ch) >= 0) {
 					count++;
-					insideVowelGroup = true;
-				}
 			}
 		}
+
+
+		//Brug Hello yellow peach
+
 
 		// Every word has at least one syllable
 		if (count == 0) {
