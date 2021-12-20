@@ -1,14 +1,5 @@
 package guifx;
 
-import application.model.Parkeringshus;
-import application.model.Parkeringsplads;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-
 public class Vindue1 extends GridPane {
 
 	private TextField txf1, txf2;

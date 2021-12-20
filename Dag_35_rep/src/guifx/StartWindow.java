@@ -1,11 +1,4 @@
-import application.controller.Controller;
-import com.sun.glass.ui.Application;
-import guifx.Vindue1;
-import javafx.scene.Scene;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+
 
 public class StartWindow extends Application {
 
