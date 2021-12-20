@@ -1,6 +1,7 @@
 package guifx;
 
-import Gui.application.model.Company;
+import application.model.Parkeringshus;
+import application.model.Parkeringsplads;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -12,7 +13,7 @@ public class Vindue1 extends GridPane {
 
 	private TextField txf1, txf2;
 	private TextArea txa;
-	private ListView<Company> lvw;
+	private ListView<Parkeringshus> lvw;
 
 	public Vindue1() {
 		this.setPadding(new Insets(20));

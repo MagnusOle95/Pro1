@@ -1,7 +1,12 @@
 package application.controller;
 
 import application.model.*;
+import com.sun.source.tree.CatchTree;
 import storage.Storage;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -23,6 +28,22 @@ public class Controller {
 
     public static InvalidePlads createinvalidePlads(int nummer, Parkeringshus parkeringshus, double areal){
         return parkeringshus.createInvalidPlads(nummer,areal);
+    }
+
+
+    public static void writeOptagnePladser(Parkeringshus hus, String filnavn){
+        try {
+            PrintWriter printWriter = new PrintWriter(filnavn);
+            for (String s: hus.optagnePladser()){
+                printWriter.println(s);
+            }
+            printWriter.flush();
+            printWriter.close();
+            System.out.println("Fil oprettet: " + filnavn);
+        }
+        catch (FileNotFoundException fnf){
+            System.out.println(fnf.getMessage());
+        }
     }
 
 

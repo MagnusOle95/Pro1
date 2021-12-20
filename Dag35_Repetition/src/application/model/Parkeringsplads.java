@@ -20,6 +20,7 @@ public class Parkeringsplads {
         this.nummer = nummer;
         this.ankomst = null;
         this.parkeringshus = parkeringshus;
+        this.bil = null;
     }
 
     //Sammenhængende til Bil klassen

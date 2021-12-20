@@ -104,6 +104,17 @@ public class Parkeringshus {
         return antal;
     }
 
+    public ArrayList<String> optagnePladser(){
+        ArrayList<String> optagnepladser = new ArrayList<>();
+        for (Parkeringsplads pp : parkeringspladser){
+            if (pp.getBil() != null){
+                String optagetPplads = "P nummer: " + pp.getNummer() + " Regnr: " + pp.getBil().getRegNr() + " Mærke: " + pp.getBil().getBilmærke();
+                optagnepladser.add(optagetPplads);
+            }
+        }
+        return optagnepladser;
+    }
+
 
 
 }
