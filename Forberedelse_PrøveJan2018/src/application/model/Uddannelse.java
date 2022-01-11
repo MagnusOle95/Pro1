@@ -41,5 +41,17 @@ public class Uddannelse {
         }
     }
 
+    public ArrayList<String> tutorOversigt(){
+        ArrayList<String> oversigtliste = new ArrayList<>();
+        for (Hold hold: teams){
+            if (hold.getTutors() != null){
+                for (Tutor tutor : hold.getTutors()){
+                    oversigtliste.add(tutor.getNavn() + " " + this.navn + " " + hold.getBetegnelse() + " " + hold.getHoldLeder());
+                }
+            }
+        }
+        return oversigtliste;
+    }
+
 
 }

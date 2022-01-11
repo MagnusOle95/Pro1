@@ -20,6 +20,7 @@ public class Tutor {
     public Tutor(String navn, String eMail) {
         this.navn = navn;
         this.eMail = eMail;
+        this.arrangementer = new ArrayList<>();
     }
 
 
@@ -74,6 +75,10 @@ public class Tutor {
             sum += arg.getPris();
         }
         return sum;
+    }
+
+    public String toString(){
+        return this.navn + " " + this.eMail;
     }
 
 

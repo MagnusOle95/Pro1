@@ -1,5 +1,6 @@
 package application.model;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Hold {
@@ -18,6 +19,7 @@ public class Hold {
         this.betegnelse = betegnelse;
         this.holdLeder = holdLeder;
         this.uddannelse = uddannelse;
+        this.tutors = new ArrayList<>();
     }
 
 
@@ -61,28 +63,26 @@ public class Hold {
     }
 
     public boolean harTidsoverlap(Arrangement arrangement){
-        boolean overlap = false;
-        int i = 0;
-        while (!overlap && i < tutors.size()){
-            Tutor k = tutors.get(i);
-
+            boolean found = false;
+            int i = 0;
             int j = 0;
-            while (!overlap && j < k.getArrangementer().size()){
-                if (arrangement.getDate().equals(k.getArrangementer().get(j))){
-                    if (arrangement.getStartTid().isBefore(k.getArrangementer().get(j).getSlutTid()) && arrangement.getSlutTid().isAfter(k.getArrangementer().get(j).getStartTid())){
-                        overlap = true;
-                    }else{
-                        j++;
+
+            while (!found && i < tutors.size()) {
+                while (!found && j < tutors.get(i).getArrangementer().size()) {
+
+                    LocalTime nåetTilStartTid = tutors.get(i).getArrangementer().get(j).getStartTid();
+                    LocalTime nåetTilSlutTid = tutors.get(i).getArrangementer().get(j).getSlutTid();
+
+                    if (arrangement.getDate().equals(tutors.get(i).getArrangementer().get(j).getDate()) &&
+                            !arrangement.getSlutTid().isBefore(nåetTilStartTid) && !arrangement.getStartTid().isAfter(nåetTilSlutTid)) {
+                        found = true;
                     }
-                }else{
                     j++;
                 }
+                i++;
             }
-            i++;
+            return found;
         }
-        return overlap;
-    }
-
 
 
 }

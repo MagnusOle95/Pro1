@@ -52,6 +52,10 @@ public class Arrangement {
 
     //metoder
 
+    public String toString(){
+        return this.title + " " + this.date + " " + this.startTid + " " + this.slutTid;
+    }
+
 
 
 
