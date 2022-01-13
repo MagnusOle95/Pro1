@@ -3,12 +3,12 @@ package guifx;
 import application.controller.Controller;
 import application.model.Hold;
 import application.model.Tilmelding;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+
+import java.util.ArrayList;
 
 public class Vindue1 extends GridPane {
 
@@ -29,6 +29,9 @@ public class Vindue1 extends GridPane {
 		lvwHold.setPrefWidth(200);
 		lvwHold.setPrefHeight(200);
 		lvwHold.getItems().setAll(Controller.getHold());
+
+		ChangeListener<Hold> listener = (ov, oldHold, newHold) -> this.updateTilmeldingsliste();
+		lvwHold.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
 		Label lblTilmeldinger = new Label("Tilmeldinger:");
@@ -53,11 +56,30 @@ public class Vindue1 extends GridPane {
 	// -------------------------------------------------------------------------
 
 	private void OpretHold() {
+		Vindue1Window window = new Vindue1Window("Opret hold");
+		window.showAndWait();
 
+		lvwHold.getItems().setAll(Controller.getHold());
 	}
 
 	private void updateHold() {
+		Hold hold = lvwHold.getSelectionModel().getSelectedItem();
+		if (hold != null){
 
+			Vindue1Window window = new Vindue1Window("Update Hold",hold);
+			window.showAndWait();
+
+			lvwHold.getItems().setAll(Controller.getHold());
+
+
+		}
+	}
+
+	private void updateTilmeldingsliste(){
+		Hold hold = lvwHold.getSelectionModel().getSelectedItem();
+		if (hold != null){
+			lvwTilmelding.getItems().setAll(hold.getTilmeldinger());
+		}
 	}
 
 

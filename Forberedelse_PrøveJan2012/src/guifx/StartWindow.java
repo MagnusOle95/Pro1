@@ -39,11 +39,11 @@ public class StartWindow extends Application {
 	private void initTabPane(TabPane tabPane) {
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
-		Tab tabCompanies = new Tab("Medlemssystem for fitness");
-		tabPane.getTabs().add(tabCompanies);
+		Tab tabFitness = new Tab("Medlemssystem for fitness");
+		tabPane.getTabs().add(tabFitness);
 
 		Vindue1 vindue1 = new Vindue1();
-		tabCompanies.setContent(vindue1);
+		tabFitness.setContent(vindue1);
 
 	}
 

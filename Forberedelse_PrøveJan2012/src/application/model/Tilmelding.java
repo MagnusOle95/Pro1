@@ -47,6 +47,10 @@ public class Tilmelding {
 
     //metoder
 
+    public String toString(){
+        return medlem.getNavn();
+    }
+
 
 
 
