@@ -2,7 +2,7 @@ package application.model;
 
 import java.util.ArrayList;
 
-public class Medlem {
+public class Medlem implements Comparable<Medlem> {
 
 	//attributter
     private String navn;
@@ -12,7 +12,7 @@ public class Medlem {
 
 
 	//Link attributter
-    ArrayList<Tilmelding> tilmeldinger;
+    private final ArrayList<Tilmelding> tilmeldinger;
 
 	//Contruktor
     public Medlem(String navn, String adresse, String email, int mobilNr){
@@ -80,6 +80,15 @@ public class Medlem {
 
         }
     }
+
+    @Override
+    public int compareTo(Medlem medlem){
+        int comp = this.navn.compareTo(medlem.navn);
+        return comp;
+    }
+
+
+
 
 
 

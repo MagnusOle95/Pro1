@@ -15,7 +15,7 @@ public class Storage {
 
 	// -------------------------------------------------------------------------
 	//get,add,remove
-    private static ArrayList<Medlem> getmedlemmer(){
+    public static ArrayList<Medlem> getmedlemmer(){
         return new ArrayList<>(medlemmer);
     }
 
@@ -26,7 +26,7 @@ public class Storage {
 
 	// -------------------------------------------------------------------------
 	//get,add,remove
-    private static ArrayList<Hold> getAlleHold(){
+    public static ArrayList<Hold> getAlleHold(){
         return new ArrayList<>(alleHold);
     }
 
@@ -36,6 +36,20 @@ public class Storage {
 
 
 	// -------------------------------------------------------------------------
+
+    public static void indsætMedlem(Medlem medlem){
+        boolean found = false;
+        int i = 0;
+        while (!found && i < medlemmer.size()){
+            if (medlemmer.get(i).compareTo(medlem) > 0){
+                found = true;
+                medlemmer.add(i,medlem);
+            }else{
+                i++;
+            }
+        }
+    }
+
 
 
 }

@@ -93,6 +93,10 @@ public class Hold {
         return navn;
     }
 
+    public String toString(){
+        return this.navn + ": " + this.diciplin + ": " + this.maxAntal;
+    }
+
 
 
 
