@@ -78,7 +78,7 @@ public class Tilmelding {
             int i = 0;
             while (fundet == false && i < løb.getForhindringer().size()) {
                 String k = løb.getForhindringer().get(i).getNavn();
-                if (k.equals(navnForhindring)) {
+                if (k.equalsIgnoreCase(navnForhindring)) {
                     createNote(strafSekunder,løb.getForhindringer().get(i));
                     fundet = true;
                 } else {
