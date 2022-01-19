@@ -1,31 +1,39 @@
 package storage;
 
 
+import application.model.Forhindring;
+import application.model.Løb;
+
+import java.util.ArrayList;
+
 public class Storage {
 
-    /*Fjern denne---
-
 	//Arraylister
-    private static ArrayList<X> xses = new ArrayList<>();
+    private static ArrayList<Løb> løbArrayList = new ArrayList<>();
+    private static ArrayList<Forhindring> forhindringer = new ArrayList<>();
 
 
 
 	// -------------------------------------------------------------------------
 
 	//get,add,remove metoder.
-    public static ArrayList<X> getXses(){
-        return new ArrayList<>(xses);
+    public static ArrayList<Løb> getLøbArrayList(){
+        return new ArrayList<>(løbArrayList);
     }
 
-    public static void addX(X x){
-        xses.add(x);
+    public static void addLøb(Løb løb){
+        løbArrayList.add(løb);
     }
 
-    public static void removeX(X x){
-        xses.remove(x);
+    //--------------------------------------------------------------------------
+
+    public static ArrayList<Forhindring> getForhindringer(){
+        return new ArrayList<>(forhindringer);
     }
 
-     *///Fjern denne---
+    public static void addForhindring(Forhindring forhindring){
+        forhindringer.add(forhindring);
+    }
 
     //--------------------------------------------------------------------------
 
