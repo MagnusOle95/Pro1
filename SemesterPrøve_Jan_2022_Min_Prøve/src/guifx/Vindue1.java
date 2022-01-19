@@ -85,10 +85,12 @@ public class Vindue1 extends Application {
 
         Button btnVinder = new Button("Vinder");
         pane.add(btnVinder,0 ,4 );
+        btnVinder.setOnAction(event -> findVinderAfLøb());
 
         txfVinder = new TextField();
         pane.add(txfVinder, 1, 4);
         txfVinder.setEditable(false);
+
 
 
         Label lblNavnForhindring = new Label("Navn Forhindring: ");
@@ -108,6 +110,7 @@ public class Vindue1 extends Application {
 
         Button btnRegistrerNote = new Button("Registrer note");
         pane.add(btnRegistrerNote,4 , 4);
+        btnRegistrerNote.setOnAction(event -> registereNotePåLøber());
 
 
 
@@ -149,14 +152,28 @@ public class Vindue1 extends Application {
         lvwNoter.getItems().setAll(tilmelding.getnoter());
     }
 
-    private void deleteAction() {
-
+    private void findVinderAfLøb() {
+        Løb løb = lvwLøb.getSelectionModel().getSelectedItem();
+        if (løb != null){
+            txfVinder.setText(løb.getVinderAfLøbet());
+        }
     }
 
-    // -------------------------------------------------------------------------
+    public void registereNotePåLøber(){
+        Tilmelding tilmelding = lvwTilmeldinger.getSelectionModel().getSelectedItem();
+        if (tilmelding != null){
 
-    public void updateControls() {
+            String forhindringsNavn = txfNavnForhindring.getText();
+            int strafSekunder = Integer.parseInt(txfStrafSekunder.getText());
 
+            if (forhindringsNavn != null && strafSekunder > 0){
+                Controller.registerStrafPåForhindring(forhindringsNavn,strafSekunder,tilmelding);
+            }
+
+        }
+        lvwNoter.getItems().setAll(Controller.getNoter(tilmelding));
+        txfNavnForhindring.clear();
+        txfStrafSekunder.clear();
     }
 
 

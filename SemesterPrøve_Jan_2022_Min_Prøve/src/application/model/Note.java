@@ -33,7 +33,7 @@ public class Note {
 
     @Override
     public String toString(){
-        return forhindring + "  Straftid: " + strafSekunder + "s";
+        return forhindring + "    Straftid: " + strafSekunder + "s";
     }
 
 

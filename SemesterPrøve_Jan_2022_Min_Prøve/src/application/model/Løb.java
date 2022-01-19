@@ -107,11 +107,12 @@ public class Løb {
     }
 
     public String getVinderAfLøbet(){
-        int hurtigsteTid = tilmeldinger.get(0).resultatTid();
+        //Har indsat 24 timer i sekunder for at have et startpunkt for max tid, for at sikre vi ikke starter med en løber der har en tid på -1;
+        int hurtigsteTid = 86400;
         int indeks = 0;
 
-        for (int i = 1; i < tilmeldinger.size(); i++){
-            if (hurtigsteTid > tilmeldinger.get(i).getLøbsTid()){
+        for (int i = 0; i < tilmeldinger.size(); i++){
+            if (tilmeldinger.get(i).getLøbsTid() != -1 && hurtigsteTid > tilmeldinger.get(i).getLøbsTid()){
                 hurtigsteTid = tilmeldinger.get(i).getLøbsTid();
                 indeks = i;
             }
