@@ -112,8 +112,8 @@ public class Løb {
         int indeks = 0;
 
         for (int i = 0; i < tilmeldinger.size(); i++){
-            if (tilmeldinger.get(i).getLøbsTid() != -1 && hurtigsteTid > tilmeldinger.get(i).getLøbsTid()){
-                hurtigsteTid = tilmeldinger.get(i).getLøbsTid();
+            if (tilmeldinger.get(i).resultatTid() != -1 && hurtigsteTid > tilmeldinger.get(i).resultatTid()){
+                hurtigsteTid = tilmeldinger.get(i).resultatTid();
                 indeks = i;
             }
         }
