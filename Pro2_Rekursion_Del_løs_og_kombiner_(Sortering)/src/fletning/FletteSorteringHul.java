@@ -5,30 +5,36 @@ import java.util.ArrayList;
 
 public class FletteSorteringHul {
 
+	private ArrayList<Integer> nytArray = new ArrayList<>();
+
 	// den metode der saetter fletningen i gang
 	public void fletteSort(ArrayList<Integer> list) {
-		mergesort(list, 0, list.size() - 1);
+		ArrayList<Integer> temp = new ArrayList<>();
+		temp.addAll(mergesort(list, 0, list.size() - 1));
+		System.out.println(temp);
 	}
 
 	// den rekursive metode der implementere del-loes og kombiner skabelonen
-	private void mergesort(ArrayList<Integer> list, int l, int h) {
+	private ArrayList<Integer> mergesort(ArrayList<Integer> list, int l, int h) {
+		ArrayList<Integer> temp = new ArrayList<>();
 		if (l < h) {
 			int m = (l + h) / 2;
 			mergesort(list, l, m);
 			mergesort(list, m + 1, h);
-			merge(list, l, m, h);
+			temp.addAll(merge(list, l, m, h));
 		}
+		return temp;
 	}
 
 	// kombiner er realiseret ved fletteskabelonen
-	private void merge(ArrayList<Integer> list, int low, int middle, int high) {
+	private ArrayList<Integer> merge(ArrayList<Integer> list, int low, int middle, int high) {
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		int i1 = low;
 		int i2 = middle + 1;
 
 		while (i1 <= middle && i2 <= high){
 			if (list.get(i1) <= list.get(i2)){
-				temp.add(list.get(i1));
+				nytArray.add(list.get(i1));
 				i1++;
 			}
 			else{
@@ -46,11 +52,7 @@ public class FletteSorteringHul {
 			temp.add(list.get(i2));
 			i2++;
 		}
-
-		for (int i = 0; i < list.size(); i++){
-			list.set(i,temp.get(i));
-		}
-
+		return temp;
 	}
 
 }

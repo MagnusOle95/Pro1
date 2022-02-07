@@ -1,6 +1,7 @@
 package fletning;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TestFlettesortering {
     
@@ -23,7 +24,6 @@ public class TestFlettesortering {
         
         FletteSorteringHul sort = new FletteSorteringHul();
         sort.fletteSort(list);
-        System.out.println();
         System.out.println(list);
     }
     
