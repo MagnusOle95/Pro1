@@ -15,7 +15,6 @@ public class Opgave5_BelgiskeFlag_quicksort {
 
     public static void belgiskFlag(char[] belgisk_flag){
         quicksortFlagHighToLow(belgisk_flag,0 ,belgisk_flag.length - 1);
-
     }
 
     private static void quicksortFlagHighToLow(char[] flag, int low, int high){
@@ -58,6 +57,8 @@ public class Opgave5_BelgiskeFlag_quicksort {
         flag[i] = flag[j];
         flag[j] = temp;
     }
+
+
 
 
 }

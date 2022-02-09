@@ -1,6 +1,8 @@
 package model_nedbøger_Opgave4;
 
 
+import java.util.concurrent.CountDownLatch;
+
 public class Nedboer {
 
     public static void main(String[] args) {
@@ -82,9 +84,11 @@ public class Nedboer {
         // TODO return -1 kun indsat så der ikke er compile fejl
         int maxAntalUger = 1;
         int ugenr = 0;
+        int count;
+        int i = 0;
 
-        for (int i = 0; i < nedboerPrUge.length - 1; i++) {   ///Kan ændres til whileLoop.
-            int count = 1;
+        while (i < nedboerPrUge.length - 1){
+            count = 1;
 
 
             while (i + count < nedboerPrUge.length && nedboerPrUge[i] == nedboerPrUge[i + count]){
@@ -97,6 +101,7 @@ public class Nedboer {
             }
 
             i += count;
+
         }
         return ugenr;
     }
