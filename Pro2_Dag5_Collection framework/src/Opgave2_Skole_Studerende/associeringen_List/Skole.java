@@ -2,6 +2,7 @@ package Opgave2_Skole_Studerende.associeringen_List;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Skole {
 
@@ -10,7 +11,7 @@ public class Skole {
 
 
     //Link attributer
-    ArrayList<Studerende> studerendes;
+    List<Studerende> studerendes;
 
     //Construktor
     public Skole(String navn){

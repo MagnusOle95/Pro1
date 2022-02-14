@@ -1,4 +1,4 @@
-package Opgave2_Skole_Studerende.associeringen_Map;
+package Opgave2_Skole_Studerende.associeringen_Set;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,8 @@ public class Studerende {
 
 
     //Construktor
-    public Studerende(String navn){
-        this.studieNr = 0;
+    public Studerende(int studieNr, String navn){
+        this.studieNr = studieNr;
         this.navn = navn;
         karakters = new ArrayList<>();
     }

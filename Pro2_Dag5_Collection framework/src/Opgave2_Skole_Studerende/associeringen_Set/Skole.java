@@ -1,7 +1,8 @@
-package Opgave2_Skole_Studerende.associeringen_Map;
+package Opgave2_Skole_Studerende.associeringen_Set;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class Skole {
 
@@ -10,12 +11,12 @@ public class Skole {
 
 
     //Link attributer
-    HashMap<Integer,Studerende> studerendes;
+    HashSet<Studerende> studerendes;
 
     //Construktor
     public Skole(String navn){
         this.navn = navn;
-        this.studerendes = new HashMap();
+        this.studerendes = new HashSet<>();
     }
 
 
@@ -30,16 +31,15 @@ public class Skole {
 
 
     //Add og remove studerende
-    public void addStuderende(Integer studieNr,Studerende studerende) {
-        if (!studerendes.containsKey(studieNr)) {
-            studerendes.put(studieNr,studerende);
-            studerende.setStudieNr(studieNr);
+    public void addStuderende(Studerende studerende) {
+        if (!studerendes.contains(studerende)) {
+            studerendes.add(studerende);
         }
     }
 
-    public void removeStuderende(int studieNr) {
-        if (studerendes.containsKey(studieNr)) {
-            studerendes.remove(studieNr);
+    public void removeStuderende(Studerende studerende) {
+        if (studerendes.contains(studerende)) {
+            studerendes.remove(studerende);
         }
     }
 
@@ -48,7 +48,7 @@ public class Skole {
         double karakterSum = 0;
         double antalKarakterGivet = 0;
 
-        for (Studerende s : studerendes.values()){
+        for (Studerende s : studerendes){
             for (int k : s.getKarakters()){
                 antalKarakterGivet++;
                 karakterSum += k;
@@ -60,12 +60,15 @@ public class Skole {
 
     //finder studerende ud fra studie nummer
     public Studerende findStuderende(int studieNr){
-            Studerende stud = null;
-            if (studerendes.containsKey(studieNr)){
-               stud = studerendes.get(studieNr);
+        Studerende stud = null;
+        for (Studerende s : studerendes){
+            int k = s.getStudieNr();
+            if (k == studieNr){
+                stud = s;
             }
-            return stud;
         }
+        return stud;
+    }
 
 
     //to String
