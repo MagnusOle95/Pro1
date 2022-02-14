@@ -36,6 +36,8 @@ public class App {
 
         System.out.println("Udskriver skole ??????: " + skole);
 
+        System.out.println(s2);
+
 
 
     }
