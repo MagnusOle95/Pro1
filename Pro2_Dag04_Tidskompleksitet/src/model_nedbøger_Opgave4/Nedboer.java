@@ -1,8 +1,6 @@
 package model_nedbøger_Opgave4;
 
 
-import java.util.concurrent.CountDownLatch;
-
 public class Nedboer {
 
     public static void main(String[] args) {
@@ -58,7 +56,7 @@ public class Nedboer {
         int mindstregn = Integer.MAX_VALUE;
         int ugenr = 0;
 
-        for (int i = 0; i < nedboerPrUge.length - antal; i++) {
+        for (int i = 0; i <= nedboerPrUge.length - antal; i++) {
             sumRegn = 0;
 
             for (int j = 0; j < antal; j++) {

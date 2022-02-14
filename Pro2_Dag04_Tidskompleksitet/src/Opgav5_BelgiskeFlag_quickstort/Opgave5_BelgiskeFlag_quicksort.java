@@ -14,42 +14,24 @@ public class Opgave5_BelgiskeFlag_quicksort {
 
 
     public static void belgiskFlag(char[] belgisk_flag){
-        quicksortFlagHighToLow(belgisk_flag,0 ,belgisk_flag.length - 1);
-    }
-
-    private static void quicksortFlagHighToLow(char[] flag, int low, int high){
-        if (low < high){
-            int s = sortPartitionHighToLow(flag,low ,high);
-            quicksortFlagHighToLow(flag,low ,s - 1);
-            quicksortFlagHighToLow(flag,s +1,high);
-
-        }
-    }
-
-
-    private static int sortPartitionHighToLow(char[] flag, int low, int high){
-        int e = flag[low];
-        int i = low + 1;
-        int j = high;
-
-        while (i <= j){
-            if (flag[i] >= e){
-                i++;
-            }
-            else if (flag[j] < e){
-                j--;
-            }
-            else{
-                swap(flag,i,j);
-                i++;
-                j--;
+        int s = 0;
+        int r = belgisk_flag.length;
+        int g = belgisk_flag.length - 1;
+        while (s <= g){
+            if (belgisk_flag[s] == 'S'){
+                s++;
+            }else if (belgisk_flag[g] == 'G'){
+                g--;
+            }else if (belgisk_flag[g] == 'R'){
+                r--;
+                swap(belgisk_flag,g ,r );
+                g--;
+            }else{
+                swap(belgisk_flag,s ,g );
+                s++;
             }
         }
-        swap(flag,low ,j);
-
-        return j;
     }
-
 
 
     private static void swap(char[] flag, int i, int j) {
