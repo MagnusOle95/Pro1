@@ -30,17 +30,13 @@ public class Skole {
 
 
     //Add og remove studerende
-    public void addStuderende(Integer studieNr,Studerende studerende) {
-        if (!studerendes.containsKey(studieNr)) {
-            studerendes.put(studieNr,studerende);
-            studerende.setStudieNr(studieNr);
+    public void addStuderende(Studerende studerende) {
+        studerendes.put(studerende.getStudieNr(),studerende);
         }
-    }
+
 
     public void removeStuderende(int studieNr) {
-        if (studerendes.containsKey(studieNr)) {
-            studerendes.remove(studieNr);
-        }
+        studerendes.remove(studieNr);
     }
 
     //Udregner gennemsnit af skolens elever.
@@ -60,11 +56,7 @@ public class Skole {
 
     //finder studerende ud fra studie nummer
     public Studerende findStuderende(int studieNr){
-            Studerende stud = null;
-            if (studerendes.containsKey(studieNr)){
-               stud = studerendes.get(studieNr);
-            }
-            return stud;
+            return studerendes.get(studieNr);
         }
 
 

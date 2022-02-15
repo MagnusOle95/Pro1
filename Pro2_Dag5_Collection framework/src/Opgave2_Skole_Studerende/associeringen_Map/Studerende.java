@@ -11,8 +11,8 @@ public class Studerende {
 
 
     //Construktor
-    public Studerende(String navn){
-        this.studieNr = 0;
+    public Studerende(String navn,int studieNr){
+        this.studieNr = studieNr;
         this.navn = navn;
         karakters = new ArrayList<>();
     }

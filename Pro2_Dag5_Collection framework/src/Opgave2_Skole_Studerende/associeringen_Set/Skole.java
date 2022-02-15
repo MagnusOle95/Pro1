@@ -32,15 +32,11 @@ public class Skole {
 
     //Add og remove studerende
     public void addStuderende(Studerende studerende) {
-        if (!studerendes.contains(studerende)) {
             studerendes.add(studerende);
-        }
     }
 
     public void removeStuderende(Studerende studerende) {
-        if (studerendes.contains(studerende)) {
             studerendes.remove(studerende);
-        }
     }
 
     //Udregner gennemsnit af skolens elever.

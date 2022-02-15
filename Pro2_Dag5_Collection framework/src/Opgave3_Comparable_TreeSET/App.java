@@ -26,13 +26,13 @@ public class App {
         s4.addKarater(4);
         s4.addKarater(2);
 
-        TreeSet<Studerende> list = new TreeSet<>(new StuderendeComparator());
-        list.add(s1);
-        list.add(s2);
-        list.add(s3);
-        list.add(s4);
+        TreeSet<Studerende> set = new TreeSet<>(new StuderendeComparator());
+        set.add(s1);
+        set.add(s2);
+        set.add(s3);
+        set.add(s4);
 
-        System.out.println(list);
+        System.out.println(set);
 
 
     }

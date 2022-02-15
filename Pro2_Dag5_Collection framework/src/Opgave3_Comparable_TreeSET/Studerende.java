@@ -2,7 +2,7 @@ package Opgave3_Comparable_TreeSET;
 
 import java.util.ArrayList;
 
-public class Studerende {
+public class Studerende implements Comparable<Studerende> {
 
     //Attributer
     private int studieNr;
@@ -48,8 +48,10 @@ public class Studerende {
     }
 
 
-
-
+    @Override
+    public int compareTo(Studerende o) {
+        return studieNr - o.getStudieNr();
+    }
 }
 
 
