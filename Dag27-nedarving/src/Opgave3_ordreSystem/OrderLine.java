@@ -1,4 +1,4 @@
-package Opgave2_ordreSystem;
+package Opgave3_ordreSystem;
 
 /**
  * Models an OrderLine in an Order.

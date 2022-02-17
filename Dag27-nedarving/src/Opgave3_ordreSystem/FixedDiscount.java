@@ -1,4 +1,4 @@
-package Opgave2_ordreSystem;
+package Opgave3_ordreSystem;
 
 public class FixedDiscount extends Discount {
 

@@ -1,6 +1,8 @@
 package Opgave5_VareOgkøbskurv;
 
-public class Spiritus extends Vare {
+public class
+
+Spiritus extends Vare {
 
     private double alkoholdProcent;
 

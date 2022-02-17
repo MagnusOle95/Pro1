@@ -1,4 +1,4 @@
-package Opgave2_ordreSystem;
+package Opgave3_ordreSystem;
 
 /**
  * Models a product with a name and a price.
