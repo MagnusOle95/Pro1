@@ -15,6 +15,14 @@ public class App {
         System.out.println(elVare1.beregnmoms());
         System.out.println(elvare2.beregnmoms());
 
+        // tester adapter. men igen, er det nok.
+        Spiritus s1 = new Spiritus(89,"Vodka deluxe");
+        NavnOgPrisAdapter nopa = new SpiritusToNavnOgPrisAdapter(s1);
+
+        System.out.println(nopa.getNavn());
+        System.out.println(nopa.getMomspris());
+
+
     }
 
 }

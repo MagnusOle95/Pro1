@@ -12,6 +12,9 @@ public class Vare {
         this.navn = navn;
     }
 
+    //aner ikke  hvordan jeg skal forbinde, klassen til, adaptern.
+    //Samtidig, kan klassen spiritus ikke overide.
+
 
     //Methodes
     public int getPris() {
