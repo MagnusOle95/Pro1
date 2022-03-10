@@ -1,6 +1,6 @@
 package Opgave4_Super_salg_Butik_Adapter_pattern;
 
-public class Vare {
+public abstract class Vare {
 
     //Attributes
     private int pris;
@@ -33,7 +33,5 @@ public class Vare {
         this.navn = navn;
     }
 
-    public double beregnmoms() {
-        return pris * 0.25;
-    }
+    public abstract double beregnmoms();
 }

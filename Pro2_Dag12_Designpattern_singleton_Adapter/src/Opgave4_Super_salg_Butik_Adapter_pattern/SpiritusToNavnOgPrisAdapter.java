@@ -1,20 +1,25 @@
 package Opgave4_Super_salg_Butik_Adapter_pattern;
 
-public class SpiritusToNavnOgPrisAdapter implements NavnOgPrisAdapter {
+public class SpiritusToNavnOgPrisAdapter extends Vare {
 
     private Spiritus spiritus;
 
     public SpiritusToNavnOgPrisAdapter(Spiritus spiritus){
+        super(0,null);
         this.spiritus = spiritus;
     }
 
+    @Override
     public String getNavn(){
         return spiritus.getBetgenelse();
     }
 
-    public double getMomspris(){
+    @Override
+    public double beregnmoms() {
         return spiritus.hentMoms();
     }
+
+
 
 
 
