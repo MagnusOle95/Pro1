@@ -52,6 +52,7 @@ public class PersonCollection implements Iterable<Person> {
         }
         for (int i = this.size; i > index; i--) {
             this.persons[i] = this.persons[i - 1];
+
         }
         this.persons[index] = person;
         this.size++;
@@ -152,7 +153,6 @@ public class PersonCollection implements Iterable<Person> {
     // -------------------------------------------------------------------------
     // Ex. 2
     // TODO
-
     private class personiterator implements Iterator<Person>{
         private int position;
 
