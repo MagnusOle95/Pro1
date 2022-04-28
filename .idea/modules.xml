@@ -45,6 +45,7 @@
       <module fileurl="file://$PROJECT_DIR$/Pro2_Dag04_Tidskompleksitet/Pro2_Dag04_Tidskompleksitet.iml" filepath="$PROJECT_DIR$/Pro2_Dag04_Tidskompleksitet/Pro2_Dag04_Tidskompleksitet.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pro2_Dag09_Test_Opgave3/Pro2_Dag09_Test_Opgave3.iml" filepath="$PROJECT_DIR$/Pro2_Dag09_Test_Opgave3/Pro2_Dag09_Test_Opgave3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pro2_Dag09_Test_med_JUnit/Pro2_Dag09_Test_med_JUnit.iml" filepath="$PROJECT_DIR$/Pro2_Dag09_Test_med_JUnit/Pro2_Dag09_Test_med_JUnit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pro2_Dag21_Kædet_struktur/Pro2_Dag21_Kædet_struktur.iml" filepath="$PROJECT_DIR$/Pro2_Dag21_Kædet_struktur/Pro2_Dag21_Kædet_struktur.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pro2_Rekursion_Del_løs_og_kombiner_(Sortering)/Pro2_Dag3_Rekursion_Del_løs_og_kombiner_(Sortering).iml" filepath="$PROJECT_DIR$/Pro2_Rekursion_Del_løs_og_kombiner_(Sortering)/Pro2_Dag3_Rekursion_Del_løs_og_kombiner_(Sortering).iml" />
       <module fileurl="file://$PROJECT_DIR$/Pro2_Dag5_Collection framework/Pro2_Dag5_Collection framework.iml" filepath="$PROJECT_DIR$/Pro2_Dag5_Collection framework/Pro2_Dag5_Collection framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pro2_Dag6_Lambda_Udtryk/Pro2_Dag6_Lambda_Udtryk.iml" filepath="$PROJECT_DIR$/Pro2_Dag6_Lambda_Udtryk/Pro2_Dag6_Lambda_Udtryk.iml" />
@@ -59,6 +60,7 @@
       <module fileurl="file://$PROJECT_DIR$/Test_projekt/Test_projekt.iml" filepath="$PROJECT_DIR$/Test_projekt/Test_projekt.iml" />
       <module fileurl="file://$PROJECT_DIR$/dag4/dag04_klasseerklaringer.iml" filepath="$PROJECT_DIR$/dag4/dag04_klasseerklaringer.iml" />
       <module fileurl="file://$PROJECT_DIR$/kajsBiler_Reservation/kajsBiler_Reservation.iml" filepath="$PROJECT_DIR$/kajsBiler_Reservation/kajsBiler_Reservation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pro2_Dag22_Stak/pro2_Dag22_Stak.iml" filepath="$PROJECT_DIR$/pro2_Dag22_Stak/pro2_Dag22_Stak.iml" />
     </modules>
   </component>
 </project>
