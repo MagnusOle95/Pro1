@@ -1,4 +1,4 @@
-package stack;
+package stack_Plus_Opgave1_Opgave2_og_Opgave3;
 
 /**
  * An implementation of a stack as a sequence of nodes.

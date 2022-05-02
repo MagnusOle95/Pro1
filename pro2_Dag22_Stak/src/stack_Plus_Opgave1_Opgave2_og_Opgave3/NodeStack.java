@@ -1,4 +1,4 @@
-package stack;
+package stack_Plus_Opgave1_Opgave2_og_Opgave3;
 
 import java.util.NoSuchElementException;
 
@@ -83,7 +83,7 @@ public class NodeStack implements StackI {
 		return top == null;
 	}
 
-	class Node {
+	static class Node {
 		public Object data;
 		public Node next;
 	}
