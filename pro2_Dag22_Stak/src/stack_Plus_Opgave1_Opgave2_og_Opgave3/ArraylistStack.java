@@ -5,11 +5,9 @@ import java.util.NoSuchElementException;
 
 public class ArraylistStack implements StackI {
     private ArrayList<Object> list;
-    private int top;
 
 
     public ArraylistStack(){
-        top = -1;
         list = new ArrayList<Object>();
     }
 

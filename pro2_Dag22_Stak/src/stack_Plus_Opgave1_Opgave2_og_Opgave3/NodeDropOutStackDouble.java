@@ -26,8 +26,8 @@ public class NodeDropOutStackDouble implements StackI {
         Node newnode = new Node();
         newnode.data = element;
         newnode.next = top.next;
-        top.next.prev = newnode;
         newnode.prev = top;
+        top.next.prev = newnode;
         top.next = newnode;
     }
 
