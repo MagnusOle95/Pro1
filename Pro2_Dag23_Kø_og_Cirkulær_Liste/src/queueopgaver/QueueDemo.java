@@ -152,6 +152,8 @@ public class QueueDemo {
 
 		//Opgave 4
 		//Opretter queue cirkulær enkeltrettet liste.
+		System.out.println();
+		System.out.println("Opgave4");
 		NodeCirkulærEnkeltQueue_Opgave4 nodeCirkulærEnkeltQueue = new NodeCirkulærEnkeltQueue_Opgave4();
 		//opretter personer og tilføjer dem til listen.
 		Person jens = new Person("Jens",25);
@@ -159,6 +161,18 @@ public class QueueDemo {
 		Person gurli = new Person("Gurli",18);
 		Person hansi = new Person("Morten",30);
 		Person egon = new Person("egon",50);
+		//Indsætter personer i listen.
+		nodeCirkulærEnkeltQueue.addPerson(jens);
+		nodeCirkulærEnkeltQueue.addPerson(frank);
+		nodeCirkulærEnkeltQueue.addPerson(gurli);
+		nodeCirkulærEnkeltQueue.addPerson(hansi);
+		nodeCirkulærEnkeltQueue.addPerson(egon);
+		//Udksirver om personerne er i listen.
+		nodeCirkulærEnkeltQueue.print();
+		nodeCirkulærEnkeltQueue.kanibalisering();
+		nodeCirkulærEnkeltQueue.print();
+
+
 
 	}
 

@@ -145,7 +145,6 @@ public class SortedLinkedList {
     }
 
 
-
     // Privat indre klasse der modellerer en node i listen
     private class Node {
         public String data;

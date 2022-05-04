@@ -25,4 +25,9 @@ public class Person {
     public void setAlder(int alder) {
         this.alder = alder;
     }
+
+    public String toString(){
+        return this.navn + " " + this.alder + "År";
+    }
+
 }
