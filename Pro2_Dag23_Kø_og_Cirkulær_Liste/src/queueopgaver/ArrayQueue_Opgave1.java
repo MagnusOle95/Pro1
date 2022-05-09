@@ -1,5 +1,8 @@
 package queueopgaver;
 
+import java.rmi.NoSuchObjectException;
+import java.util.NoSuchElementException;
+
 /**
  * An implementation of a queue as a array.
  */
@@ -80,6 +83,9 @@ public class ArrayQueue_Opgave1 implements QueueI {
 	@Override
 	public Object getFront() {
 		// TODO
+		if (queue.length == 0){
+			throw new NoSuchElementException();
+		}
 		return queue[0];
 	}
 

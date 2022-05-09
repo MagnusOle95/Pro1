@@ -1,5 +1,9 @@
 package queueopgaver;
 
+import com.sun.source.tree.IfTree;
+
+import java.util.NoSuchElementException;
+
 public class NodeDoubleDeQueue_Opgave3 implements DequeI {
 
     private int antalIKø;
@@ -18,11 +22,7 @@ public class NodeDoubleDeQueue_Opgave3 implements DequeI {
 
     @Override
     public boolean isEmpty() {
-        boolean queueEmpty = false;
-        if (queueFront.next == queueStart){
-            queueEmpty = true;
-        }
-        return queueEmpty;
+        return antalIKø == 0;
     }
 
     @Override
@@ -55,6 +55,9 @@ public class NodeDoubleDeQueue_Opgave3 implements DequeI {
 
     @Override
     public Object removeFirst() {
+        if (antalIKø == 0){
+            throw new NoSuchElementException();
+        }
         Object objekt = queueFront.next.data;
         queueFront.next.next.prev = queueFront;
         queueFront.next = queueFront.next.next;
@@ -64,6 +67,9 @@ public class NodeDoubleDeQueue_Opgave3 implements DequeI {
 
     @Override
     public Object removeLast() {
+        if (antalIKø == 0){
+            throw new NoSuchElementException();
+        }
         Object objekt = queueStart.prev.data;
         queueStart.prev = queueStart.prev.prev;
         queueStart.prev.next = queueStart;
@@ -73,11 +79,17 @@ public class NodeDoubleDeQueue_Opgave3 implements DequeI {
 
     @Override
     public Object getFirst() {
+        if (antalIKø == 0){
+            throw new NoSuchElementException();
+        }
         return queueFront.next.data;
     }
 
     @Override
     public Object getLast() {
+        if (antalIKø == 0){
+            throw new NoSuchElementException();
+        }
         return queueStart.prev.data;
     }
 

@@ -1,5 +1,9 @@
 package queueopgaver;
 
+import com.sun.source.tree.IfTree;
+
+import java.util.NoSuchElementException;
+
 public class NodeEnkeltQueue_Opgave2 implements QueueI{
 
     private int antalIKø;
@@ -15,11 +19,7 @@ public class NodeEnkeltQueue_Opgave2 implements QueueI{
 
     @Override
     public boolean isEmpty() {
-        boolean queueEmpty = false;
-        if (queueFront == null){
-            queueEmpty = true;
-        }
-        return queueEmpty;
+        return queueFront == null;
     }
 
     @Override
@@ -47,6 +47,9 @@ public class NodeEnkeltQueue_Opgave2 implements QueueI{
 
     @Override
     public Object getFront() {
+        if (queueFront == null){
+            throw new NoSuchElementException();
+        }
         return queueFront.data;
     }
 
