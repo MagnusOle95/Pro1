@@ -102,9 +102,9 @@ public class HashSetChaining {
 		else {
 			while (!found && current.next != null) {
 				if (current.next.data.equals(x)) {
-					found = true;
 					current.next = current.next.next;
 					currentSize--;
+					found = true;
 					// Already in the set
 				} else {
 					current = current.next;
@@ -113,6 +113,7 @@ public class HashSetChaining {
 		}
 		return found;
 	}
+
 
 	public void reHash() {
 

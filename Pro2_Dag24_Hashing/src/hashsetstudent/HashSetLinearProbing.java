@@ -32,7 +32,7 @@ public class HashSetLinearProbing {
 		int antalTjekket = 0;
 		boolean found = false;
 		while (!found && antalTjekket < buckets.length) {
-			if (x == buckets[h]) {
+			if (x.equals(buckets[h])) {
 				found = true;
 			} else {
 				h++;
@@ -63,6 +63,7 @@ public class HashSetLinearProbing {
 			if (buckets[h] == null || buckets[h] == "DELETED"){
 				buckets[h] = x;
 				Tilføjet = true;
+				currentSize++;
 			}
 			else if (buckets[h].equals(x)){
 				findesAllerede = true;
@@ -95,6 +96,7 @@ public class HashSetLinearProbing {
 			if (x.equals(buckets[h])) {
 				buckets[h] = "DELETED";
 				found = true;
+				currentSize--;
 			} else {
 				h++;
 				if (h > buckets.length - 1) {
