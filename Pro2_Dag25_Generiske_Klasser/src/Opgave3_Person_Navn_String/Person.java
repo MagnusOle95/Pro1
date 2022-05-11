@@ -1,6 +1,6 @@
 package Opgave3_Person_Navn_String;
 
-public class Person<E> implements Comparable<E>{
+public class Person< E extends Comparable<E>> implements Comparable<Person<E>>{
 
     //Attribut
     private E navn;
@@ -20,15 +20,13 @@ public class Person<E> implements Comparable<E>{
         return this.navn;
     }
 
-
-    @Override
-    public int compareTo(E o) {
-
-    }
-
     public String toString(){
         return this.navn + "";
     }
 
 
+    @Override
+    public int compareTo(Person<E> o) {
+        return this.navn.compareTo(o.navn);
+    }
 }

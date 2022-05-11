@@ -1,6 +1,6 @@
 package Opgave3_Person_Navn_String;
 
-public class Navn implements Comparable<String> {
+public class Navn implements Comparable<Navn> {
 
     private String fornavn;
     private String efterNavn;
@@ -31,9 +31,18 @@ public class Navn implements Comparable<String> {
     }
 
     @Override
-    public int compareTo(String o) {
-        String fuldNavn = getFornavn() + " " + getEfterNavn();
-        int result = fuldNavn.compareTo(o);
+    public int compareTo(Navn o) {
+        int result;
+
+        int comForNavn = this.fornavn.compareTo(o.fornavn);
+        int comEfternavn = this.efterNavn.compareTo(o.efterNavn);
+
+        if (comForNavn == 0){
+            result = comEfternavn;
+        }else{
+            result = comForNavn;
+        }
+
         return result;
     }
 }
