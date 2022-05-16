@@ -1,20 +1,18 @@
-package bagopgave;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+package bagopgave_Opgave4;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class BagTest
+import static org.junit.Assert.*;
+
+public class BagTest_LinkedList
 {
     private Bag<String> bag;
 
     @Before
     public void setUp()
     {
-        bag = new ArrayBag<String>();
+        bag = new LinkedListBag<>();
         bag.add("Jan");
         bag.add("Per");
         bag.add("Hans");
