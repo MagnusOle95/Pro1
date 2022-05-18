@@ -1,4 +1,4 @@
-package Opgave3_Person_Navn_String;
+package Opgave3_CompareTo_Generisk_Person_Navn_String;
 
 public class Navn implements Comparable<Navn> {
 
