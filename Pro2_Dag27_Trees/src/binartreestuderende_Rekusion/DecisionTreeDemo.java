@@ -1,4 +1,4 @@
-package binartreestuderende;
+package binartreestuderende_Rekusion;
 
 import java.util.Scanner;
 

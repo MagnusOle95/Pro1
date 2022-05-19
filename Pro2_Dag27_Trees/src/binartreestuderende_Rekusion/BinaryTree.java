@@ -1,4 +1,4 @@
-package binartreestuderende;
+package binartreestuderende_Rekusion;
 
 /**
  * A binary tree in which each node has two children.
@@ -83,7 +83,9 @@ public class BinaryTree<E> {
 	 */
 	public BinaryTree<E> right() {
 		// TODO exercise 1
-		return null;
+		BinaryTree<E> result = new BinaryTree<E>();
+		result.root = root.right;
+		return result;
 
 	}
 
@@ -96,8 +98,9 @@ public class BinaryTree<E> {
 	 */
 	public E replace(E rootData) {
 		// TODO exercise 1
-		return null;
-
+		E oldData = root.data;
+		root.data = rootData;
+		return oldData;
 	}
 
 	/**
@@ -107,7 +110,7 @@ public class BinaryTree<E> {
 	 */
 	private boolean isLeaf(Node n) {
 		// TODO exercise 1
-		return false;
+		return n.left == null && n.right == null;
 	}
 
 	/**
@@ -117,7 +120,7 @@ public class BinaryTree<E> {
 	 */
 	private boolean isInternal(Node n) {
 		// TODO exercise 1
-		return false;
+		return n.left != null || n.right != null;
 	}
 
 	/**
@@ -130,8 +133,102 @@ public class BinaryTree<E> {
 
 	private int size(Node n) {
 		// TODO exercise 1
-		return -1;
+		int sum;
+		if (n == null){
+			sum = 0;
+		} else{
+			int count1 = size(n.left);
+			int count2 = size(n.right);
+			sum = count1 + count2 + 1;
+		}
+		return sum;
 	}
+
+	//Opgave 2.2 Metode der finder højden af træet rekusiv.
+	public int treeHigh(){
+		return treeHigh(root);
+	}
+
+	private int treeHigh(Node n){
+		int sum;
+		if (n == null){
+			sum = 0;
+		}else{
+			int left = treeHigh(n.left);
+			int right = treeHigh(n.right);
+			sum = Math.max(left,right);
+			sum += 1;
+		}
+
+		return sum;
+	}
+
+
+	//Opgave 2.3 rekusiv Preorder.
+	public void preOrder(){
+		preOrder(root);
+	}
+
+	private void preOrder(Node n){
+		if (n == null){
+			//Gør ingenting.
+		}else{
+			System.out.print(n.data + ": ");
+			preOrder(n.left);
+			preOrder(n.right);
+		}
+	}
+
+
+	//Opgave 2.3 rekusiv Inorder.
+	public void inOrder(){
+		inOrder(root);
+	}
+
+	private void inOrder(Node n){
+		if (n == null){
+			//Gør ingenting
+		}else{
+			inOrder(n.left);
+			System.out.print(n.data + ": ");
+			inOrder(n.right);
+		}
+	}
+
+
+	//Opgave 2.3 rekusiv Postorder.
+	public void postOrder(){
+		postOrder(root);
+	}
+
+	private void postOrder(Node n){
+		if (n == null){
+			//Gør ingenting
+		}else{
+			postOrder(n.left);
+			postOrder(n.right);
+			System.out.print(n.data + ": ");
+		}
+	}
+
+	//Opgave 3 Rekusiv metode der summere antallet af hele træet.
+	public int sum(){
+		return sum(root);
+	}
+
+	private int sum(Node n){
+		int sum;
+		if (n == null){
+			sum = 0;
+		}else{
+			int left = sum(n.left);
+			int right = sum(n.right);
+			sum = left + right;
+			sum += (int) n.data;
+		}
+		return sum;
+	}
+
 
 	private class Node {
 		public E data;
