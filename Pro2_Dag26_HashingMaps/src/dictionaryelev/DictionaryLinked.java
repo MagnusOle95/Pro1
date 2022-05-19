@@ -63,6 +63,7 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 				newNode.value = value;
 				newNode.key = key;
 				temp.next = newNode;
+				size++;
 			}
 		}
 		return overWritenValue;
@@ -71,6 +72,7 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 	@Override
 	public V remove(K key) {
 		// TODO
+
 
 		return null;
 	}
