@@ -40,20 +40,44 @@ public class DictionaryHashMap<K, V> implements Dictionary<K, V> {
 	@Override
 	public V put(K key, V value) {
 		// TODO
+		V data = null;
 
-		return null;
+		if (key != null && value != null){
+			int i = key.hashCode() % N;
+			Map<K, V> m = tabel[i];
+
+			if (m.containsKey(key)){
+				data = m.get(key);
+				m.put(key,value);
+			} else{
+				m.put(key,value);
+			}
+		}
+		return data;
 	}
 
 	@Override
 	public V remove(K key) {
 		// TODO
-		return null;
+		V data = null;
+		int i = key.hashCode() % N;
+		Map<K, V> m = tabel[i];
+
+		if (m.containsKey(key)){
+			data = m.get(key);
+			m.remove(key);
+		}
+		return data;
 	}
 
 	@Override
 	public int size() {
 		// TODO
-		return 0;
+		int size = 0;
+		for (Map<K,V> m : tabel){
+			size += m.size();
+		}
+		return size;
 	}
 
 }

@@ -11,8 +11,8 @@ public class DictionarTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        // dictionary = new DictionaryHashMap<>();
-        dictionary = new DictionaryLinked<>();
+        dictionary = new DictionaryHashMap<>();
+        //dictionary = new DictionaryLinked<>();
         
     }
     
@@ -23,6 +23,8 @@ public class DictionarTest {
 
         dictionary.put(8, "hans");
         dictionary.put(3, "viggo");
+
+
         
         assertFalse(dictionary.isEmpty());
         assertEquals(2, dictionary.size());
@@ -42,7 +44,11 @@ public class DictionarTest {
         assertEquals("hans", dictionary.put(8, "Ida"));
         assertEquals("Ida", dictionary.get(8));
 
+
+
     }
+
+
 
     
     
