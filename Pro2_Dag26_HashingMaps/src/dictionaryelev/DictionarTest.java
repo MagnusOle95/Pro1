@@ -11,9 +11,9 @@ public class DictionarTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        dictionary = new DictionaryHashMap<>();
+        //dictionary = new DictionaryHashMap_Aflevering_Opgave2<>();
         //dictionary = new DictionaryLinked<>();
-        
+        dictionary = new DictionaryHashArray_Aflevering_Opgave3<>();
     }
     
     @Test
@@ -43,6 +43,33 @@ public class DictionarTest {
         
         assertEquals("hans", dictionary.put(8, "Ida"));
         assertEquals("Ida", dictionary.get(8));
+
+        assertEquals(3, dictionary.size());
+
+
+        //Min ejen test, om add og remove flytter rigtigt i arrayet med keys og value.
+        dictionary.put(18,"Ole");
+        assertEquals(4,dictionary.size());
+        assertEquals("Ole",dictionary.get(18));
+        assertEquals("Ida",dictionary.get(8));
+
+        assertEquals("Ida",dictionary.remove(8));
+        assertEquals("Ole",dictionary.get(18));
+
+        assertEquals(null,dictionary.put(8,"Bent"));
+        assertEquals(null,dictionary.put(38,"Gurli"));
+
+        assertEquals("Bent",dictionary.get(8));
+        assertEquals("Ole",dictionary.get(18));
+        assertEquals("Gurli",dictionary.get(38));
+
+        assertEquals("Ole",dictionary.remove(18));
+
+        assertEquals("Gurli",dictionary.get(38));
+        assertEquals("Bent",dictionary.get(8));
+
+
+
 
 
 
