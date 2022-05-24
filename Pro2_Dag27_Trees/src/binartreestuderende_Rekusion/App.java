@@ -1,25 +1,23 @@
 package binartreestuderende_Rekusion;
 
-import java.util.function.BinaryOperator;
-
 public class App {
     public static void main(String[] args) {
 
         //Opgave 2.1 opbygger et binært træ.
-        BinaryTree<Integer> femOgTyve = new BinaryTree<>(25);
-        BinaryTree<Integer> tredve = new BinaryTree<>(30,femOgTyve,null);
+        BinaryTree_Opgave1_2_Og_3<Integer> femOgTyve = new BinaryTree_Opgave1_2_Og_3<>(25);
+        BinaryTree_Opgave1_2_Og_3<Integer> tredve = new BinaryTree_Opgave1_2_Og_3<>(30,femOgTyve,null);
 
-        BinaryTree<Integer> femten = new BinaryTree<>(15);
-        BinaryTree<Integer> elleve = new BinaryTree<>(11,null ,femten);
+        BinaryTree_Opgave1_2_Og_3<Integer> femten = new BinaryTree_Opgave1_2_Og_3<>(15);
+        BinaryTree_Opgave1_2_Og_3<Integer> elleve = new BinaryTree_Opgave1_2_Og_3<>(11,null ,femten);
 
-        BinaryTree<Integer> toOgTyve = new BinaryTree<>(22,elleve ,tredve);
+        BinaryTree_Opgave1_2_Og_3<Integer> toOgTyve = new BinaryTree_Opgave1_2_Og_3<>(22,elleve ,tredve);
 
-        BinaryTree<Integer> otteOgFirs = new BinaryTree<>(88);
-        BinaryTree<Integer> halvFems = new BinaryTree<>(90,otteOgFirs ,null);
+        BinaryTree_Opgave1_2_Og_3<Integer> otteOgFirs = new BinaryTree_Opgave1_2_Og_3<>(88);
+        BinaryTree_Opgave1_2_Og_3<Integer> halvFems = new BinaryTree_Opgave1_2_Og_3<>(90,otteOgFirs ,null);
 
-        BinaryTree<Integer> syvOgHalvfjers = new BinaryTree<>(77,null ,halvFems);
+        BinaryTree_Opgave1_2_Og_3<Integer> syvOgHalvfjers = new BinaryTree_Opgave1_2_Og_3<>(77,null ,halvFems);
 
-        BinaryTree<Integer> femOgFyre = new BinaryTree<>(45,toOgTyve ,syvOgHalvfjers);
+        BinaryTree_Opgave1_2_Og_3<Integer> femOgFyre = new BinaryTree_Opgave1_2_Og_3<>(45,toOgTyve ,syvOgHalvfjers);
 
         //Opgave 2.2 Tester metoden der er rekusion og udregner højden af træet.
         System.out.println(femOgFyre.treeHigh());

@@ -3,13 +3,13 @@ package binartreestuderende_Rekusion;
 /**
  * A binary tree in which each node has two children.
  */
-public class BinaryTree<E> {
+public class BinaryTree_Opgave1_2_Og_3<E> {
 	private Node root;
 
 	/**
 	 * Constructs an empty tree.
 	 */
-	public BinaryTree() {
+	public BinaryTree_Opgave1_2_Og_3() {
 		root = null;
 	}
 
@@ -19,7 +19,7 @@ public class BinaryTree<E> {
 	 * @param rootData
 	 *            the data for the root
 	 */
-	public BinaryTree(E rootData) {
+	public BinaryTree_Opgave1_2_Og_3(E rootData) {
 		root = new Node();
 		root.data = rootData;
 		root.left = null;
@@ -36,7 +36,7 @@ public class BinaryTree<E> {
 	 * @param right
 	 *            the right subtree
 	 */
-	public BinaryTree(E rootData, BinaryTree<E> left, BinaryTree<E> right) {
+	public BinaryTree_Opgave1_2_Og_3(E rootData, BinaryTree_Opgave1_2_Og_3<E> left, BinaryTree_Opgave1_2_Og_3<E> right) {
 		root = new Node();
 		root.data = rootData;
 		if (left != null) {
@@ -70,8 +70,8 @@ public class BinaryTree<E> {
 	 *
 	 * @return the left child of the root
 	 */
-	public BinaryTree<E> left() {
-		BinaryTree<E> result = new BinaryTree<E>();
+	public BinaryTree_Opgave1_2_Og_3<E> left() {
+		BinaryTree_Opgave1_2_Og_3<E> result = new BinaryTree_Opgave1_2_Og_3<E>();
 		result.root = root.left;
 		return result;
 	}
@@ -81,9 +81,9 @@ public class BinaryTree<E> {
 	 *
 	 * @return the right child of the root
 	 */
-	public BinaryTree<E> right() {
+	public BinaryTree_Opgave1_2_Og_3<E> right() {
 		// TODO exercise 1
-		BinaryTree<E> result = new BinaryTree<E>();
+		BinaryTree_Opgave1_2_Og_3<E> result = new BinaryTree_Opgave1_2_Og_3<E>();
 		result.root = root.right;
 		return result;
 

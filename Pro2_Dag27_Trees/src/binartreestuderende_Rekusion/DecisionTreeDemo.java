@@ -8,33 +8,33 @@ import java.util.Scanner;
 public class DecisionTreeDemo {
 	public static void main(String[] args) {
 
-		BinaryTree<String> tiger = new BinaryTree<String>("It ia a tiger.");
-		BinaryTree<String> zebra = new BinaryTree<String>("It is a zebra.");
-		BinaryTree<String> canivore = new BinaryTree<String>(
+		BinaryTree_Opgave1_2_Og_3<String> tiger = new BinaryTree_Opgave1_2_Og_3<String>("It ia a tiger.");
+		BinaryTree_Opgave1_2_Og_3<String> zebra = new BinaryTree_Opgave1_2_Og_3<String>("It is a zebra.");
+		BinaryTree_Opgave1_2_Og_3<String> canivore = new BinaryTree_Opgave1_2_Og_3<String>(
 				"Is it a carnivore?", tiger, zebra);
 
-		BinaryTree<String> pig = new BinaryTree<String>("It is a pig.");
-		BinaryTree<String> stripes = new BinaryTree<String>(
+		BinaryTree_Opgave1_2_Og_3<String> pig = new BinaryTree_Opgave1_2_Og_3<String>("It is a pig.");
+		BinaryTree_Opgave1_2_Og_3<String> stripes = new BinaryTree_Opgave1_2_Og_3<String>(
 				"Does it have stripes?", canivore, pig);
 
-		BinaryTree<String> penguin = new BinaryTree<String>("It is a penguin.");
-		BinaryTree<String> ostrich = new BinaryTree<String>("It is an ostrich.");
-		BinaryTree<String> swim = new BinaryTree<String>("Does it swim?",
+		BinaryTree_Opgave1_2_Og_3<String> penguin = new BinaryTree_Opgave1_2_Og_3<String>("It is a penguin.");
+		BinaryTree_Opgave1_2_Og_3<String> ostrich = new BinaryTree_Opgave1_2_Og_3<String>("It is an ostrich.");
+		BinaryTree_Opgave1_2_Og_3<String> swim = new BinaryTree_Opgave1_2_Og_3<String>("Does it swim?",
 				penguin, ostrich);
 
-		BinaryTree<String> eagle = new BinaryTree<String>("It is an eagle.");
-		BinaryTree<String> fly = new BinaryTree<String>("Does it fly?", eagle,
+		BinaryTree_Opgave1_2_Og_3<String> eagle = new BinaryTree_Opgave1_2_Og_3<String>("It is an eagle.");
+		BinaryTree_Opgave1_2_Og_3<String> fly = new BinaryTree_Opgave1_2_Og_3<String>("Does it fly?", eagle,
 				swim);
 
-		BinaryTree<String> questionTree = new BinaryTree<String>(
+		BinaryTree_Opgave1_2_Og_3<String> questionTree = new BinaryTree_Opgave1_2_Og_3<String>(
 				"Is it a mammal?", stripes, fly);
 
 		// questionTree.inorder();
 		boolean done = false;
 		Scanner in = new Scanner(System.in);
 		while (!done) {
-			BinaryTree<String> left = questionTree.left();
-			BinaryTree<String> right = questionTree.right();
+			BinaryTree_Opgave1_2_Og_3<String> left = questionTree.left();
+			BinaryTree_Opgave1_2_Og_3<String> right = questionTree.right();
 			if (left.isEmpty() && right.isEmpty()) {
 				System.out.println(questionTree.data());
 				done = true;
