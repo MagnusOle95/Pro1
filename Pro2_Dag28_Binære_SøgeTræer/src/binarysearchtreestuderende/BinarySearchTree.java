@@ -212,24 +212,40 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     public E removeMin() {
         Node current = root;
+        E value = null;
         if (current == null) {
             //Do nothing.
         }else if (current.left == null){
             //Her skal roden slettes og sættes til, til den første i højre side.
+            value = current.data;
+            root = current.right;
         }
         else {
             while (current.left.left != null) {
                 current = current.left;
             }
+            value = current.left.data;
             current.left = current.left.right;
         }
-
-        return null;
+        return value;
     }
 
         public E removeMax () {
-
-            return null;
+        Node current = root;
+        E value = null;
+        if (current == null){
+            //Do nothing.
+        }else if (current.right == null){
+            value = current.data;
+            root = current.left;
+        }else{
+            while (current.right.right != null){
+                current = current.right;
+            }
+            value = current.right.data;
+            current.right = current.right.left;
+        }
+            return value;
         }
     }
 

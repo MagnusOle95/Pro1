@@ -17,7 +17,38 @@ public class Main_Opgave2 {
 
         System.out.println(træ.findMax());
         System.out.println(træ.findMin());
+
+        System.out.println();
+
+        //Sletter alle de mindste tal i træet.
+        /*
         System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+        System.out.println(træ.removeMin());
+
+         */
+
+        //Sletter alle de højeste tal i træet.
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+        System.out.println(træ.removeMax());
+
+        
+
 
 
     }
