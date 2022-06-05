@@ -4,7 +4,7 @@ public class DictionaryDemo {
 
 	public static void main(String[] args) {
 		// Dictionary map = new DictionaryHashMap<Integer,String>();
-		Dictionary<Integer, String> dictionary = new DictionaryLinked<Integer, String>();
+		Dictionary<Integer, String> dictionary = new DictionaryLinked_HashCode_Chaining<Integer, String>();
 		System.out.println(dictionary.isEmpty());
 		System.out.println(dictionary.size());
 

@@ -1,4 +1,4 @@
-package cityarraylist;
+package Kædede_struktur;
 
 public class City {
 	private String name;
@@ -31,4 +31,3 @@ public class City {
 	}
 
 }
-

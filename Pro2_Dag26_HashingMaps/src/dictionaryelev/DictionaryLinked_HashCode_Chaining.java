@@ -2,7 +2,7 @@ package dictionaryelev;
 
 import java.awt.*;
 
-public class DictionaryLinked<K, V> implements Dictionary<K, V> {
+public class DictionaryLinked_HashCode_Chaining<K, V> implements Dictionary<K, V> {
 
 	private Node start;
 	private int size;
@@ -11,7 +11,7 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 	 * HashingMap constructor comment.
 	 */
 
-	public DictionaryLinked() {
+	public DictionaryLinked_HashCode_Chaining() {
 		// Sentinel (tomt listehoved - der ikke indeholder data)
 		start = new Node();
 		size = 0;
