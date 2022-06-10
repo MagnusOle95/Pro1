@@ -1,13 +1,12 @@
-package queue_Opgave1;
+package Kø;
 
-import javax.swing.text.Element;
 import java.util.NoSuchElementException;
 
 /**
  * An implementation of a queue as a circular array.
  */
-public class CircularArrayQueue<E> implements QueueI<E> {
-	private E[] elements;
+public class CircularArrayQueue implements QueueI {
+	private Object[] elements;
 	private int currentSize;
 	private int head;
 	private int tail;
@@ -16,8 +15,8 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	 * Constructs an empty queue.
 	 */
 	public CircularArrayQueue() {
-		final int INITIAL_SIZE = 5;
-		elements = (E[]) new Object[INITIAL_SIZE];
+		final int INITIAL_SIZE = 10;
+		elements = new Object[INITIAL_SIZE];
 		currentSize = 0;
 		head = 0;
 		tail = 0;
@@ -40,7 +39,7 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	 *            the element to add
 	 */
 	@Override
-	public void enqueue(E newElement) {
+	public void enqueue(Object newElement) {
 		growIfNecessary();
 		currentSize++;
 		elements[tail] = newElement;
@@ -53,11 +52,11 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	 * @return the removed element
 	 */
 	@Override
-	public E dequeue() {
+	public Object dequeue() {
 		if (currentSize == 0) {
-			throw new NoSuchElementException("Køen er tom");
+			throw new NoSuchElementException();
 		}
-		E removed = elements[head];
+		Object removed = elements[head];
 		head = (head + 1) % elements.length;
 		currentSize--;
 		return removed;
@@ -68,7 +67,7 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	 */
 	private void growIfNecessary() {
 		if (currentSize == elements.length) {
-			E[] newElements = (E[]) new Object[2 * elements.length];
+			Object[] newElements = new Object[2 * elements.length];
 			for (int i = 0; i < elements.length; i++) {
 				newElements[i] = elements[(head + i) % elements.length];
 			}
@@ -79,7 +78,7 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	}
 
 	@Override
-	public E getFront() {
+	public Object getFront() {
 		if (currentSize == 0) {
 			throw new NoSuchElementException();
 		}

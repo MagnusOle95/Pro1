@@ -1,6 +1,5 @@
-package queue_Opgave1;
+package Generic.queue_Opgave1;
 
-import javax.swing.text.Element;
 import java.util.NoSuchElementException;
 
 /**
@@ -55,7 +54,7 @@ public class CircularArrayQueue<E> implements QueueI<E> {
 	@Override
 	public E dequeue() {
 		if (currentSize == 0) {
-			throw new NoSuchElementException("Køen er tom");
+			throw new NoSuchElementException();
 		}
 		E removed = elements[head];
 		head = (head + 1) % elements.length;

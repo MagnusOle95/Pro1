@@ -1,44 +1,43 @@
 package queueopgaver;
 
-import javax.swing.text.Position;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class NodeCirkulærEnkeltQueue_Opgave4 {
 
     private int antalIKø;
-    private Node queueFront;
-    private Node queueStart;
+    private Node head;
+    private Node tail;
 
     public NodeCirkulærEnkeltQueue_Opgave4(){
         antalIKø = 0;
-        queueFront = null;
-        queueStart = null;
+        head = null;
+        tail = null;
     }
 
     //Tilføjer person.
     public void addPerson(Person p) {
-        Node newnode = new Node();
-        newnode.person = p;
-        if (queueFront == null){
-            queueFront = newnode;
-            queueStart = newnode;
-        }else{
-            Node gammelStart = queueStart;
-            queueStart = newnode;
-            gammelStart.next = queueStart;
-            queueStart.next = queueFront;
-        }
-        antalIKø ++;
+            Node newnode = new Node();
+            newnode.person = p;
+
+            if (head == null){
+                head = newnode;
+            }
+            else{
+                tail.next = newnode;
+            }
+            tail = newnode;
+            tail.next = head;
+            antalIKø++;
     }
 
     // udskriver personerne i den
     // rækkefølge de står i listen
     public void print(){
-        if (queueFront == null){
+        if (head == null){
             throw new NoSuchElementException();
         }
-        Node temp = queueFront;
+        Node temp = head;
         System.out.print("[");
         for (int i = 1; i <= antalIKø;i++){
             System.out.print(temp.person + ",");
@@ -90,12 +89,12 @@ public class NodeCirkulærEnkeltQueue_Opgave4 {
         Person p;
 
         if (index == count){
-            p = queueFront.person;
-            queueFront = queueFront.next;
-            queueStart.next = queueFront;
+            p = head.person;
+            head = head.next;
+            tail.next = head;
 
         }else{
-            temp = queueFront;
+            temp = head;
             while (index + 1 != count){
                 temp = temp.next;
                 index++;
@@ -112,6 +111,8 @@ public class NodeCirkulærEnkeltQueue_Opgave4 {
         public Person person;
         public Node next;
     }
+
+
 
 
 

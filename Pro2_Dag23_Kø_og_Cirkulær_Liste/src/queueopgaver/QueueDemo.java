@@ -4,7 +4,7 @@ public class QueueDemo {
 	public static void main(String[] args) {
 		//Opgave 1
 		//Opretter kø
-		QueueI q = new ArrayQueue_Opgave1();
+		QueueI q = new CirkulærArrayQueue_Opgave1();
 		//Tjekker om køen er tom.
 		System.out.println(q.isEmpty() + " " + q.size());
 		//Tilføjer objekter til køen.

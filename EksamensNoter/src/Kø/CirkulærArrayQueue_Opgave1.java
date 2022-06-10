@@ -1,12 +1,11 @@
-package queueopgaver;
+package Kø;
 
-import java.rmi.NoSuchObjectException;
 import java.util.NoSuchElementException;
 
 /**
  * An implementation of a queue as a array.
  */
-public class ArrayQueue_Opgave1 implements QueueI {
+public class CirkulærArrayQueue_Opgave1 implements QueueI {
 
 	private Object[] queue;
 	private int last;
@@ -14,7 +13,7 @@ public class ArrayQueue_Opgave1 implements QueueI {
 	/**
 	 * Constructs an empty queue.
 	 */
-	public ArrayQueue_Opgave1() {
+	public CirkulærArrayQueue_Opgave1() {
 		// TODO
 		queue = new Object[10];
 		last = -1;
