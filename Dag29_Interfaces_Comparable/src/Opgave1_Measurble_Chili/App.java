@@ -1,6 +1,7 @@
 package Opgave1_Measurble_Chili;
 
-public class App {
+public class
+App {
 
     public static void main(String[] args) {
 

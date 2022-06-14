@@ -27,6 +27,8 @@ public class App {
         m5.setAntalSynPrUge(45);
         System.out.println("Beregner den samlede løn: " + samletLoen(ansatte));
 
+        //Klader metode i abstrakt klasse, som gælder for dem alle.
+        System.out.println(m3.getTimeløn());
 
     }
 

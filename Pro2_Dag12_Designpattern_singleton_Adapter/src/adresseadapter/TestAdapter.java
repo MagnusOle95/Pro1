@@ -9,7 +9,8 @@ public class TestAdapter {
 	        
 	        Adresse ad1 = new KundeToAdresseAdapter(k1);
 	        Adresse ad2 = new KundeToAdresseAdapter(k2);
-	        
+
+			//Etikettemaskine
 	        System.out.println(ad1.getVejOgHusNr());
 	        System.out.println(ad1.getPostNrOgByNavn());
 	        System.out.println(ad1.getLandeKode());
