@@ -24,7 +24,6 @@ public class App {
         //Tester om indkøber får af hvide at lageret er under 6 bøger.
         b1.etKøb(k2);
 
-        //Test her
 
 
     }
