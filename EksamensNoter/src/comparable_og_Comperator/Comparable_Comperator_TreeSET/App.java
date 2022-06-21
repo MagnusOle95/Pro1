@@ -1,4 +1,4 @@
-package Opgave3_Comparable_TreeSET;
+package comparable_og_Comperator.Comparable_Comperator_TreeSET;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +29,7 @@ public class App {
         s4.addKarater(4);
         s4.addKarater(2);
 
+        //Tester med list og kun comparable.
         List<Studerende> list = new ArrayList<>();
         list.add(s1);
         list.add(s2);
@@ -42,6 +43,7 @@ public class App {
         System.out.println("Efter sort: " + list);
 
 
+        //Tester om min comperator virker. ved at bruge den i et treeset.
         TreeSet<Studerende> set = new TreeSet<>(new StuderendeComparator());
         set.add(s1);
         set.add(s2);
@@ -50,6 +52,11 @@ public class App {
 
         System.out.println(set);
 
+        //Tester den rene comperator.
+        StuderendeComparator sc = new StuderendeComparator();
+        System.out.println();
+        int comp = sc.compare(s1, s2);
+        System.out.println(comp);
 
 
     }
